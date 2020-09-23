@@ -17,6 +17,7 @@ public class CameraMovement : MonoBehaviour
     private void Update()
     {
         Movement();
+        Zoom();
     }
 
     private void Movement()
@@ -40,7 +41,8 @@ public class CameraMovement : MonoBehaviour
     }
 
     private void Zoom()
-    {/*
+    {
+        /*
         float cameraZoom = GetCameraZoomFunc();
         float distance = Vector3.Distance(cameraZoom, transform.position);
         float cameraMoveSpeed = 2f;

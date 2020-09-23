@@ -641,12 +641,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Debug (Press SPACE or right mouse button)
-
-    Camera movement = false
-
-    Edge
-    movement = false'
+  m_Text: "Debug (Pressione ESPA\xC7O ou o bot\xE3o direito do mouse)\nmovimento
+    de c\xE2mera = falso\nmovimento de canto = falso"
 --- !u!222 &1241102133
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -794,5 +790,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraMovement: {fileID: 963194230}
-  manualMovementTransform: {fileID: 1645535179}
   debugText: {fileID: 1241102132}

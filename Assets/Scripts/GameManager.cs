@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] CameraMovement cameraMovement = null;
     //[SerializeField] Transform manualMovementTransform = null;
-    [SerializeField] Text debugText;
+    [SerializeField] Text debugText = null;
 
     private Vector3 offset = new Vector3(0f, 5f, -10f);
     private Vector3 cameraFollowPosition;
@@ -27,19 +27,19 @@ public class GameManager : MonoBehaviour
         {
             edgeScrolling = !edgeScrolling;
             Debug.Log("Edge Scrolling:" + edgeScrolling);
-            debugText.text = "Debug(Press SPACE or right mouse button)\nCamera movement = " + cameraCanMove + "\nEdge movement = " + edgeScrolling;
+            debugText.text = "Debug(Pressione ESPAÇO ou o botão direito do mouse)\nMovimento de câmera = " + cameraCanMove + "\nMovimento de canto = " + edgeScrolling;
         }
         if (Input.GetMouseButtonDown(1))
         {
             cameraCanMove = !cameraCanMove;
             Debug.Log("Camera movement = " + cameraCanMove);
-            debugText.text = "Debug(Press SPACE or right mouse button)\nCamera movement = " + cameraCanMove + "\nEdge movement = " + edgeScrolling;
+            debugText.text = "Debug(Pressione ESPAÇO ou o botão direito do mouse)\nMovimento de câmera = " + cameraCanMove + "\nMovimento de canto = " + edgeScrolling;
         }
         if (Input.GetMouseButtonUp(1))
         {
             cameraCanMove = !cameraCanMove;
             Debug.Log("Camera movement = " + cameraCanMove);
-            debugText.text = "Debug(Press SPACE or right mouse button)\nCamera movement = " + cameraCanMove + "\nEdge movement = " + edgeScrolling;
+            debugText.text = "Debug(Pressione ESPAÇO ou o botão direito do mouse)\nMovimento de câmera = " + cameraCanMove + "\nMovimento de canto = " + edgeScrolling;
         }
         if (cameraCanMove)
         {
@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
         {
             EdgeMovement();
         }
+
+        CameraZoom();
     }
 
     private void EdgeMovement()
@@ -105,7 +107,7 @@ public class GameManager : MonoBehaviour
 
     private void CameraZoom()
     {
-        float zoomChangeAmount = 1000f;
+        float zoomChangeAmount = 10f;
 
         if (Input.mouseScrollDelta.y > 0)
         {
