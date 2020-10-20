@@ -10,13 +10,11 @@ public class ManualMovement : MonoBehaviour
     private bool edgeScrolling = false;
     private bool cameraCanMove = false;
 
-    // Use this for initialization
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
