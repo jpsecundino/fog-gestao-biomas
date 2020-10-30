@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEngine;
 
 public class CubePlacer : MonoBehaviour
@@ -35,8 +36,8 @@ public class CubePlacer : MonoBehaviour
             if (Physics.Raycast(ray, out hitInfo))
             {
                 if (hitInfo.transform.CompareTag("Ground"))
-                {      
-                    PlacePlantNear(hitInfo.point, plant);
+                {
+                    grid.PutObjectOngrid(hitInfo.point, plant);
                     /*
                     int x = Mathf.RoundToInt(hitInfo.point.x);
                     int z = Mathf.RoundToInt(hitInfo.point.z);

@@ -1,11 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
 
 public class GridScript : MonoBehaviour
 {
     [SerializeField] private float size = 1f;
+    [SerializeField] private Dictionary<Vector3, bool> grid;
 
+    void Start()
+    {
+        grid = new Dictionary<Vector3, bool>();
+    }
     public Vector3 GetNearestPointOnGrid(Vector3 position)
     {
         position -= transform.position;
@@ -20,6 +27,30 @@ public class GridScript : MonoBehaviour
 
         return result;
     }
+
+    public bool PutObjectOngrid(Vector3 ClickPoint, GameObject g)
+    {
+        Vector3 finalPos = GetNearestPointOnGrid(ClickPoint);
+        if (IsPositionFree(finalPos))
+        {
+            Instantiate(g, finalPos, transform.rotation);
+            grid.Add(finalPos, true);
+            return true;
+        }
+
+        return false;
+        
+    }
+
+    public bool IsPositionFree(Vector3 position)
+    {
+        if (grid.ContainsKey(position))
+        {
+            return !grid[position];
+        }
+
+        return true;
+    } 
 
     /*
     private void OnDrawGizmos()
