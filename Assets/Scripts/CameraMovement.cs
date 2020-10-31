@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    // This script is only used in scene without Cinemachine
+
     private Func<Vector3> GetCameraFollowPositionFunc;
     private Func<float> GetCameraZoomFunc;
 

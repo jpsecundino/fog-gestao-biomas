@@ -17,6 +17,20 @@ public class ManualMovement : MonoBehaviour
 
     void Update()
     {
+        KeyActions();
+
+        if (cameraCanMove)
+        {
+            Movement();
+        }
+        if (edgeScrolling)
+        {
+            EdgeMovement();
+        }
+    }
+
+    private void KeyActions()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             edgeScrolling = !edgeScrolling;
@@ -34,15 +48,6 @@ public class ManualMovement : MonoBehaviour
             cameraCanMove = !cameraCanMove;
             Debug.Log("Camera movement = " + cameraCanMove);
             debugText.text = "Debug(Pressione ESPAÇO ou o botão direito do mouse)\nMovimento de câmera = " + cameraCanMove + "\nMovimento de canto = " + edgeScrolling;
-        }
-
-        if (cameraCanMove)
-        {
-            Movement();
-        }
-        if (edgeScrolling)
-        {
-            EdgeMovement();
         }
     }
 

@@ -46,7 +46,7 @@ public class GridScript : MonoBehaviour
     {
         if (grid.ContainsKey(position))
         {
-            return !grid[position];
+            return false;
         }
 
         return true;
