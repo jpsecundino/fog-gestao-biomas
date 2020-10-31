@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    // This script is only used in scene without Cinemachine
+
     [SerializeField] CameraMovement cameraMovement = null;
     //[SerializeField] Transform manualMovementTransform = null;
     [SerializeField] Text debugText = null;
