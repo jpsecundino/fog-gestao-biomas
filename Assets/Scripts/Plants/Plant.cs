@@ -15,8 +15,6 @@ public class Plant : MonoBehaviour
     [Range(0f,100f)]
     public float deathRate;
 
-    public Soil soilAttached;
-
     [SerializeField] private float minAcidity;
     [SerializeField] private float maxAcidity;
 
@@ -29,18 +27,19 @@ public class Plant : MonoBehaviour
 
         float _timeSlice = Time.deltaTime;
 
-        if (soilAttached.availableNutrients > 0)
+        if (Nature.GetAvailableNutrients(transform.position) > 0)
         {
-            if(soilAttached.availableNutrients - _timeSlice * nutrientConsumptionRate >= 0)
+            if(Nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate >= 0)
             {
-                soilAttached.availableNutrients -= Time.deltaTime * nutrientConsumptionRate;
+                Nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
                 HealthControl((_timeSlice * nutrientConsumptionRate) / deathRate);
             }
             else
             {
-                Debug.Log(soilAttached.availableNutrients + " and consumed " + _timeSlice * nutrientConsumptionRate + "and the sum is" + (soilAttached.availableNutrients - _timeSlice * nutrientConsumptionRate));
-                HealthControl((soilAttached.availableNutrients - _timeSlice * nutrientConsumptionRate) / deathRate);
-                soilAttached.availableNutrients = 0;
+                Nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
+                Debug.Log(Nature.GetAvailableNutrients(transform.position) + " and consumed " + _timeSlice * nutrientConsumptionRate + "and the sum is" + (Nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate));
+                HealthControl((Nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate) / deathRate);
+                //Nature.GetAvailableNutrients(transform.position) = 0;
             }
         }
         else
