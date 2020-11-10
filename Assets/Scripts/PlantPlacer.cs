@@ -35,7 +35,7 @@ public class PlantPlacer : MonoBehaviour
 
             if (Physics.Raycast(ray, out hitInfo))
             {
-                if (hitInfo.transform.CompareTag("Plant"))
+                if (hitInfo.transform.CompareTag(StringsReferences.plantTag))
                 {
                     GameObject g;
                     GridMap.RemoveObject(hitInfo.point, out g);
@@ -55,7 +55,7 @@ public class PlantPlacer : MonoBehaviour
 
             if (Physics.Raycast(ray, out hitInfo))
             {
-                if (hitInfo.transform.CompareTag("Ground"))
+                if (hitInfo.transform.CompareTag(StringsReferences.groundTag))
                 {
                     GridMap.PutObjectOngrid(hitInfo.point, Quaternion.identity, plant);
                 }

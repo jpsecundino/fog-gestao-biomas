@@ -7,15 +7,17 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [Header("UI")]
-    [SerializeField] Button placeButton = null;
-    [SerializeField] Button infoButton = null;
+    [SerializeField] private Button placeButton = null;
+    [SerializeField] private Button infoButton = null;
 
     private PlantPlacer plantPlacer = null;
+    private InfoManager infoManager = null;
 
     private void Start()
     {
         plantPlacer = FindObjectOfType<PlantPlacer>();
-        infoButton.interactable = false;
+        infoManager = FindObjectOfType<InfoManager>();
+        placeButton.interactable = false;
     }
 
     private void Update()
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
         placeButton.interactable = false;
         infoButton.interactable = true;
         plantPlacer.canPlaceOrRemove = true;
+        infoManager.canShowInfo = false;
     }
 
     public void InfoButtonClick()
@@ -35,5 +38,6 @@ public class GameManager : MonoBehaviour
         infoButton.interactable = false;
         placeButton.interactable = true;
         plantPlacer.canPlaceOrRemove = false;
+        infoManager.canShowInfo = true;
     }
 }
