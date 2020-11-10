@@ -10,6 +10,8 @@ public class PlantPlacer : MonoBehaviour
 
     private GridMap grid = null;
 
+    public bool canPlaceOrRemove { get; set; } = true;
+
     void Start()
     {
         grid = FindObjectOfType<GridMap>();
@@ -17,8 +19,11 @@ public class PlantPlacer : MonoBehaviour
 
     void Update()
     {
-        OnLeftMouseClick();
-        OnRightMouseClick();
+        if (canPlaceOrRemove)
+        {
+            OnLeftMouseClick();
+            OnRightMouseClick();
+        }
     }
 
     private void OnRightMouseClick()
