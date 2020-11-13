@@ -26,8 +26,8 @@ public class Nature : MonoBehaviour
 
     };
 
-    [SerializeField] private float xInitialRegion;
-    [SerializeField] private float zInitialRegion;
+    [SerializeField] private float xInitialRegion = 0;
+    [SerializeField] private float zInitialRegion = 0;
 
     public static Dictionary<Vector3, Soil> soilGrid;
 

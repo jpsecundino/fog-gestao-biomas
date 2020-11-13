@@ -10,6 +10,8 @@ public class PlantPlacer : MonoBehaviour
 
     private GridMap grid = null;
 
+    public bool canPlaceOrRemove { get; set; } = true;
+
     void Start()
     {
         grid = FindObjectOfType<GridMap>();
@@ -17,8 +19,11 @@ public class PlantPlacer : MonoBehaviour
 
     void Update()
     {
-        OnLeftMouseClick();
-        OnRightMouseClick();
+        if (canPlaceOrRemove)
+        {
+            OnLeftMouseClick();
+            OnRightMouseClick();
+        }
     }
 
     private void OnRightMouseClick()
@@ -30,7 +35,7 @@ public class PlantPlacer : MonoBehaviour
 
             if (Physics.Raycast(ray, out hitInfo))
             {
-                if (hitInfo.transform.CompareTag("Plant"))
+                if (hitInfo.transform.CompareTag(StringsReferences.plantTag))
                 {
                     GameObject g;
                     GridMap.RemoveObject(hitInfo.point, out g);
@@ -50,7 +55,7 @@ public class PlantPlacer : MonoBehaviour
 
             if (Physics.Raycast(ray, out hitInfo))
             {
-                if (hitInfo.transform.CompareTag("Ground"))
+                if (hitInfo.transform.CompareTag(StringsReferences.groundTag))
                 {
                     GridMap.PutObjectOngrid(hitInfo.point, Quaternion.identity, plant);
                 }

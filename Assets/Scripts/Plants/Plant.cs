@@ -21,6 +21,13 @@ public class Plant : MonoBehaviour
     [SerializeField] private float minMoisture;
     [SerializeField] private float maxMoisture;
 
+    private Canvas canvas;
+
+    private void Start()
+    {
+        canvas = GetComponentInChildren<Canvas>();
+        canvas.enabled = false;
+    }
 
     internal void Consume()
     {
