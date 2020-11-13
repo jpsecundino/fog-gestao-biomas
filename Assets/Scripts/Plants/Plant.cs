@@ -26,7 +26,6 @@ public class Plant : MonoBehaviour
     private void Start()
     {
         canvas = GetComponentInChildren<Canvas>();
-        canvas.worldCamera = Camera.main;
         canvas.enabled = false;
     }
 

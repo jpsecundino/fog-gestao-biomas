@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soilInfo: {fileID: 0}
-  cmVirtualCam: {fileID: 0}
-  offset: {x: 0, y: 3, z: -2}
+  cmVirtualCamClose: {fileID: 0}
   cube: {fileID: 0}
-  activeCameraState: 0
+  image: {fileID: 0}
