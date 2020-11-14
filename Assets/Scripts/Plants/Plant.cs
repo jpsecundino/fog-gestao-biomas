@@ -22,6 +22,7 @@ public class Plant : MonoBehaviour
     [SerializeField] private float maxMoisture;
 
     private Canvas canvas;
+    private float _timeSlice;
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class Plant : MonoBehaviour
     internal void Consume()
     {
 
-        float _timeSlice = Time.deltaTime;
+        _timeSlice = Time.deltaTime;
 
         if (Nature.GetAvailableNutrients(transform.position) > 0)
         {
