@@ -20,11 +20,6 @@ public class GameManager : MonoBehaviour
         placeButton.interactable = false;
     }
 
-    private void Update()
-    {
-        
-    }
-
     public void PlaceButtonClick()
     {
         placeButton.interactable = false;

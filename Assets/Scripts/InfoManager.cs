@@ -15,14 +15,10 @@ public class InfoManager : MonoBehaviour
     [SerializeField] private GameObject cube = null;
     [SerializeField] private Image image = null;
 
+    private RaycastHit hitInfo;
+    private Ray ray;
     private GameObject plantHighlighted = null;
     private Vector3 plantPos = default;
-
-    void Start()
-    {
-
-    }
-
 
     void Update()
     {
@@ -36,8 +32,7 @@ public class InfoManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hitInfo;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hitInfo))
             {

@@ -9,6 +9,9 @@ public class PlantPlacer : MonoBehaviour
     [SerializeField] GameObject plant = null;
 
     private GridMap grid = null;
+    private RaycastHit hitInfo;
+    private Ray ray;
+    private GameObject gObject; // objeto que vai ser destruido
 
     public bool canPlaceOrRemove { get; set; } = true;
 
@@ -30,17 +33,15 @@ public class PlantPlacer : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            RaycastHit hitInfo;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hitInfo))
             {
                 if (hitInfo.transform.CompareTag(StringsReferences.plantTag))
                 {
-                    GameObject g;
-                    GridMap.RemoveObject(hitInfo.point, out g);
+                    GridMap.RemoveObject(hitInfo.point, out gObject);
 
-                    Destroy(g);
+                    Destroy(gObject);
                 }
             }
         }
@@ -50,8 +51,7 @@ public class PlantPlacer : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hitInfo;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hitInfo))
             {

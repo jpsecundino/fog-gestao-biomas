@@ -10,11 +10,6 @@ public class ManualMovement : MonoBehaviour
     private bool edgeScrolling = false;
     private bool cameraCanMove = false;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         KeyActions();
