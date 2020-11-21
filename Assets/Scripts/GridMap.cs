@@ -34,7 +34,6 @@ public class GridMap : MonoBehaviour
     public static bool PutObjectOngrid(Vector3 position, Quaternion rotation, GameObject objPrefab)
     {
         Vector3 finalPos = GetNearestPointOnGrid(position);
-
         if (IsPositionFree(finalPos))
         {
             grid.Add(finalPos, Instantiate(objPrefab, finalPos, rotation));

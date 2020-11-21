@@ -11,7 +11,7 @@ public class PlantPlacer : MonoBehaviour
     private RaycastHit hitInfo;
     private Ray ray;
     private GameObject gObject; // objeto que vai ser destruido
-    public PlantSO plantSelected;
+    public PlantSO plantSelected; //planta selecionada no momento
     
     [SerializeField] private struct HoverObj { 
         public GameObject plantHoverPrefab { get; set; }
@@ -40,7 +40,6 @@ public class PlantPlacer : MonoBehaviour
         public void MoveTo(Vector3 pos)
         {
             plantHoverPrefab.transform.position = GridMap.GetNearestPointOnGrid(pos);
-
         }
 
         public void Rotate(float angle)
@@ -127,6 +126,7 @@ public class PlantPlacer : MonoBehaviour
 
             if (GridMap.RemoveObject(hitInfo.point, out g))
             {
+                Debug.Log("entrei");
                 Destroy(g);
             }
 
