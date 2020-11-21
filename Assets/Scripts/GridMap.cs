@@ -59,6 +59,7 @@ public class GridMap : MonoBehaviour
 
     public static bool IsPositionFree(Vector3 position)
     {
+        Debug.Log(!grid.ContainsKey(GetNearestPointOnGrid(position)));
         return !grid.ContainsKey(GetNearestPointOnGrid(position));
     }
 
