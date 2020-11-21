@@ -12,17 +12,17 @@ public class PlantPlacer : MonoBehaviour
     private Ray ray;
     private GameObject gObject; // objeto que vai ser destruido
     public PlantSO plantSelected;
-    private struct HoverObj { 
+    
+    [SerializeField] private struct HoverObj { 
         public GameObject plantHoverPrefab { get; set; }
         public MeshRenderer plantPrefabRenderer { get; set; }
 
         public PlantSO plantSelectedSO { get; set; }
 
-
         public HoverObj(PlantSO plant)
         {
-            plantHoverPrefab = Instantiate(plant.plantPrefab, new Vector3(50, 50, 50), Quaternion.identity);
-            plantPrefabRenderer = plantHoverPrefab.GetComponent<MeshRenderer>();
+            plantHoverPrefab = Instantiate(plant.plantPrefab, new Vector3(50, 50, 50), plant.plantPrefab.transform.rotation);
+            plantPrefabRenderer = plantHoverPrefab.GetComponentInChildren<MeshRenderer>();
             plantSelectedSO = plant;
 
         }
@@ -40,6 +40,13 @@ public class PlantPlacer : MonoBehaviour
         public void MoveTo(Vector3 pos)
         {
             plantHoverPrefab.transform.position = GridMap.GetNearestPointOnGrid(pos);
+
+        }
+
+        public void Rotate(float angle)
+        {
+            plantHoverPrefab.transform.Rotate(Vector3.up, angle);
+            Debug.Log("Rodei: " + plantHoverPrefab.transform.rotation);
         }
 
     };
@@ -63,9 +70,23 @@ public class PlantPlacer : MonoBehaviour
         {
             OnLeftMouseClick();
             OnRightMouseClick();
+            Rotate();
+            Hover();
         }
 
-        Hover();
+    }
+
+    private void Rotate()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+        {
+            Debug.Log("asdf");
+            hoverObj.Rotate(90f);
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
+        {
+            hoverObj.Rotate(-90f);
+        }
     }
 
     private void Hover()
@@ -124,7 +145,7 @@ public class PlantPlacer : MonoBehaviour
             {
                 if (hitInfo.transform.CompareTag(StringsReferences.groundTag))
                 {
-                    GridMap.PutObjectOngrid(hitInfo.point, Quaternion.identity, plantSelected.plantPrefab);
+                    GridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plantSelected.plantPrefab);
                 }
             }
         }
