@@ -123,15 +123,13 @@ public class PlantPlacer : MonoBehaviour
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-                if (hitInfo.transform.CompareTag(StringsReferences.plantTag))
-                {
-                    GridMap.RemoveObject(hitInfo.point, out gObject);
+            GameObject g = null;
 
-                    Destroy(gObject);
-                }
+            if (GridMap.RemoveObject(hitInfo.point, out g))
+            {
+                Destroy(g);
             }
+
         }
     }
 
