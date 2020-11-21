@@ -97,13 +97,13 @@ public class GridMap : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.red;
 
         for (float x = 0; x < 40; x+= BaseGridSize)
         {
             for (float z = 0; z < 40; z+= BaseGridSize)
             {
-                Vector3 point = GetNearestPointOnGrid(new Vector3(x, 0f, z));
+                Vector3 point = GetNearestPointOnGrid(new Vector3(x, 1f, z));
                 Gizmos.DrawSphere(point, 0.1f);
             }
         }

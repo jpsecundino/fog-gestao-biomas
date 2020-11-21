@@ -11,10 +11,12 @@ public class PlantPlacer : MonoBehaviour
     public PlantSO plantSelected; //planta selecionada no momento
     private GameObject plant = null;
     private GridMap gridMap = null;
+    [SerializeField] private LayerMask groundLayer;
     private RaycastHit hitInfo;
     private Ray ray;
     private GameObject gObject; // objeto que vai ser destruido
     private InventoryManager inventoryManager;
+    private bool isHovering = false;
     
     #region Singleton
 
@@ -38,35 +40,35 @@ public class PlantPlacer : MonoBehaviour
         public GameObject plantHoverPrefab { get; set; }
         public MeshRenderer plantPrefabRenderer { get; set; }
 
-        public PlantSO plantSelectedSO { get; set; }
+        public PlantObject plantSelected { get; set; }
 
-        public HoverObj(PlantSO plant)
+        public HoverObj(GameObject plant)
         {
-            plantHoverPrefab = Instantiate(plant.plantPrefab, new Vector3(50, 50, 50), plant.plantPrefab.transform.rotation);
+            plantHoverPrefab = Instantiate(plant, new Vector3(50, 50, 50), plant.transform.rotation);
             plantPrefabRenderer = plantHoverPrefab.GetComponentInChildren<MeshRenderer>();
-            plantSelectedSO = plant;
+            plantSelected = plantHoverPrefab.GetComponent<Plant>().plantObject;
 
         }
 
         public void OccupiedPos()
         {
-            plantPrefabRenderer.material = plantSelectedSO.objHoverOcc;
+            plantPrefabRenderer.material = plantSelected.objHoverOcc;
         }
 
         public void FreePos()
         {
-            plantPrefabRenderer.material = plantSelectedSO.objHoverFree;
+            plantPrefabRenderer.material = plantSelected.objHoverFree;
         }
 
         public void MoveTo(Vector3 pos, GridMap grid)
         {
-            plantHoverPrefab.transform.position = grid.GetNearestPointOnGrid(pos);
+            Vector3 newPos = grid.GetNearestPointOnGrid(pos);
+            plantHoverPrefab.transform.position = new Vector3(newPos.x, grid.groundTransform.position.y, newPos.z);
         }
 
         public void Rotate(float angle)
         {
             plantHoverPrefab.transform.Rotate(Vector3.up, angle);
-            Debug.Log("Rodei: " + plantHoverPrefab.transform.rotation);
         }
 
     };
@@ -76,12 +78,15 @@ public class PlantPlacer : MonoBehaviour
 
     void Start()
     {
-        
-        //change it when we get the OnChangeItem Event -> only instantiate a hover object when change plant
-        hoverObj = new HoverObj(plantSelected);
+       
         gridMap = GridMap.instance;
         inventoryManager = InventoryManager.instance;
+        GameManager.OnInventoryClose += DisableHovering;
+    }
 
+    private void DisableHovering()
+    {
+        isHovering = false;
     }
 
     void Update()
@@ -95,7 +100,9 @@ public class PlantPlacer : MonoBehaviour
 
             OnRightMouseClick();
             Rotate();
-            Hover();
+
+            if(isHovering)
+                Hover();
         }
 
     }
@@ -119,7 +126,7 @@ public class PlantPlacer : MonoBehaviour
 
         if (Physics.Raycast(ray, out hitInfo, 1000f))
         {
-            if (hitInfo.transform.CompareTag(StringsReferences.groundTag))
+            if (hitInfo.transform.CompareTag(StringsReferences.groundTag) && !EventSystem.current.IsPointerOverGameObject())
             {
                 Vector3 pos = hitInfo.point;
                 if (gridMap.IsPositionFree(pos))
@@ -141,11 +148,11 @@ public class PlantPlacer : MonoBehaviour
     //corrigir: pegar referencia da planta no grid e não pelo raycast
     private void OnRightMouseClick()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
            
-           if (Physics.Raycast(ray, out hitInfo))
+           if (Physics.Raycast(ray, 1000f, groundLayer))
            {
                 GameObject g = null;
 
@@ -161,26 +168,25 @@ public class PlantPlacer : MonoBehaviour
 
     private void OnLeftMouseClick()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hitInfo))
+            if (Physics.Raycast(ray, 1000f, groundLayer))
             {
-                if (hitInfo.transform.CompareTag(StringsReferences.groundTag))
-                {
-                    if(gridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plantSelected.plantPrefab))
+                    Debug.Log("Cliquei");
+                    if(gridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plant))
                     {
                         inventoryManager.RemovePlant(plant.GetComponent<InventoryItem>().id);
-                    }
-
-                }
+                    }             
             }
         }
     }
 
     public void SetPlant(GameObject buttonPlant)
     {
+        isHovering = true;
+        hoverObj = new HoverObj(buttonPlant);
         plant = buttonPlant;
     }
 }

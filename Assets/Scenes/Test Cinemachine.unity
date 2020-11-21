@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 14.29, z: -18.78}
+  m_FollowOffset: {x: 9.18, y: 12.47, z: -13.67}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -755,7 +755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894191148}
   m_LocalRotation: {x: 0.31952235, y: -1.4038814e-15, z: 1.3821648e-15, w: 0.9475787}
-  m_LocalPosition: {x: 0, y: 15.29, z: -18.78}
+  m_LocalPosition: {x: 9.18, y: 13.47, z: -13.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -950,8 +950,8 @@ GameObject:
   - component: {fileID: 1332864384}
   - component: {fileID: 1332864383}
   - component: {fileID: 1332864382}
-  m_Layer: 0
-  m_Name: Terrain
+  m_Layer: 8
+  m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1214,7 +1214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791345048}
   m_LocalRotation: {x: 0.31952235, y: -1.4038814e-15, z: 1.3821648e-15, w: 0.9475787}
-  m_LocalPosition: {x: 0, y: 15.29, z: -18.78}
+  m_LocalPosition: {x: 9.18, y: 13.47, z: -13.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 108400919}
@@ -1267,6 +1267,10 @@ PrefabInstance:
       propertyPath: plantSelected
       value: 
       objectReference: {fileID: 11400000, guid: fff43c67fc20ef642a3b299e2fe925f8, type: 2}
+    - target: {fileID: 758425500755128159, guid: ab1ecc1e910cee44d9d88116047d36ae, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 3783586446597910176, guid: ab1ecc1e910cee44d9d88116047d36ae, type: 3}
       propertyPath: UI.Array.size
       value: 2

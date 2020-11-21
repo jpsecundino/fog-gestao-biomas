@@ -13,7 +13,3 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   plantName: test
-  price: 100
-  plantPrefab: {fileID: 4966601941051434259, guid: fba01d5b3812a74429f51c0956028a32, type: 3}
-  objHoverFree: {fileID: 2100000, guid: a434d9c98cd6b264496871bc793280b9, type: 2}
-  objHoverOcc: {fileID: 2100000, guid: 0e49e8dd74298444daebebe460f8e79d, type: 2}
