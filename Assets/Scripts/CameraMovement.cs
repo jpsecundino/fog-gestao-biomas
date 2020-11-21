@@ -1,64 +1,76 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraMovement : MonoBehaviour
 {
-    // This script is only used in scene without Cinemachine
+    [SerializeField] float moveSpeed = 20f;
+    [SerializeField] float edgeSize = 35f;
+    [SerializeField] Text debugText = null;
 
-    private Func<Vector3> GetCameraFollowPositionFunc;
-    private Func<float> GetCameraZoomFunc;
+    private bool edgeScrolling = false;
+    private bool cameraCanMove = false;
 
-    public void Setup(Func<Vector3> GetCameraFollowPositionFunc, Func<float> GetCameraZoomFunc)
+    void Update()
     {
-        this.GetCameraFollowPositionFunc = GetCameraFollowPositionFunc;
-        this.GetCameraZoomFunc = GetCameraZoomFunc;
+        KeyActions();
+
+        if (cameraCanMove)
+        {
+            Movement();
+        }
+        if (edgeScrolling)
+        {
+            EdgeMovement();
+        }
     }
 
-    private void Update()
+    private void KeyActions()
     {
-        Movement();
-        Zoom();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            edgeScrolling = !edgeScrolling;
+            debugText.text = "Debug(Pressione ESPAÇO ou o botão direito do mouse)\nMovimento de câmera = " + cameraCanMove + "\nMovimento de canto = " + edgeScrolling;
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            cameraCanMove = !cameraCanMove;
+            debugText.text = "Debug(Pressione ESPAÇO ou o botão direito do mouse)\nMovimento de câmera = " + cameraCanMove + "\nMovimento de canto = " + edgeScrolling;
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            cameraCanMove = !cameraCanMove;
+            debugText.text = "Debug(Pressione ESPAÇO ou o botão direito do mouse)\nMovimento de câmera = " + cameraCanMove + "\nMovimento de canto = " + edgeScrolling;
+        }
+    }
+
+    private void EdgeMovement()
+    {
+        //Right
+        if (Input.mousePosition.x > Screen.width - edgeSize)
+        {
+            transform.Translate(moveSpeed * Time.deltaTime, 0f, 0f);
+        }
+        //Left
+        if (Input.mousePosition.x < edgeSize)
+        {
+            transform.Translate(-moveSpeed * Time.deltaTime, 0f, 0f);
+        }
+        //Up
+        if (Input.mousePosition.y > Screen.height - edgeSize)
+        {
+            //cameraFollowPosition.z += moveAmount * Time.deltaTime;
+            transform.Translate(0f, 0f, moveSpeed * Time.deltaTime);
+        }
+        //Down
+        if (Input.mousePosition.y < edgeSize)
+        {
+            //cameraFollowPosition.z -= moveAmount * Time.deltaTime;
+            transform.Translate(0f, 0f, -moveSpeed * Time.deltaTime);
+        }
     }
 
     private void Movement()
     {
-        Vector3 cameraFollowPosition = GetCameraFollowPositionFunc();
-        Vector3 cameraMoveDirection = (cameraFollowPosition - transform.position).normalized;
-        float distance = Vector3.Distance(cameraFollowPosition, transform.position);
-        float cameraMoveSpeed = 2f;
-
-        if (distance > 0)
-        {
-            Vector3 newCameraPosition = transform.position + cameraMoveDirection * distance * cameraMoveSpeed * Time.deltaTime;
-            float distanceAfterMoving = Vector3.Distance(newCameraPosition, cameraFollowPosition);
-
-            if (distanceAfterMoving > distance)
-            {
-                newCameraPosition = cameraFollowPosition;
-            }
-            transform.position = newCameraPosition;
-        }
-    }
-
-    private void Zoom()
-    {
-        /*
-        float cameraZoom = GetCameraZoomFunc();
-        float distance = Vector3.Distance(cameraZoom, transform.position);
-        float cameraMoveSpeed = 2f;
-
-        if (distance > 0)
-        {
-            Vector3 newCameraPosition = transform.position + cameraMoveDirection * distance * cameraMoveSpeed * Time.deltaTime;
-            float distanceAfterMoving = Vector3.Distance(newCameraPosition, cameraFollowPosition);
-
-            if (distanceAfterMoving > distance)
-            {
-                newCameraPosition = cameraFollowPosition;
-            }
-            transform.position = newCameraPosition;
-        }*/
+        transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
     }
 }

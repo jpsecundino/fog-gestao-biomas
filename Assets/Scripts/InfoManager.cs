@@ -1,9 +1,28 @@
 ﻿using UnityEngine;
 using Cinemachine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class InfoManager : MonoBehaviour
 {
+    #region Singleton
+
+    public static InfoManager instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
+
     public bool canShowInfo { get; set; } = false;
 
     [Header("Info")]
@@ -22,6 +41,8 @@ public class InfoManager : MonoBehaviour
 
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+
         if (canShowInfo)
         {
             OnLeftMouseClick();

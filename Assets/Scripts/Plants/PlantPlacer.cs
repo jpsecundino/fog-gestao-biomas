@@ -2,17 +2,38 @@
 using System.Collections;
 using System.Collections.Generic;
 //using System.Diagnostics;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
 
 public class PlantPlacer : MonoBehaviour
 {
-    private GridMap grid = null;
+    public PlantSO plantSelected; //planta selecionada no momento
+    private GameObject plant = null;
+    private GridMap gridMap = null;
     private RaycastHit hitInfo;
     private Ray ray;
     private GameObject gObject; // objeto que vai ser destruido
-    public PlantSO plantSelected; //planta selecionada no momento
+    private InventoryManager inventoryManager;
     
+    #region Singleton
+
+    public static PlantPlacer instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
+
     [SerializeField] private struct HoverObj { 
         public GameObject plantHoverPrefab { get; set; }
         public MeshRenderer plantPrefabRenderer { get; set; }
@@ -37,9 +58,9 @@ public class PlantPlacer : MonoBehaviour
             plantPrefabRenderer.material = plantSelectedSO.objHoverFree;
         }
 
-        public void MoveTo(Vector3 pos)
+        public void MoveTo(Vector3 pos, GridMap grid)
         {
-            plantHoverPrefab.transform.position = GridMap.GetNearestPointOnGrid(pos);
+            plantHoverPrefab.transform.position = grid.GetNearestPointOnGrid(pos);
         }
 
         public void Rotate(float angle)
@@ -55,19 +76,23 @@ public class PlantPlacer : MonoBehaviour
 
     void Start()
     {
-        grid = FindObjectOfType<GridMap>();
-
-        //change it when we get the OnChangeItem Event -> only instantiate a hover object when change plant
         
+        //change it when we get the OnChangeItem Event -> only instantiate a hover object when change plant
         hoverObj = new HoverObj(plantSelected);
+        gridMap = GridMap.instance;
+        inventoryManager = InventoryManager.instance;
 
     }
 
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+
         if (canPlaceOrRemove)
         {
-            OnLeftMouseClick();
+            if (plant)
+                OnLeftMouseClick();
+
             OnRightMouseClick();
             Rotate();
             Hover();
@@ -97,18 +122,18 @@ public class PlantPlacer : MonoBehaviour
             if (hitInfo.transform.CompareTag(StringsReferences.groundTag))
             {
                 Vector3 pos = hitInfo.point;
-                if (GridMap.IsPositionFree(pos))
+                if (gridMap.IsPositionFree(pos))
                 {
+
                     hoverObj.FreePos();
-                    hoverObj.MoveTo(pos);
+                    hoverObj.MoveTo(pos, gridMap);
                 }
                 else
                 {
                     hoverObj.OccupiedPos();
-                    hoverObj.MoveTo(pos);
-                }
+                    hoverObj.MoveTo(pos, gridMap);
 
-                
+                }  
             }
         }
 
@@ -117,19 +142,21 @@ public class PlantPlacer : MonoBehaviour
     //corrigir: pegar referencia da planta no grid e não pelo raycast
     private void OnRightMouseClick()
     {
-        
         if (Input.GetMouseButton(1))
         {
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+           ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+           
+           if (Physics.Raycast(ray, out hitInfo))
+           {
+                GameObject g = null;
 
-            GameObject g = null;
+                if (gridMap.RemoveObject(hitInfo.point, out g))
+                {
+                    inventoryManager.AddItem(hitInfo.transform.parent.GetComponent<InventoryItem>().id, 1);
+                    Destroy(g);
+                }
 
-            if (GridMap.RemoveObject(hitInfo.point, out g))
-            {
-                Debug.Log("entrei");
-                Destroy(g);
-            }
-
+           }
         }
     }
 
@@ -143,9 +170,16 @@ public class PlantPlacer : MonoBehaviour
             {
                 if (hitInfo.transform.CompareTag(StringsReferences.groundTag))
                 {
-                    GridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plantSelected.plantPrefab);
+                    gridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plantSelected.plantPrefab);
+                    inventoryManager.RemovePlant(plant.GetComponent<InventoryItem>().id);
+
                 }
             }
         }
+    }
+
+    public void SetPlant(GameObject buttonPlant)
+    {
+        plant = buttonPlant;
     }
 }

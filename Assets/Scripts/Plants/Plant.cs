@@ -21,11 +21,15 @@ public class Plant : MonoBehaviour
     [SerializeField] private float minMoisture;
     [SerializeField] private float maxMoisture;
 
+    [SerializeField] private PlantObject plantObject = null;
+
+    private Nature nature = null;
     private Canvas canvas;
     private float _timeSlice;
 
     private void Start()
     {
+        nature = Nature.instance;
         canvas = GetComponentInChildren<Canvas>();
         canvas.enabled = false;
     }
@@ -35,18 +39,18 @@ public class Plant : MonoBehaviour
 
         _timeSlice = Time.deltaTime;
 
-        if (Nature.GetAvailableNutrients(transform.position) > 0)
+        if (nature.GetAvailableNutrients(transform.position) > 0)
         {
-            if(Nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate >= 0)
+            if(nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate >= 0)
             {
-                Nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
+                nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
                 HealthControl((_timeSlice * nutrientConsumptionRate) / deathRate);
             }
             else
             {
-                Nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
-                Debug.Log(Nature.GetAvailableNutrients(transform.position) + " and consumed " + _timeSlice * nutrientConsumptionRate + "and the sum is" + (Nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate));
-                HealthControl((Nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate) / deathRate);
+                nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
+                Debug.Log(nature.GetAvailableNutrients(transform.position) + " and consumed " + _timeSlice * nutrientConsumptionRate + "and the sum is" + (nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate));
+                HealthControl((nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate) / deathRate);
                 //Nature.GetAvailableNutrients(transform.position) = 0;
             }
         }
@@ -65,5 +69,14 @@ public class Plant : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public int GetId()
+    {
+        return plantObject.id;
+    }
+
+    public PlantObject GetPlantObject()
+    {
+        return plantObject;
     }
 }
