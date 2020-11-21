@@ -5,6 +5,22 @@ using UnityEngine;
 
 public class Nature : MonoBehaviour
 {
+    #region Singleton
+    public static Nature instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
     /*
     public float availableNutrients = 50f;
     public float nutrientGenerationRate = 10f;
@@ -30,21 +46,23 @@ public class Nature : MonoBehaviour
     [SerializeField] private float zInitialRegion = 0;
 
     public static Dictionary<Vector3, Soil> soilGrid;
+    private GridMap gridMap = null;
 
     //a cada unidade de tempo, o solo se comunique:
     // solo -> solo
     // planta -> solo
     private void Start()
     {
+        gridMap = GridMap.instance;
         soilGrid = new Dictionary<Vector3, Soil>();
         InitializeGrid();
     }
 
     private void InitializeGrid()
     {
-        for (int i = 0; i < GridMap.xSize; i++)
+        for (int i = 0; i < gridMap.xSize; i++)
         {
-            for (int j = 0; j < GridMap.zSize; j++)
+            for (int j = 0; j < gridMap.zSize; j++)
             {
                 if (i <= xInitialRegion && j <= zInitialRegion)
                 {
@@ -59,16 +77,16 @@ public class Nature : MonoBehaviour
         }
     }
 
-    public static float GetAvailableNutrients(Vector3 pos)
+    public float GetAvailableNutrients(Vector3 pos)
     {
-        return soilGrid[GridMap.GetNearestPointOnGrid(pos)].availableNutrients;
+        return soilGrid[gridMap.GetNearestPointOnGrid(pos)].availableNutrients;
     }
 
-    public static void ConsumeNutrients(Vector3 pos, float consumeValue)
+    public void ConsumeNutrients(Vector3 pos, float consumeValue)
     {
-        Soil s = soilGrid[GridMap.GetNearestPointOnGrid(pos)];
-        s.availableNutrients = Mathf.Clamp(soilGrid[GridMap.GetNearestPointOnGrid(pos)].availableNutrients - consumeValue, 0, soilGrid[GridMap.GetNearestPointOnGrid(pos)].maxNutrients);
-        soilGrid[GridMap.GetNearestPointOnGrid(pos)] = s;
+        Soil s = soilGrid[gridMap.GetNearestPointOnGrid(pos)];
+        s.availableNutrients = Mathf.Clamp(soilGrid[gridMap.GetNearestPointOnGrid(pos)].availableNutrients - consumeValue, 0, soilGrid[gridMap.GetNearestPointOnGrid(pos)].maxNutrients);
+        soilGrid[gridMap.GetNearestPointOnGrid(pos)] = s;
     }
     // Update is called once per frame
     void FixedUpdate()

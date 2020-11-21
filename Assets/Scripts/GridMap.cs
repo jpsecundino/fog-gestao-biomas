@@ -6,10 +6,30 @@ using UnityEngine;
 
 public class GridMap : MonoBehaviour
 {
-    [SerializeField] public static float BaseGridSize = 1f;
-    [SerializeField] public static float xSize = 20f;
-    [SerializeField] public static float zSize = 20f;
-    [SerializeField] private static Dictionary<Vector3, GameObject> grid { get; set; }
+    #region Singleton
+
+    public static GridMap instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
+
+    public float BaseGridSize = 1f;
+    public float xSize = 20f;
+    public float zSize = 20f;
+
+    public Dictionary<Vector3, GameObject> grid;
+    [SerializeField] private Transform groundTransform = null;
     //public static Action<Vector3> OnNewSoil;
 
     void Start()
@@ -17,7 +37,7 @@ public class GridMap : MonoBehaviour
         grid = new Dictionary<Vector3, GameObject>();
     }
 
-    public static Vector3 GetNearestPointOnGrid(Vector3 position)
+    public Vector3 GetNearestPointOnGrid(Vector3 position)
     {
         if (position.x > xSize || position.z > zSize) return default;
 
@@ -31,9 +51,10 @@ public class GridMap : MonoBehaviour
         return result;
     }
 
-    public static bool PutObjectOngrid(Vector3 position, Quaternion rotation, GameObject objPrefab)
+    public bool PutObjectOngrid(Vector3 position, Quaternion rotation, GameObject objPrefab)
     {
         Vector3 finalPos = GetNearestPointOnGrid(position);
+        finalPos.y += groundTransform.position.y;
 
         if (IsPositionFree(finalPos))
         {
@@ -45,9 +66,10 @@ public class GridMap : MonoBehaviour
 
     }
 
-    public static bool RemoveObject(Vector3 ClickPoint, out GameObject objectInGrid)
+    public bool RemoveObject(Vector3 ClickPoint, out GameObject objectInGrid)
     {
         Vector3 nearestPoint = GetNearestPointOnGrid(ClickPoint);
+        nearestPoint.y += groundTransform.position.y;
 
         if (grid.TryGetValue(nearestPoint, out objectInGrid))
         {
@@ -57,7 +79,7 @@ public class GridMap : MonoBehaviour
         return objectInGrid;
     }
 
-    public static bool IsPositionFree(Vector3 position)
+    public bool IsPositionFree(Vector3 position)
     {
         return !grid.ContainsKey(GetNearestPointOnGrid(position));
     }
@@ -70,7 +92,7 @@ public class GridMap : MonoBehaviour
         }
         else return null;
     }
-    private static void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
 

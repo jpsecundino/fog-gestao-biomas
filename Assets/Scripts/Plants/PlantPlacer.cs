@@ -2,29 +2,53 @@
 using System.Collections;
 using System.Collections.Generic;
 //using System.Diagnostics;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
 public class PlantPlacer : MonoBehaviour
 {
-    [SerializeField] GameObject plant = null;
+    #region Singleton
 
-    private GridMap grid = null;
+    public static PlantPlacer instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
+
+    private GameObject plant = null;
+    private GridMap gridMap = null;
     private RaycastHit hitInfo;
     private Ray ray;
     private GameObject gObject; // objeto que vai ser destruido
+    private InventoryManager inventoryManager;
 
     public bool canPlaceOrRemove { get; set; } = true;
 
     void Start()
     {
-        grid = FindObjectOfType<GridMap>();
+        gridMap = GridMap.instance;
+        inventoryManager = InventoryManager.instance;
     }
 
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+
         if (canPlaceOrRemove)
         {
-            OnLeftMouseClick();
+            if (plant)
+                OnLeftMouseClick();
+
             OnRightMouseClick();
         }
     }
@@ -39,8 +63,8 @@ public class PlantPlacer : MonoBehaviour
             {
                 if (hitInfo.transform.CompareTag(StringsReferences.plantTag))
                 {
-                    GridMap.RemoveObject(hitInfo.point, out gObject);
-
+                    gridMap.RemoveObject(hitInfo.point, out gObject);
+                    inventoryManager.AddItem(hitInfo.transform.parent.GetComponent<InventoryItem>().id, 1);
                     Destroy(gObject);
                 }
             }
@@ -57,9 +81,15 @@ public class PlantPlacer : MonoBehaviour
             {
                 if (hitInfo.transform.CompareTag(StringsReferences.groundTag))
                 {
-                    GridMap.PutObjectOngrid(hitInfo.point, Quaternion.identity, plant);
+                    gridMap.PutObjectOngrid(hitInfo.point, plant.transform.rotation, plant);
+                    inventoryManager.RemovePlant(plant.GetComponent<InventoryItem>().id);
                 }
             }
         }
+    }
+
+    public void SetPlant(GameObject buttonPlant)
+    {
+        plant = buttonPlant;
     }
 }
