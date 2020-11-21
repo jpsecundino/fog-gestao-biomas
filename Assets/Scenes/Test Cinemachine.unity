@@ -1263,6 +1263,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 758425500755128159, guid: ab1ecc1e910cee44d9d88116047d36ae, type: 3}
+      propertyPath: plantSelected
+      value: 
+      objectReference: {fileID: 11400000, guid: fff43c67fc20ef642a3b299e2fe925f8, type: 2}
     - target: {fileID: 3783586446597910176, guid: ab1ecc1e910cee44d9d88116047d36ae, type: 3}
       propertyPath: UI.Array.size
       value: 2

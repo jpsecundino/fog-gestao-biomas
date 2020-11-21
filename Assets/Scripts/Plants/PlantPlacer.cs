@@ -124,7 +124,6 @@ public class PlantPlacer : MonoBehaviour
                 Vector3 pos = hitInfo.point;
                 if (gridMap.IsPositionFree(pos))
                 {
-
                     hoverObj.FreePos();
                     hoverObj.MoveTo(pos, gridMap);
                 }
@@ -170,8 +169,10 @@ public class PlantPlacer : MonoBehaviour
             {
                 if (hitInfo.transform.CompareTag(StringsReferences.groundTag))
                 {
-                    gridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plantSelected.plantPrefab);
-                    inventoryManager.RemovePlant(plant.GetComponent<InventoryItem>().id);
+                    if(gridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plantSelected.plantPrefab))
+                    {
+                        inventoryManager.RemovePlant(plant.GetComponent<InventoryItem>().id);
+                    }
 
                 }
             }
