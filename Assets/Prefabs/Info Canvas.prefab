@@ -583,6 +583,7 @@ GameObject:
   - component: {fileID: 6092591543301557267}
   - component: {fileID: 7952188377581748670}
   - component: {fileID: 6137764139055353877}
+  - component: {fileID: 1935548922775863566}
   m_Layer: 5
   m_Name: Texts Values
   m_TagString: Untagged
@@ -685,6 +686,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1935548922775863566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522715697628870921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a28711b636b63439abe9c4928aaa7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantObject: {fileID: 11400000, guid: d3d748837cc4da04ab68f71efe4c3e1c, type: 2}
 --- !u!1 &1625638217809661417
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,6 +2359,7 @@ GameObject:
   - component: {fileID: 8934337607242192634}
   - component: {fileID: 2877148976099328080}
   - component: {fileID: 3443394771115702559}
+  - component: {fileID: 9211125865555743174}
   m_Layer: 5
   m_Name: Texts Labels
   m_TagString: Untagged
@@ -2447,6 +2462,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &9211125865555743174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4513337568639439163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a28711b636b63439abe9c4928aaa7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantObject: {fileID: 11400000, guid: 11a9df9635818ab42bafc7b5f27a8464, type: 2}
 --- !u!1 &4638155696093409563
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,7 +2540,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Descri\xE7\xE3o"
+  m_text: "Informa\xE7\xF5es"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4241,8 +4269,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3107091831874098207}
   m_HandleRect: {fileID: 308494501510200200}
   m_Direction: 2
-  m_Value: 0.5
-  m_Size: 0.3362049
+  m_Value: 0.50000036
+  m_Size: 0.33620474
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4429,7 +4457,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000088692, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0.000088692, y: -0.00045776367}
   m_SizeDelta: {x: 620.9507, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798290321
