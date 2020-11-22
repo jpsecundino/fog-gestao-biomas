@@ -50,6 +50,7 @@ public class InventoryManager : MonoBehaviour
         // SaveSystem.Load()
         AddItem(0, 10);
         AddItem(1, 5);
+        selectedItemId = -1;
     }
 
     public List<Item> GetListItems()
@@ -116,8 +117,13 @@ public class InventoryManager : MonoBehaviour
             if (i == pos)
             {
                 int id = item.inventoryItem.id;
-                plantPlacer.SetPlant(itemPrefabs[id]);
-                selectedItemId = id;
+
+                if(selectedItemId != id)//if item changed
+                {
+                    plantPlacer.SetPlant(itemPrefabs[id]);
+                    selectedItemId = id;
+                }
+                
                 return;
             }
             i++;
