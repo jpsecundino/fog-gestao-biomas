@@ -29,7 +29,7 @@ public class InventoryManager : MonoBehaviour
     #endregion
 
     [SerializeField] private GameObject[] itemPrefabs = null;
-
+    public int selectedItemId = 0;
     public enum InventoryType
     {
         Plant,
@@ -92,6 +92,7 @@ public class InventoryManager : MonoBehaviour
                 }
                 else
                 {
+                   
                     items.Remove(itemList);
                     plantPlacer.SetPlant(null);
                 }
@@ -100,6 +101,11 @@ public class InventoryManager : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public bool HasItems()
+    {
+        return items[selectedItemId].quantity > 0 ;
     }
 
     public void ClickButtonInventory(int pos)
@@ -111,6 +117,7 @@ public class InventoryManager : MonoBehaviour
             {
                 int id = item.inventoryItem.id;
                 plantPlacer.SetPlant(itemPrefabs[id]);
+                selectedItemId = id;
                 return;
             }
             i++;

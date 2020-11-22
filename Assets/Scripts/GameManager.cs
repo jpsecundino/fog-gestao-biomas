@@ -4,6 +4,7 @@ using System.Timers;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
     private PlantPlacer plantPlacer = null;
     private InfoManager infoManager = null;
 
+    public static Action OnInventoryClose;
+
     private void Start()
     {
         inventory.transform.SetParent(disableCanvas.transform, false);
@@ -64,6 +67,7 @@ public class GameManager : MonoBehaviour
     {
         inventoryButton.interactable = true;
         inventory.transform.SetParent(disableCanvas.transform, false);
+        OnInventoryClose();
     }
 
     public void OpenInventoryButtonClick()

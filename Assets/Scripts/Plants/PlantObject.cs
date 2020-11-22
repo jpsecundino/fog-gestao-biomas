@@ -16,4 +16,9 @@ public class PlantObject : ScriptableObject
     public float profit = 0f;
     public float luminosity = 0f;
     public float health = 0f;
+
+    public float price;
+    public GameObject plantPrefab;
+    public Material objHoverFree;
+    public Material objHoverOcc;
 }

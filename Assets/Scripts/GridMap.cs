@@ -29,7 +29,7 @@ public class GridMap : MonoBehaviour
     public float zSize = 20f;
 
     public Dictionary<Vector3, GameObject> grid;
-    [SerializeField] private Transform groundTransform = null;
+    public Transform groundTransform = null;
     //public static Action<Vector3> OnNewSoil;
 
     void Start()
@@ -53,12 +53,15 @@ public class GridMap : MonoBehaviour
 
     public bool PutObjectOngrid(Vector3 position, Quaternion rotation, GameObject objPrefab)
     {
-        Vector3 finalPos = GetNearestPointOnGrid(position);
-        finalPos.y += groundTransform.position.y;
+        Vector3 finalPosGrid = GetNearestPointOnGrid(position);
+        
+        Vector3 finalPosObj = finalPosGrid;
+        
+        finalPosObj.y += groundTransform.position.y;
 
-        if (IsPositionFree(finalPos))
+        if (IsPositionFree(finalPosGrid))
         {
-            grid.Add(finalPos, Instantiate(objPrefab, finalPos, rotation));
+            grid.Add(finalPosGrid, Instantiate(objPrefab, finalPosObj, rotation));
             return true;
         }
 
@@ -94,13 +97,13 @@ public class GridMap : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.red;
 
         for (float x = 0; x < 40; x+= BaseGridSize)
         {
             for (float z = 0; z < 40; z+= BaseGridSize)
             {
-                Vector3 point = GetNearestPointOnGrid(new Vector3(x, 0f, z));
+                Vector3 point = GetNearestPointOnGrid(new Vector3(x, 1f, z));
                 Gizmos.DrawSphere(point, 0.1f);
             }
         }
