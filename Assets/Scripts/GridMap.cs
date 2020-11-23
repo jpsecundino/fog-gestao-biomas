@@ -72,7 +72,7 @@ public class GridMap : MonoBehaviour
     public bool RemoveObject(Vector3 ClickPoint, out GameObject objectInGrid)
     {
         Vector3 nearestPoint = GetNearestPointOnGrid(ClickPoint);
-        nearestPoint.y += groundTransform.position.y;
+        // nearestPoint.y += groundTransform.position.y;
 
         if (grid.TryGetValue(nearestPoint, out objectInGrid))
         {

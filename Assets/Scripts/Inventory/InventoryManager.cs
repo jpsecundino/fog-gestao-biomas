@@ -29,7 +29,7 @@ public class InventoryManager : MonoBehaviour
     #endregion
 
     [SerializeField] private GameObject[] itemPrefabs = null;
-    public int selectedItemId = 0;
+    public Item selectedItem;
     public enum InventoryType
     {
         Plant,
@@ -50,6 +50,7 @@ public class InventoryManager : MonoBehaviour
         // SaveSystem.Load()
         AddItem(0, 10);
         AddItem(1, 5);
+        selectedItem = null;
     }
 
     public List<Item> GetListItems()
@@ -86,13 +87,12 @@ public class InventoryManager : MonoBehaviour
         {
             if (itemList.inventoryItem.id == id)
             {
-                if (itemList.quantity > 1)
+                if (itemList.quantity > 0)
                 {
                     itemList.quantity--;
                 }
                 else
                 {
-                   
                     items.Remove(itemList);
                     plantPlacer.SetPlant(null);
                 }
@@ -103,9 +103,25 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public Item FindItemById(int id)
+    {
+        foreach (Item itemList in items)
+        {
+            if (itemList.inventoryItem.id == id)
+            {
+                return itemList;
+            }
+        }
+        return null;
+    }
+
     public bool HasItems()
     {
-        return items[selectedItemId].quantity > 0 ;
+
+        if (selectedItem != null)
+            return selectedItem.quantity > 0;
+        else 
+            return false;
     }
 
     public void ClickButtonInventory(int pos)
@@ -116,8 +132,13 @@ public class InventoryManager : MonoBehaviour
             if (i == pos)
             {
                 int id = item.inventoryItem.id;
-                plantPlacer.SetPlant(itemPrefabs[id]);
-                selectedItemId = id;
+
+                if(selectedItem == null || selectedItem.inventoryItem.id != id)//if item changed
+                {
+                    plantPlacer.SetPlant(itemPrefabs[id]);
+                    selectedItem = item;
+                }
+                
                 return;
             }
             i++;
