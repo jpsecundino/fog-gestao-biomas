@@ -21,7 +21,7 @@ public class Plant : MonoBehaviour
     [SerializeField] private float minMoisture;
     [SerializeField] private float maxMoisture;
 
-    [SerializeField] private PlantObject plantObject = null;
+    public PlantObject plantObject;
 
     private Nature nature = null;
     private Canvas canvas;

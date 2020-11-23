@@ -72,7 +72,7 @@ public class Nature : MonoBehaviour
                 {
                     soilGrid.Add(new Vector3(i, 0, j), new Soil(0, 0, 100));
                 }
-                Debug.Log(soilGrid[new Vector3(i, 0, j)].availableNutrients);
+                //Debug.Log(soilGrid[new Vector3(i, 0, j)].availableNutrients);
             }
         }
     }

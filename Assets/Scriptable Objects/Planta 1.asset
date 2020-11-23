@@ -25,3 +25,7 @@ MonoBehaviour:
   profit: 0
   luminosity: 0
   health: 0
+  price: 0
+  plantPrefab: {fileID: 0}
+  objHoverFree: {fileID: 2100000, guid: a434d9c98cd6b264496871bc793280b9, type: 2}
+  objHoverOcc: {fileID: 2100000, guid: 0e49e8dd74298444daebebe460f8e79d, type: 2}
