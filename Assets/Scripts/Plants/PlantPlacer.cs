@@ -11,7 +11,8 @@ public class PlantPlacer : MonoBehaviour
     public PlantSO plantSelected; //planta selecionada no momento
     private GameObject plant = null;
     private GridMap gridMap = null;
-    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask groundLayer = default;
+    [SerializeField] private LayerMask plantLayer = default;
     private RaycastHit hitInfo;
     private Ray ray;
     private GameObject gObject; // objeto que vai ser destruido
@@ -103,7 +104,7 @@ public class PlantPlacer : MonoBehaviour
             OnRightMouseClick();
             Rotate();
 
-            if (isHovering)
+            if (isHovering && inventoryManager.HasItems())
                 Hover();
         }
     }
@@ -164,7 +165,7 @@ public class PlantPlacer : MonoBehaviour
         {
            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
            
-           if (Physics.Raycast(ray, 1000f, groundLayer))
+           if (Physics.Raycast(ray, out hitInfo))
            {
                 GameObject g = null;
                 bool test = gridMap.RemoveObject(hitInfo.point, out g);

@@ -87,12 +87,13 @@ public class InventoryManager : MonoBehaviour
         {
             if (itemList.inventoryItem.id == id)
             {
-                if (itemList.quantity > 0)
+                if (itemList.quantity > 1)
                 {
                     itemList.quantity--;
                 }
                 else
                 {
+                    itemList.quantity--;
                     items.Remove(itemList);
                     plantPlacer.SetPlant(null);
                 }

@@ -50,6 +50,8 @@ MonoBehaviour:
   infoButton: {fileID: 0}
   inventoryButton: {fileID: 0}
   inventory: {fileID: 0}
+  disableCanvas: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!114 &2411792735273257396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,3 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eab8e272d7c0544d95b5dca3c4cdf8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plantSelected: {fileID: 11400000, guid: fff43c67fc20ef642a3b299e2fe925f8, type: 2}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  plantLayer:
+    serializedVersion: 2
+    m_Bits: 512

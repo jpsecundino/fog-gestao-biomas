@@ -69,11 +69,12 @@ public class GridMap : MonoBehaviour
 
     }
 
-    public bool RemoveObject(Vector3 ClickPoint, out GameObject objectInGrid)
+    public bool RemoveObject(Vector3 clickPoint, out GameObject objectInGrid)
     {
-        Vector3 nearestPoint = GetNearestPointOnGrid(ClickPoint);
+        Vector3 nearestPoint = GetNearestPointOnGrid(clickPoint);
         // nearestPoint.y += groundTransform.position.y;
-
+        Debug.Log("Click point: " + clickPoint);
+        Debug.Log("Nearest point: " + nearestPoint);
         if (grid.TryGetValue(nearestPoint, out objectInGrid))
         {
             return grid.Remove(nearestPoint);
@@ -103,7 +104,8 @@ public class GridMap : MonoBehaviour
         {
             for (float z = 0; z < 40; z+= BaseGridSize)
             {
-                Vector3 point = GetNearestPointOnGrid(new Vector3(x, 1f, z));
+                Vector3 point = GetNearestPointOnGrid(new Vector3(x, 0f, z));
+                point.y += 1f;
                 Gizmos.DrawSphere(point, 0.1f);
             }
         }
