@@ -6,8 +6,10 @@ public class InventoryItem : MonoBehaviour
 {
     [SerializeField] private InventoryManager.InventoryType inventoryType = default;
 
+    // Refatorar essa parte depois para melhorar o desempenho
     public int id = 0;
     public Sprite sprite = null;
+    public int price = 0;
 
     private void Awake()
     {

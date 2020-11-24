@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2411792735273257396}
   - component: {fileID: 7807669737707918806}
   - component: {fileID: 758425500755128159}
+  - component: {fileID: 6646715876276138089}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -99,6 +100,15 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  plantLayer:
-    serializedVersion: 2
-    m_Bits: 512
+--- !u!114 &6646715876276138089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3783586446597910190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935667ef84cb8f74a9ed38b4e57dc38f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

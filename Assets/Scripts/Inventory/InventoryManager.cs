@@ -7,6 +7,12 @@ public class Item
 {
     public int quantity;
     public InventoryItem inventoryItem;
+
+    public Item(int quantity, InventoryItem inventoryItem)
+    {
+        this.quantity = quantity;
+        this.inventoryItem = inventoryItem;
+    }
 }
 public class InventoryManager : MonoBehaviour
 {
@@ -48,8 +54,6 @@ public class InventoryManager : MonoBehaviour
         plantPlacer = PlantPlacer.instance;
         // Load nos itens do inventario
         // SaveSystem.Load()
-        AddItem(0, 10);
-        AddItem(1, 5);
         selectedItem = null;
     }
 
@@ -72,9 +76,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         InventoryItem newItem = itemPrefabs[id].GetComponent<InventoryItem>();
-        Item item = new Item();
-        item.quantity = quantity;
-        item.inventoryItem = newItem;
+        Item item = new Item(quantity, newItem);
         items.Add(item);
 
         if (onItemChangedCallback != null)
@@ -145,5 +147,10 @@ public class InventoryManager : MonoBehaviour
             i++;
         }
         plantPlacer.SetPlant(null);
+    }
+
+    public GameObject[] GetItemsPrefabs()
+    {
+        return itemPrefabs;
     }
 }

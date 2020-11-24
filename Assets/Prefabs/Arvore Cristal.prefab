@@ -103,6 +103,7 @@ MonoBehaviour:
   inventoryType: 0
   id: 1
   sprite: {fileID: 21300000, guid: 172774604c1bee84185a69041576525b, type: 3}
+  price: 100
 --- !u!1001 &2093409045894928777
 PrefabInstance:
   m_ObjectHideFlags: 0
