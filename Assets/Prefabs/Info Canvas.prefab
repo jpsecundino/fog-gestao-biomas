@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 434156865}
   - component: {fileID: 434156864}
   - component: {fileID: 1421347997052711962}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Close Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 1732134840}
   - component: {fileID: 1732134842}
   - component: {fileID: 1732134841}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4341837448895011583}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Sliding Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 7502954457012808786}
   - component: {fileID: 2868153611777457812}
   - component: {fileID: 1295974982879107120}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Profit Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 5346767384852630319}
   - component: {fileID: 6574711461516447185}
   - component: {fileID: 4197820594067555202}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Name Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 7952188377581748670}
   - component: {fileID: 6137764139055353877}
   - component: {fileID: 1935548922775863566}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Texts Values
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 1625638217809661420}
   - component: {fileID: 1625638217809661423}
   - component: {fileID: 1625638217809661422}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Info Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 1077885446469623591}
   - component: {fileID: 2591086838377351278}
   - component: {fileID: 8260749858787440366}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Growth Velocity Label Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -943,7 +943,7 @@ GameObject:
   - component: {fileID: 3198076266157100634}
   - component: {fileID: 951599537451282066}
   - component: {fileID: 7835591268072622957}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Luminosity Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1077,7 +1077,7 @@ GameObject:
   - component: {fileID: 3019470742941550640}
   - component: {fileID: 1435750073006943510}
   - component: {fileID: 873958053592879940}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Max Size Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1211,7 +1211,7 @@ GameObject:
   - component: {fileID: 308494501510200200}
   - component: {fileID: 3394608489498290310}
   - component: {fileID: 3107091831874098207}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1286,7 +1286,7 @@ GameObject:
   - component: {fileID: 2843845537539592090}
   - component: {fileID: 3476024362021957789}
   - component: {fileID: 1005824702928153159}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fruits Label Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1420,7 +1420,7 @@ GameObject:
   - component: {fileID: 3174353341686093002}
   - component: {fileID: 7154714782179074135}
   - component: {fileID: 2721428396368086147}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Health Label Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1554,7 +1554,7 @@ GameObject:
   - component: {fileID: 8194842725012256808}
   - component: {fileID: 8929891550436868011}
   - component: {fileID: 5546823195767400961}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Production per second Label Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1688,7 +1688,7 @@ GameObject:
   - component: {fileID: 4796047399361798219}
   - component: {fileID: 6238330823931658576}
   - component: {fileID: 4230912445495369814}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Max Size Label Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1822,7 +1822,7 @@ GameObject:
   - component: {fileID: 1107396989553209442}
   - component: {fileID: 5884361090318165586}
   - component: {fileID: 6572417587457897757}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Luminosity Label Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1956,7 +1956,7 @@ GameObject:
   - component: {fileID: 2527708691763110118}
   - component: {fileID: 2672400874212493350}
   - component: {fileID: 2754712457825845843}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Name Label Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2090,7 +2090,7 @@ GameObject:
   - component: {fileID: 415747738319805099}
   - component: {fileID: 7513948176375867885}
   - component: {fileID: 7221952333182002508}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nutrients Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2224,7 +2224,7 @@ GameObject:
   - component: {fileID: 7735281154915902744}
   - component: {fileID: 7824266030174769732}
   - component: {fileID: 5632685938840112956}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Water Label Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2359,8 +2359,7 @@ GameObject:
   - component: {fileID: 8934337607242192634}
   - component: {fileID: 2877148976099328080}
   - component: {fileID: 3443394771115702559}
-  - component: {fileID: 9211125865555743174}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Texts Labels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2462,19 +2461,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &9211125865555743174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4513337568639439163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a28711b636b63439abe9c4928aaa7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plantObject: {fileID: 11400000, guid: 11a9df9635818ab42bafc7b5f27a8464, type: 2}
 --- !u!1 &4638155696093409563
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,7 +2472,7 @@ GameObject:
   - component: {fileID: 8360229196573818385}
   - component: {fileID: 6818422928293103526}
   - component: {fileID: 4726176408158912370}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Title Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2621,7 +2607,7 @@ GameObject:
   - component: {fileID: 6142423315309537304}
   - component: {fileID: 7275324257402291854}
   - component: {fileID: 733221603739151693}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2710,7 +2696,7 @@ GameObject:
   - component: {fileID: 5136729273469993820}
   - component: {fileID: 1107320091450342026}
   - component: {fileID: 1326358849594966058}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Water Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2844,7 +2830,7 @@ GameObject:
   - component: {fileID: 3952078913506043291}
   - component: {fileID: 1004009031382857255}
   - component: {fileID: 8081650825360380729}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Growth Velocity Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2978,7 +2964,7 @@ GameObject:
   - component: {fileID: 7227271225723378162}
   - component: {fileID: 2964367001100719797}
   - component: {fileID: 7157299174466579324}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Health Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3112,7 +3098,7 @@ GameObject:
   - component: {fileID: 7325151894090395157}
   - component: {fileID: 2044567065521575120}
   - component: {fileID: 9203717031433820932}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ID Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3246,7 +3232,7 @@ GameObject:
   - component: {fileID: 6132373303866926551}
   - component: {fileID: 5980353530835902080}
   - component: {fileID: 6748994483959764422}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stages per size Label Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3381,7 +3367,7 @@ GameObject:
   - component: {fileID: 7280203313192595299}
   - component: {fileID: 2525718480479784172}
   - component: {fileID: 2930545140738380211}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Text Log
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3490,7 +3476,7 @@ GameObject:
   - component: {fileID: 8179965151351411829}
   - component: {fileID: 5580384188199945021}
   - component: {fileID: 474831360437292928}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stages per size Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3624,7 +3610,7 @@ GameObject:
   - component: {fileID: 6059242721100675703}
   - component: {fileID: 2007502759262098843}
   - component: {fileID: 8183859801416017254}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nutrients Label Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3758,7 +3744,7 @@ GameObject:
   - component: {fileID: 4848148240845888563}
   - component: {fileID: 6955902661060359916}
   - component: {fileID: 5174779270666396377}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fruits Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3892,7 +3878,7 @@ GameObject:
   - component: {fileID: 8328571982704093318}
   - component: {fileID: 4780160548131691775}
   - component: {fileID: 7761882830179706791}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Profit Label Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4026,7 +4012,7 @@ GameObject:
   - component: {fileID: 5900575688941880707}
   - component: {fileID: 4433046193685533630}
   - component: {fileID: 6259448828856259342}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ID Label Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4162,7 +4148,7 @@ GameObject:
   - component: {fileID: 5322058287154939709}
   - component: {fileID: 3249408366931221459}
   - component: {fileID: 1321341189}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Scrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4269,8 +4255,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3107091831874098207}
   m_HandleRect: {fileID: 308494501510200200}
   m_Direction: 2
-  m_Value: 0.50000036
-  m_Size: 0.33620474
+  m_Value: 0.50000024
+  m_Size: 0.33620468
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4298,7 +4284,7 @@ GameObject:
   - component: {fileID: 7925562362660229494}
   - component: {fileID: 4287334769485856848}
   - component: {fileID: 8583777562247725442}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Production per second Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4432,7 +4418,7 @@ GameObject:
   - component: {fileID: 2602952272854395624}
   - component: {fileID: 798290321}
   - component: {fileID: 798290322}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Colomn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
