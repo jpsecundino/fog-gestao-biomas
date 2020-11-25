@@ -97,6 +97,9 @@ public class GameManager : MonoBehaviour
         if (shopManager.onItemShopChangedCallback != null)
             shopManager.onItemShopChangedCallback.Invoke();
 
+        if (shopManager.onItemPriceCallback != null)
+            shopManager.onItemPriceCallback.Invoke();
+
         shopButton.interactable = false;
         shop.transform.SetParent(canvas.transform, false);
     }
