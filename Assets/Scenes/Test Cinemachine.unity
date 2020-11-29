@@ -485,8 +485,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e1eb405d38e374cb6080334676d433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xInitialRegion: 0
-  zInitialRegion: 0
+  xInitialRegion: 10
+  zInitialRegion: 10
+  nutrientGeneratinTimeLoop: 0
 --- !u!4 &310715963
 Transform:
   m_ObjectHideFlags: 0

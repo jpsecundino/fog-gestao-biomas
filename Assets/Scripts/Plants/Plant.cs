@@ -5,23 +5,23 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
+    public float health = 100f;
+    
+    //tudo pro scriptable
     public string plantName;
     public float potential;
     
-    public float health = 100f;
-    [SerializeField] private float maxhealth = 100f;
-    public float nutrientConsumptionRate = 10f;
-    
     [Range(0f,100f)]
     public float deathRate;
-
+    [SerializeField] private float maxhealth = 100f;
+    public float nutrientConsumptionRate = 10f;
     [SerializeField] private float minAcidity;
     [SerializeField] private float maxAcidity;
 
     [SerializeField] private float minMoisture;
     [SerializeField] private float maxMoisture;
-
     public PlantObject plantObject;
+
 
     private Nature nature = null;
     private Canvas canvas;
@@ -34,9 +34,13 @@ public class Plant : MonoBehaviour
         canvas.enabled = false;
     }
 
-    internal void Consume()
+    void FixedUpdate()
     {
+        Consume();    
+    }
 
+    void Consume()
+    {
         _timeSlice = Time.deltaTime;
 
         if (nature.GetAvailableNutrients(transform.position) > 0)

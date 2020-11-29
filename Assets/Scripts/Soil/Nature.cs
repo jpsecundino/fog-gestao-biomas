@@ -27,8 +27,8 @@ public partial class Nature : MonoBehaviour
     [SerializeField] private float zInitialRegion = 0;
 
     public static Action GenerateNutrients;
-    public float timeLoop;
-    private float actualTime;
+    public float nutrientGeneratinTimeLoop;
+    private float actualNutrientGenerationTime;
 
     public static Dictionary<Vector3, Soil> soilGrid;
     private GridMap gridMap = null;
@@ -42,12 +42,13 @@ public partial class Nature : MonoBehaviour
 
     private void FixedUpdate()
     {
-        actualTime += Time.deltaTime;
-
-        if(actualTime >= timeLoop)
+        actualNutrientGenerationTime += Time.deltaTime;
+        
+        //soil generates nutrients in every cycle
+        if(actualNutrientGenerationTime >= nutrientGeneratinTimeLoop)
         {
             GenerateNutrients();
-            actualTime = 0f;
+            actualNutrientGenerationTime = 0f;
         }
     }
     private void InitializeGrid()
@@ -60,16 +61,76 @@ public partial class Nature : MonoBehaviour
                 //preeche uma porção inicial de solo
                 if (i <= xInitialRegion && j <= zInitialRegion)
                 {
-                    Debug.Log("Inicializei o solo");
+                    //Debug.Log("Inicializei o solo");
                     soilGrid.Add(new Vector3(i, 0, j), new Soil(10f, 10f, 100));
                 }
                 else
                 {
-                    Debug.Log("Não Inicializei o solo");
+                    //Debug.Log("Não Inicializei o solo");
                     soilGrid.Add(new Vector3(i, 0, j), new Soil(0, 0, 100));
                 }
             }
         }
+        ShareNutrientsPrep();
+    }
+
+    public void ShareNutrientsPrep()
+    {
+        Vector3 randomSoil = new Vector3(UnityEngine.Random.Range(0, gridMap.xSize), 0, UnityEngine.Random.Range(0, gridMap.zSize));
+        int[,] visited = new int[gridMap.xSize,gridMap.zSize];
+
+        ShareNutrients(randomSoil, visited);
+    }
+
+    public void ShareNutrients(Vector3 currentSoilIdx, int[,] visited){
+
+        //if out of bounds
+        if(!ValidPosition(currentSoilIdx)) 
+            return;
+
+        int x = (int) currentSoilIdx.x, z = (int) currentSoilIdx.z;
+
+        //if visited    
+        if(visited[x, z] == 1) 
+            return;
+
+        //mark as visited
+        visited[x, z] = 1;
+
+        List<Vector3> neighboursPos = new List<Vector3>();
+
+        neighboursPos.Add(new Vector3(currentSoilIdx.x, 0,currentSoilIdx.z + gridMap.BaseGridSize));
+        neighboursPos.Add(new Vector3(currentSoilIdx.x, 0,currentSoilIdx.z - gridMap.BaseGridSize));
+        neighboursPos.Add(new Vector3(currentSoilIdx.x + gridMap.BaseGridSize,0, currentSoilIdx.z));
+        neighboursPos.Add(new Vector3(currentSoilIdx.x - gridMap.BaseGridSize,0, currentSoilIdx.z));
+
+        //get number of neighboursPos
+
+        //visit neighboursPos
+        ShareNutrients(neighboursPos[0], visited);
+        ShareNutrients(neighboursPos[1], visited);
+        ShareNutrients(neighboursPos[2], visited);
+        ShareNutrients(neighboursPos[3], visited);
+
+        //share nutrients
+        foreach(Vector3 neighbourPos in neighboursPos){
+            //if this soil has more nutrients than its current neighbour, share nutrients
+            if(ValidPosition(neighbourPos)){
+                float myNutrients = soilGrid[currentSoilIdx].availableNutrients;
+                float theirNutrients = soilGrid[neighbourPos].availableNutrients;
+                if(myNutrients > theirNutrients){
+                    float nutDiff = myNutrients - theirNutrients;
+                    soilGrid[neighbourPos].AddNutrients(nutDiff/4);
+                }
+            }
+        }
+
+
+    }
+
+    public bool ValidPosition(Vector3 pos){
+        return !(pos.x < 0 || pos.x >= gridMap.xSize || pos.z < 0 || pos.z >= gridMap.zSize);
+            
     }
 
     public float GetAvailableNutrients(Vector3 pos)
@@ -81,6 +142,7 @@ public partial class Nature : MonoBehaviour
     {
         soilGrid[gridMap.GetNearestPointOnGrid(pos)].GiveNutrients(consumeValue);
     }
+
 
 
 }

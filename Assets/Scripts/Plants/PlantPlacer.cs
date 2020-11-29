@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class PlantPlacer : MonoBehaviour
 {
-    public PlantSO plantSelected; //planta selecionada no momento
     private GameObject plant = null;
     private GridMap gridMap = null;
     [SerializeField] private LayerMask groundLayer = default;
@@ -114,7 +113,6 @@ public class PlantPlacer : MonoBehaviour
     {
         if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
         {
-            Debug.Log("asdf");
             hoverObj.Rotate(90f);
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
