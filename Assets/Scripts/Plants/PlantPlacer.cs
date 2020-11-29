@@ -11,7 +11,7 @@ public class PlantPlacer : MonoBehaviour
     public PlantSO plantSelected; //planta selecionada no momento
     private GameObject plant = null;
     private GridMap gridMap = null;
-    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask groundLayer = default;
     private RaycastHit hitInfo;
     private Ray ray;
     private GameObject gObject; // objeto que vai ser destruido
@@ -68,11 +68,13 @@ public class PlantPlacer : MonoBehaviour
 
         public void Rotate(float angle)
         {
-            plantHoverPrefab.transform.Rotate(Vector3.up, angle);
+            if (plantHoverPrefab)
+                plantHoverPrefab.transform.Rotate(Vector3.up, angle);
         }
         public void Active(bool isActive)
         {
-            plantHoverPrefab?.SetActive(isActive);
+            if (plantHoverPrefab)
+                plantHoverPrefab?.SetActive(isActive);
         }
 
     };
@@ -103,7 +105,7 @@ public class PlantPlacer : MonoBehaviour
             OnRightMouseClick();
             Rotate();
 
-            if (isHovering)
+            if (isHovering && inventoryManager.HasItems())
                 Hover();
         }
     }
@@ -164,15 +166,13 @@ public class PlantPlacer : MonoBehaviour
         {
            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
            
-           if (Physics.Raycast(ray, 1000f, groundLayer))
+           if (Physics.Raycast(ray, out hitInfo))
            {
                 GameObject g = null;
-                bool test = gridMap.RemoveObject(hitInfo.point, out g);
-                
-                Debug.Log(test);
-                if (test)
+
+                if (gridMap.RemoveObject(hitInfo.point, out g))
                 {
-                    Debug.Log(inventoryManager + "     " + hitInfo + "    " + GetComponent<InventoryItem>());
+                    //Debug.Log(inventoryManager + "     " + hitInfo + "    " + GetComponent<InventoryItem>());
                     inventoryManager.AddItem(g.GetComponentInChildren<InventoryItem>().id, 1);
                     Destroy(g);
                 }
