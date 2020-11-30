@@ -25,8 +25,8 @@ public class GridMap : MonoBehaviour
     #endregion
 
     public float BaseGridSize = 1f;
-    public float xSize = 20f;
-    public float zSize = 20f;
+    public int xSize = 20;
+    public int zSize = 20;
 
     public Dictionary<Vector3, GameObject> grid;
     public Transform groundTransform = null;
