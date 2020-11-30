@@ -15,7 +15,7 @@ public class PlantPlacer : MonoBehaviour
     private Ray ray;
     private GameObject gObject; // objeto que vai ser destruido
     private InventoryManager inventoryManager;
-    private bool isHovering = false;
+    public bool isHovering = false;
     
     #region Singleton
 
@@ -36,11 +36,10 @@ public class PlantPlacer : MonoBehaviour
     #endregion
 
     #region HoverObj
-    [SerializeField] private struct HoverObj { 
-        public GameObject plantHoverPrefab { get; set; }
-        public MeshRenderer plantPrefabRenderer { get; set; }
-
-        public PlantObject plantSelected { get; set; }
+    private class HoverObj {
+        public GameObject plantHoverPrefab;
+        public MeshRenderer plantPrefabRenderer;
+        public PlantObject plantSelected;
 
         public HoverObj(GameObject plant)
         {
@@ -73,14 +72,14 @@ public class PlantPlacer : MonoBehaviour
         public void Active(bool isActive)
         {
             if (plantHoverPrefab)
-                plantHoverPrefab?.SetActive(isActive);
+                plantHoverPrefab.SetActive(isActive);
         }
 
     };
     #endregion
 
     private HoverObj hoverObj;
-    public bool canPlaceOrRemove { get; set; } = true;
+    public bool canPlaceOrRemove = true;
 
     void Start()
     {
@@ -102,10 +101,12 @@ public class PlantPlacer : MonoBehaviour
                 OnLeftMouseClick();
 
             OnRightMouseClick();
-            Rotate();
 
-            if (isHovering && inventoryManager.HasItems())
+            if (isHovering && inventoryManager.HasItems() && hoverObj.plantPrefabRenderer)
+            {
+                Rotate();
                 Hover();
+            }
         }
     }
 
@@ -127,10 +128,10 @@ public class PlantPlacer : MonoBehaviour
 
         if (Physics.Raycast(ray, out hitInfo, 1000f))
         {
-            hoverObj.Active(true);
 
-            if (hitInfo.transform.CompareTag(StringsReferences.groundTag) && !EventSystem.current.IsPointerOverGameObject())
+            if (hitInfo.transform.CompareTag(StringsReferences.groundTag) && !EventSystem.current.IsPointerOverGameObject()) // Is pointer over UI
             {
+                hoverObj.Active(true);
                 Vector3 pos = hitInfo.point;
                 if (gridMap.IsPositionFree(pos))
                 {
@@ -187,10 +188,10 @@ public class PlantPlacer : MonoBehaviour
 
             if (Physics.Raycast(ray, 1000f, groundLayer))
             {
-                if( inventoryManager.HasItems() && gridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plant))
+                if(inventoryManager.HasItems() && gridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plant))
                 {
                     inventoryManager.RemovePlant(plant.GetComponent<InventoryItem>().id);
-                }             
+                }
             }
         }
     }
@@ -202,8 +203,12 @@ public class PlantPlacer : MonoBehaviour
             hoverObj.Active(false);
             return;
         }
+
         isHovering = true;
-        Destroy(hoverObj.plantHoverPrefab);
+
+        if (hoverObj != null)
+            Destroy(hoverObj.plantHoverPrefab);
+
         hoverObj = new HoverObj(buttonPlant);
         plant = buttonPlant;
     }

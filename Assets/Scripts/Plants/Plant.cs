@@ -24,11 +24,13 @@ public class Plant : MonoBehaviour
 
 
     private Nature nature = null;
+    private PlantPlacer plantPlacer = null;
     private Canvas canvas;
     private float _timeSlice;
 
     private void Start()
     {
+        plantPlacer = PlantPlacer.instance;
         nature = Nature.instance;
         canvas = GetComponentInChildren<Canvas>();
         canvas.enabled = false;
@@ -41,26 +43,29 @@ public class Plant : MonoBehaviour
 
     void Consume()
     {
-        _timeSlice = Time.deltaTime;
-
-        if (nature.GetAvailableNutrients(transform.position) > 0)
+        if (!plantPlacer.isHovering)
         {
-            if(nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate >= 0)
+            _timeSlice = Time.deltaTime;
+
+            if (nature.GetAvailableNutrients(transform.position) > 0)
             {
-                nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
-                HealthControl((_timeSlice * nutrientConsumptionRate) / deathRate);
+                if (nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate >= 0)
+                {
+                    nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
+                    HealthControl((_timeSlice * nutrientConsumptionRate) / deathRate);
+                }
+                else
+                {
+                    nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
+                    Debug.Log(nature.GetAvailableNutrients(transform.position) + " and consumed " + _timeSlice * nutrientConsumptionRate + "and the sum is" + (nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate));
+                    HealthControl((nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate) / deathRate);
+                    //Nature.GetAvailableNutrients(transform.position) = 0;
+                }
             }
             else
             {
-                nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
-                Debug.Log(nature.GetAvailableNutrients(transform.position) + " and consumed " + _timeSlice * nutrientConsumptionRate + "and the sum is" + (nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate));
-                HealthControl((nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate) / deathRate);
-                //Nature.GetAvailableNutrients(transform.position) = 0;
+                HealthControl(-(_timeSlice * nutrientConsumptionRate) / deathRate);
             }
-        }
-        else
-        {
-            HealthControl(-(_timeSlice * nutrientConsumptionRate) / deathRate);
         }
     }
 
