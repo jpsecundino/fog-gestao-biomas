@@ -17,6 +17,7 @@ MonoBehaviour:
   nome: "\xC1rvore Bolinhas"
   water: 0
   nutrients: 0
+  nutrientsGivenToSoil: 10
   stagesPerSize: 0
   GrowthVelocity: 0
   maxSize: 0

@@ -17,6 +17,7 @@ MonoBehaviour:
   nome: "\xC1rvore Cristal"
   water: 1
   nutrients: 1
+  nutrientsGivenToSoil: 100
   stagesPerSize: 1
   GrowthVelocity: 1
   maxSize: 1
