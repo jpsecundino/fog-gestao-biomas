@@ -76,6 +76,7 @@ public class Plant : MonoBehaviour
 
         if(health == 0)
         {
+            nature.soilGrid[transform.position].AddNutrients(plantObject.nutrientsGivenToSoil);
             Destroy(gameObject);
         }
     }

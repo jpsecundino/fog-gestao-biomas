@@ -47,7 +47,6 @@ public class GridMap : MonoBehaviour
 
         Vector3 result = new Vector3(xCount * BaseGridSize, yCount * BaseGridSize, zCount * BaseGridSize);
 
-
         return result;
     }
 

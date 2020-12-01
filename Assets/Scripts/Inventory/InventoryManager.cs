@@ -130,18 +130,15 @@ public class InventoryManager : MonoBehaviour
     public void ClickButtonInventory(int pos)
     {
         int i = 0;
+
         foreach (Item item in items)
         {
             if (i == pos)
             {
                 int id = item.inventoryItem.id;
 
-                if(selectedItem == null || selectedItem.inventoryItem.id != id)//if item changed
-                {
-                    plantPlacer.SetPlant(itemPrefabs[id]);
-                    selectedItem = item;
-                }
-                
+                plantPlacer.SetPlant(itemPrefabs[id]);
+                selectedItem = item;
                 return;
             }
             i++;

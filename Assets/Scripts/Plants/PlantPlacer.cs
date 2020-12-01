@@ -8,13 +8,15 @@ using UnityEngine;
 
 public class PlantPlacer : MonoBehaviour
 {
+    [SerializeField] private LayerMask groundLayer = default;
+
     private GameObject plant = null;
     private GridMap gridMap = null;
-    [SerializeField] private LayerMask groundLayer = default;
     private RaycastHit hitInfo;
     private Ray ray;
     private GameObject gObject; // objeto que vai ser destruido
     private InventoryManager inventoryManager;
+    private Nature nature;
     public bool isHovering = false;
     
     #region Singleton
@@ -84,6 +86,7 @@ public class PlantPlacer : MonoBehaviour
     void Start()
     {
         gridMap = GridMap.instance;
+        nature = Nature.instance;
         inventoryManager = InventoryManager.instance;
         GameManager.OnInventoryClose += DisableHovering;
     }
@@ -171,11 +174,11 @@ public class PlantPlacer : MonoBehaviour
 
                 if (gridMap.RemoveObject(hitInfo.point, out g))
                 {
-                    //Debug.Log(inventoryManager + "     " + hitInfo + "    " + GetComponent<InventoryItem>());
-                    inventoryManager.AddItem(g.GetComponentInChildren<InventoryItem>().id, 1);
+                    //inventoryManager.AddItem(g.GetComponentInChildren<InventoryItem>().id, 1);
+                    nature.soilGrid[nature.GetNearestPointOnGrid(hitInfo.point)].AddNutrients(g.GetComponent<Plant>().plantObject.nutrientsGivenToSoil);
+                    print("Nutrientes " + nature.soilGrid[nature.GetNearestPointOnGrid(hitInfo.point)].availableNutrients);
                     Destroy(g);
                 }
-
            }
         }
     }
