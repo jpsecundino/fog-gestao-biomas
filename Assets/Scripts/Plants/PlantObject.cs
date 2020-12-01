@@ -8,6 +8,7 @@ public class PlantObject : ScriptableObject
     public string nome = "New name";
     public float water = 0f;
     public float nutrients = 0f;
+    public float nutrientsGivenToSoil = 0f;
     public int stagesPerSize = 1;
     public float GrowthVelocity = 0f;
     public float maxSize = 1f;
@@ -17,7 +18,7 @@ public class PlantObject : ScriptableObject
     public float luminosity = 0f;
     public float health = 0f;
 
-    public float price;
+    public float price = 0f;
     public GameObject plantPrefab;
     public Material objHoverFree;
     public Material objHoverOcc;

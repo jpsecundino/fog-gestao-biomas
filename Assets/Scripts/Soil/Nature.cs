@@ -26,11 +26,15 @@ public partial class Nature : MonoBehaviour
     [SerializeField] private float xInitialRegion = 0;
     [SerializeField] private float zInitialRegion = 0;
 
+    public float BaseGridSize = 1f;
+    public int xSize = 20;
+    public int zSize = 20;
+
     public static Action GenerateNutrients;
     public float nutrientGeneratinTimeLoop;
     private float actualNutrientGenerationTime;
 
-    public static Dictionary<Vector3, Soil> soilGrid;
+    public Dictionary<Vector3, Soil> soilGrid;
     private GridMap gridMap = null;
 
     private void Start()
@@ -128,6 +132,19 @@ public partial class Nature : MonoBehaviour
 
     }
 
+    public Vector3 GetNearestPointOnGrid(Vector3 position)
+    {
+        if (position.x > xSize || position.z > zSize) return default;
+
+        int xCount = Mathf.RoundToInt(position.x / BaseGridSize);
+        int yCount = 0;
+        int zCount = Mathf.RoundToInt(position.z / BaseGridSize);
+
+        Vector3 result = new Vector3(xCount * BaseGridSize, yCount * BaseGridSize, zCount * BaseGridSize);
+
+        return result;
+    }
+
     public bool ValidPosition(Vector3 pos){
         return !(pos.x < 0 || pos.x >= gridMap.xSize || pos.z < 0 || pos.z >= gridMap.zSize);
             
@@ -142,7 +159,4 @@ public partial class Nature : MonoBehaviour
     {
         soilGrid[gridMap.GetNearestPointOnGrid(pos)].GiveNutrients(consumeValue);
     }
-
-
-
 }

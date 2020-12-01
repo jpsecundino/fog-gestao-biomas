@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
-public struct Soil
+public class Soil
 {
-    public float availableNutrients { get; set; }
-    public float nutrientGenerationRate { get; set; }
-    public float maxNutrients { get; set; }
+    public float availableNutrients;
+    public float nutrientGenerationRate;
+    public float maxNutrients;
     //[SerializeField] private float acidity;
     //[SerializeField] private float moisture;
 
     public Soil(float _availableNutrients, float _nutrientGenerationRate, float _maxNutrients)
     {
         availableNutrients = _availableNutrients;
-        nutrientGenerationRate = _nutrientGenerationRate ;
-        maxNutrients = _maxNutrients ;
+        nutrientGenerationRate = _nutrientGenerationRate;
+        maxNutrients = _maxNutrients;
         Nature.GenerateNutrients += GenerateNutrients;
     }
 
@@ -28,7 +28,7 @@ public struct Soil
     public void GenerateNutrients()
     {
         availableNutrients = Mathf.Clamp(availableNutrients + nutrientGenerationRate, 0, maxNutrients);
-//        Debug.Log(" Gerei nutrientes" + availableNutrients);
+ //       Debug.Log(" Gerei nutrientes" + availableNutrients);
     }
 
     public void AddNutrients(float nutrients)
@@ -39,8 +39,7 @@ public struct Soil
 
     public void RemoveNutrients(float nutrients)
     {
-//       Debug.Log("Recebi nutrients: " + availableNutrients);
-        availableNutrients = Mathf.Clamp(availableNutrients + nutrients, 0, maxNutrients);
+//        Debug.Log("Recebi nutrients: " + availableNutrients);
+        availableNutrients = Mathf.Clamp(availableNutrients - nutrients, 0, maxNutrients);
     }
-
 }
