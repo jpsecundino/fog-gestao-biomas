@@ -487,6 +487,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xInitialRegion: 10
   zInitialRegion: 10
+  BaseGridSize: 1
+  xSize: 20
+  zSize: 20
   nutrientGeneratinTimeLoop: 0
 --- !u!4 &310715963
 Transform:
@@ -1276,6 +1279,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2411792735273257396, guid: ab1ecc1e910cee44d9d88116047d36ae, type: 3}
+      propertyPath: itemPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411792735273257396, guid: ab1ecc1e910cee44d9d88116047d36ae, type: 3}
+      propertyPath: itemPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5937867712354164319, guid: c7a606d6325f5a048be134b27b98f38b, type: 3}
+    - target: {fileID: 2411792735273257396, guid: ab1ecc1e910cee44d9d88116047d36ae, type: 3}
+      propertyPath: itemPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 299427367560728257, guid: ab27b62de7197d645b24f99158e7dceb, type: 3}
     - target: {fileID: 3783586446597910176, guid: ab1ecc1e910cee44d9d88116047d36ae, type: 3}
       propertyPath: placeButton
       value: 

@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e556c759dde5374fbb12d03dbe589da, type: 3}
-  m_Name: "\xC1rvore Bolinhas"
+  m_Name: "\xC1rvore Sorvete"
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 5d9ba4e7d0964044ea54abe409d81dfd, type: 3}
-  id: 0
-  nome: "\xC1rvore Bolinhas"
+  icon: {fileID: 21300000, guid: 6592b916f86b19e428db6f6847c7b6dd, type: 3}
+  id: 3
+  nome: "\xC1rvore Sorvete"
   water: 0
   nutrients: 0
-  nutrientsGivenToSoil: 20
-  stagesPerSize: 0
+  nutrientsGivenToSoil: 100
+  stagesPerSize: 1
   GrowthVelocity: 0
-  maxSize: 0
-  fruits: 0
+  maxSize: 1
+  fruits: 1
   productonPerSecond: 0
   profit: 0
   luminosity: 0
   health: 100
-  price: 20
-  plantPrefab: {fileID: 3746586250658867235, guid: 58e17d79c7f5e264d9c667055fd7399e, type: 3}
+  price: 150
+  plantPrefab: {fileID: 299427367560728257, guid: ab27b62de7197d645b24f99158e7dceb, type: 3}
   objHoverFree: {fileID: 2100000, guid: a434d9c98cd6b264496871bc793280b9, type: 2}
   objHoverOcc: {fileID: 2100000, guid: 0e49e8dd74298444daebebe460f8e79d, type: 2}

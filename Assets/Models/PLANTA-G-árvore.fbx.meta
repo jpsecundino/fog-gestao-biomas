@@ -1,8 +1,35 @@
 fileFormatVersion: 2
-guid: aefbdfe4eac4c3e429a0d051b8df8aa6
+guid: 3778640391c36544c842999044d18b9d
 ModelImporter:
   serializedVersion: 20101
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 8108620800054693096
+    second: Light|CameraAction.001
+  - first:
+      74: 1105937224099282149
+    second: Light|EmptyAction.007
+  - first:
+      74: -7626363906017909467
+    second: Light|LightAction
+  - first:
+      74: 8967749517121878288
+    second: Camera|CameraAction.001
+  - first:
+      74: -496254557489396221
+    second: Camera|EmptyAction.007
+  - first:
+      74: -1513925036567710636
+    second: Camera|LightAction
+  - first:
+      74: 2670525723268764930
+    second: Empty|CameraAction.001
+  - first:
+      74: 5367134250524276435
+    second: Empty|EmptyAction.007
+  - first:
+      74: 8138411127928614509
+    second: Empty|LightAction
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -31,7 +58,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
