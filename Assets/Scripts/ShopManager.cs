@@ -38,8 +38,11 @@ public class ShopManager : MonoBehaviour
     {
         inventoryManager = InventoryManager.instance;
         itemPrefabs = inventoryManager.GetItemsPrefabs();
-        AddItemInShop(0);
-        AddItemInShop(1);
+
+        for (int i = 0; i <= 3; i++)
+        {
+            AddItemInShop(i);        
+        }
     }
 
     public void AddItemInShop(int id)

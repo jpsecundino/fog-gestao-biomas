@@ -10,18 +10,17 @@ public class Plant : MonoBehaviour
     //tudo pro scriptable
     public string plantName;
     public float potential;
-    
+    public bool isPlaced = false;
+    public PlantObject plantObject;
+    public float nutrientConsumptionRate = 10f;
+
     [Range(0f,100f)]
     public float deathRate;
     [SerializeField] private float maxhealth = 100f;
-    public float nutrientConsumptionRate = 10f;
     [SerializeField] private float minAcidity;
     [SerializeField] private float maxAcidity;
-
     [SerializeField] private float minMoisture;
     [SerializeField] private float maxMoisture;
-    public PlantObject plantObject;
-
 
     private Nature nature = null;
     private PlantPlacer plantPlacer = null;
@@ -43,7 +42,7 @@ public class Plant : MonoBehaviour
 
     void Consume()
     {
-        if (!plantPlacer.isHovering)
+        if (isPlaced)
         {
             _timeSlice = Time.deltaTime;
 
@@ -76,7 +75,10 @@ public class Plant : MonoBehaviour
 
         if(health == 0)
         {
-            nature.soilGrid[transform.position].AddNutrients(plantObject.nutrientsGivenToSoil);
+            Debug.LogWarning("O solo nao recebeu nutrientes após a morte da planta, pois uma linha de código está comentada");
+            //Descomentar essa linha quando o solo estiver terminado
+            //nature.soilGrid[transform.position].AddNutrients(plantObject.nutrientsGivenToSoil);
+            Debug.Log("A planta " + plantObject.name + " morreu");
             Destroy(gameObject);
         }
     }

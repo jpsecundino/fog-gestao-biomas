@@ -10,7 +10,8 @@ public class PlantPlacer : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayer = default;
 
-    private GameObject plant = null;
+    private GameManager gameManager;
+    private GameObject plantGameObject = null;
     private GridMap gridMap = null;
     private RaycastHit hitInfo;
     private Ray ray;
@@ -85,10 +86,11 @@ public class PlantPlacer : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameManager.instance;
         gridMap = GridMap.instance;
         nature = Nature.instance;
         inventoryManager = InventoryManager.instance;
-        GameManager.OnInventoryClose += DisableHovering;
+        gameManager.OnInventoryClose += DisableHovering;
     }
 
     private void DisableHovering()
@@ -100,7 +102,7 @@ public class PlantPlacer : MonoBehaviour
     {
         if (canPlaceOrRemove)
         {
-            if (plant)
+            if (plantGameObject)
                 OnLeftMouseClick();
 
             OnRightMouseClick();
@@ -191,9 +193,10 @@ public class PlantPlacer : MonoBehaviour
 
             if (Physics.Raycast(ray, 1000f, groundLayer))
             {
-                if(inventoryManager.HasItems() && gridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plant))
+                if(inventoryManager.HasItems() && gridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plantGameObject))
                 {
-                    inventoryManager.RemovePlant(plant.GetComponent<InventoryItem>().id);
+                    plantGameObject.GetComponent<Plant>().isPlaced = true;
+                    inventoryManager.RemovePlant(plantGameObject.GetComponent<InventoryItem>().id);
                 }
             }
         }
@@ -213,6 +216,6 @@ public class PlantPlacer : MonoBehaviour
             Destroy(hoverObj.plantHoverPrefab);
 
         hoverObj = new HoverObj(buttonPlant);
-        plant = buttonPlant;
+        plantGameObject = buttonPlant;
     }
 }

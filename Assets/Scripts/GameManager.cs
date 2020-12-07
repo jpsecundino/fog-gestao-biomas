@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     private ShopManager shopManager = null;
     private InventoryManager inventoryManager = null;
 
-    public static Action OnInventoryClose;
+    public Action OnInventoryClose;
 
     private void Start()
     {
