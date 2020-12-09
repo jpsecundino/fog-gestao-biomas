@@ -46,16 +46,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  water: 0
+  nutrients: 0
+  growthVelocity: 0
+  productionPerSecond: 0
+  profit: 0
+  luminosity: 0
   plantName: Planta Rasteira
   potential: 0
+  isPlaced: 0
+  plantObject: {fileID: 11400000, guid: be72746ee36421542b7d5dc628045bfb, type: 2}
+  nutrientConsumptionRate: 10
   deathRate: 0
   maxhealth: 100
-  nutrientConsumptionRate: 10
   minAcidity: 0
   maxAcidity: 0
   minMoisture: 0
   maxMoisture: 0
-  plantObject: {fileID: 11400000, guid: be72746ee36421542b7d5dc628045bfb, type: 2}
 --- !u!114 &7000382105910851652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,6 +374,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2602952272854395624, guid: 284a6f9a1d82c464789a795cf8520b6f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.13174438
+      objectReference: {fileID: 0}
     - target: {fileID: 2843845537539592090, guid: 284a6f9a1d82c464789a795cf8520b6f, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -449,7 +460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3249408366931221459, guid: 284a6f9a1d82c464789a795cf8520b6f, type: 3}
       propertyPath: m_Value
-      value: 0.5000006
+      value: 0.50016624
       objectReference: {fileID: 0}
     - target: {fileID: 3249408366931221459, guid: 284a6f9a1d82c464789a795cf8520b6f, type: 3}
       propertyPath: m_Size
