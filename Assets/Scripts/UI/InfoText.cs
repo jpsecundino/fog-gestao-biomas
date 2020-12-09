@@ -5,15 +5,15 @@ using TMPro;
 
 public class InfoText : MonoBehaviour
 {
-    //[SerializeField] private Plant plant;
+    [SerializeField] private PlantObject plantObject = null;
 
     private TMP_Text[] text = new TMP_Text[12];
-    [SerializeField] private PlantObject plantObject = null;
+    private Plant plant;
 
     private void Start()
     {
+        plant = GetComponentInParent<Plant>();
         text = GetComponentsInChildren<TMP_Text>();
-        //plantObject = GetPlantObject();
         text[0].text = plantObject.id.ToString();
         text[1].text = plantObject.name.ToString();
         text[4].text = plantObject.stagesPerSize.ToString();
@@ -23,12 +23,12 @@ public class InfoText : MonoBehaviour
 
     private void FixedUpdate()
     {
-        text[2].text = plantObject.water.ToString();
-        text[3].text = plantObject.nutrients.ToString();
-        text[5].text = plantObject.GrowthVelocity.ToString();
-        text[8].text = plantObject.productonPerSecond.ToString();
-        text[9].text = plantObject.profit.ToString();
-        text[10].text = plantObject.luminosity.ToString();
-        text[11].text = plantObject.health.ToString();
+        text[2].text = plant.water.ToString();
+        text[3].text = plant.nutrients.ToString();
+        text[5].text = plant.growthVelocity.ToString();
+        text[8].text = plant.productionPerSecond.ToString();
+        text[9].text = plant.profit.ToString();
+        text[10].text = plant.luminosity.ToString();
+        text[11].text = plant.health.ToString();
     }
 }

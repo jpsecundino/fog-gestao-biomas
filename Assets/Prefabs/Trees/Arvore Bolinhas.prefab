@@ -162,16 +162,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  water: 0
+  nutrients: 0
+  growthVelocity: 0
+  productionPerSecond: 0
+  profit: 0
+  luminosity: 0
   plantName: Arvore Bolinhas
   potential: 0
+  isPlaced: 0
+  plantObject: {fileID: 11400000, guid: 11a9df9635818ab42bafc7b5f27a8464, type: 2}
+  nutrientConsumptionRate: 10
   deathRate: 0
   maxhealth: 100
-  nutrientConsumptionRate: 10
   minAcidity: 0
   maxAcidity: 0
   minMoisture: 0
   maxMoisture: 0
-  plantObject: {fileID: 11400000, guid: 11a9df9635818ab42bafc7b5f27a8464, type: 2}
 --- !u!114 &1925182202894265637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,6 +422,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2602952272854395624, guid: 284a6f9a1d82c464789a795cf8520b6f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.0067444
+      objectReference: {fileID: 0}
     - target: {fileID: 2729059656291572307, guid: 284a6f9a1d82c464789a795cf8520b6f, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -517,11 +528,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3249408366931221459, guid: 284a6f9a1d82c464789a795cf8520b6f, type: 3}
       propertyPath: m_Value
-      value: 0.50000036
+      value: 0.5012705
       objectReference: {fileID: 0}
     - target: {fileID: 3249408366931221459, guid: 284a6f9a1d82c464789a795cf8520b6f, type: 3}
       propertyPath: m_Size
-      value: 0.33620474
+      value: 0.3362047
       objectReference: {fileID: 0}
     - target: {fileID: 3633032455959638147, guid: 284a6f9a1d82c464789a795cf8520b6f, type: 3}
       propertyPath: m_Layer

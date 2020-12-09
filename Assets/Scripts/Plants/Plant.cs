@@ -6,6 +6,12 @@ using UnityEngine;
 public class Plant : MonoBehaviour
 {
     public float health = 100f;
+    public float water = 0f;
+    public float nutrients = 0f;
+    public float growthVelocity = 0f;
+    public float productionPerSecond = 0f;
+    public float profit = 0f;
+    public float luminosity = 0f;
     
     //tudo pro scriptable
     public string plantName;
