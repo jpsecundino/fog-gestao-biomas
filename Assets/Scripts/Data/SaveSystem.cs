@@ -7,7 +7,7 @@ public class SaveSystem
     public static void SaveGame(Nature nature, GridMap gridmap, ShopManager shopManager, InventoryManager inventoryManager)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/NOMEDOJOGO Save.bin";
+        string path = Application.persistentDataPath + "/GestaoBiomasSave.bin";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         SaveData data = new SaveData(nature, gridmap, shopManager, inventoryManager);
@@ -18,7 +18,7 @@ public class SaveSystem
 
     public static SaveData LoadGame()
     {
-        string path = Application.persistentDataPath + "/NOMEDOJOGO Save.bin";
+        string path = Application.persistentDataPath + "/GestaoBiomasSave.bin";
 
         if (File.Exists(path))
         {
