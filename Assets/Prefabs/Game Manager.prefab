@@ -56,6 +56,7 @@ MonoBehaviour:
   mainCanvas: {fileID: 0}
   shop: {fileID: 0}
   pauseCanvas: {fileID: 0}
+  configurationsCanvas: {fileID: 0}
 --- !u!114 &2411792735273257396
 MonoBehaviour:
   m_ObjectHideFlags: 0
