@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,9 +40,13 @@ public class ShopManager : MonoBehaviour
         inventoryManager = InventoryManager.instance;
         itemPrefabs = inventoryManager.GetItemsPrefabs();
 
-        for (int i = 0; i <= 3; i++)
+        string path = Application.persistentDataPath + "/GestaoBiomasSave.bin";
+        if (!File.Exists(path))
         {
-            AddItemInShop(i);        
+            for (int i = 0; i <= 3; i++)
+            {
+                AddItemInShop(i);
+            }
         }
     }
 
