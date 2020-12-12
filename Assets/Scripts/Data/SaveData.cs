@@ -6,7 +6,7 @@ using UnityEngine;
 public class SaveData
 {
     public List<float[]> soilPosList;
-    public List<Soil> soilList;
+    public List<SoilStruct> soilList;
 
     public List<float[]> plantsPosList;
     public List<PlantStruct> plantsList;
@@ -16,8 +16,25 @@ public class SaveData
     public List<ItemStruct> inventoryList;
 
     [Serializable]
+    public struct SoilStruct
+    {
+        public float availableNutrients;
+        public float nutrientGenerationRate;
+        public float maxNutrients;
+
+        public SoilStruct(float _availableNutrients, float _nutrientGenerationRate, float _maxNutrients)
+        {
+            availableNutrients = _availableNutrients;
+            nutrientGenerationRate = _nutrientGenerationRate;
+            maxNutrients = _maxNutrients;
+        }
+    }
+
+    [Serializable]
     public struct PlantStruct
     {
+        public int id;
+        public float[] rotation;
         public float health;
         public float water;
         public float nutrients;
@@ -26,9 +43,14 @@ public class SaveData
         public float profit;
         public float luminosity;
 
-        public PlantStruct(float _health, float _water, float _nutrients, float _growthVelocity, float _productionPerSecond, float _profit, 
+        public PlantStruct(int _id, float[] _rotation, float _health, float _water, float _nutrients, float _growthVelocity, float _productionPerSecond, float _profit,
             float _luminosity)
         {
+            id = _id;
+            rotation = new float[3];
+            rotation[0] = _rotation[0];
+            rotation[1] = _rotation[1];
+            rotation[2] = _rotation[2];
             health = _health;
             water = _water;
             nutrients = _nutrients;
@@ -76,13 +98,13 @@ public class SaveData
         return list;
     }
 
-    private List<Soil> ConvertNatureSoil(Nature nature)
+    private List<SoilStruct> ConvertNatureSoil(Nature nature)
     {
-        List<Soil> list = new List<Soil>();
+        List<SoilStruct> list = new List<SoilStruct>();
 
         foreach (KeyValuePair<Vector3, Soil> soil in nature.soilGrid)
         {
-            list.Add(soil.Value);
+            list.Add(new SoilStruct(soil.Value.availableNutrients, soil.Value.nutrientGenerationRate, soil.Value.maxNutrients));
         }
 
         return list;
@@ -104,11 +126,13 @@ public class SaveData
     {
         List<PlantStruct> list = new List<PlantStruct>();
         Plant plantClass;
+        PlantStruct plantStruct;
 
         foreach (KeyValuePair<Vector3, GameObject> plant in plantsGrid.grid)
         {
             plantClass = plant.Value.GetComponent<Plant>();
-            PlantStruct plantStruct = new PlantStruct(plantClass.health, plantClass.water, plantClass.nutrients, plantClass.growthVelocity,
+            plantStruct = new PlantStruct(plantClass.GetId(), new float[3] { plantClass.gameObject.transform.rotation.x, plantClass.gameObject.transform.rotation.y,
+                plantClass.gameObject.transform.rotation.z },  plantClass.health, plantClass.water, plantClass.nutrients, plantClass.growthVelocity,
                 plantClass.productionPerSecond, plantClass.profit, plantClass.luminosity);
             list.Add(plantStruct);
         }
