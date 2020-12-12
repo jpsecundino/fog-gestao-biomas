@@ -41,13 +41,15 @@ public class ShopManager : MonoBehaviour
         itemPrefabs = inventoryManager.GetItemsPrefabs();
 
         string path = Application.persistentDataPath + "/GestaoBiomasSave.bin";
-        if (!File.Exists(path))
-        {
+
+        // Desmarcar isso quando formos tirar o botao de load da cena do jogo e colocar no menu
+        //if (!File.Exists(path))
+        //{
             for (int i = 0; i <= 3; i++)
             {
                 AddItemInShop(i);
             }
-        }
+        //}
     }
 
     public void AddItemInShop(int id)
