@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     private GridMap plantsGrid = null;
     private ShopManager shopManager = null;
     private InventoryManager inventoryManager = null;
+    private GameObject[] gameObjects = null;
 
     public Action OnInventoryClose;
 
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
         shopManager = ShopManager.instance;
         inventoryManager = InventoryManager.instance;
         placeButton.interactable = false;
+        gameObjects = inventoryManager.GetItemsPrefabs();
     }
 
     private void Update()
@@ -142,5 +144,46 @@ public class GameManager : MonoBehaviour
     public void SaveGame()
     {
         SaveSystem.SaveGame(nature, plantsGrid, shopManager, inventoryManager);
+    }
+
+    public void LoadGame()
+    {
+        SaveData saveData = SaveSystem.LoadGame();
+        nature.soilGrid = new Dictionary<Vector3, Soil>();
+        plantsGrid.grid = new Dictionary<Vector3, GameObject>();
+
+        for(int i = 0; i < saveData.soilList.Count; i++)
+        {
+            nature.soilGrid.Add(new Vector3(saveData.soilPosList[i][0], saveData.soilPosList[i][1], saveData.soilPosList[i][2]), 
+                new Soil(saveData.soilList[i].availableNutrients, saveData.soilList[i].nutrientGenerationRate, saveData.soilList[i].maxNutrients));
+        }
+
+        for (int i = 0; i < saveData.plantsList.Count; i++)
+        {
+            Vector3 plantPosition = new Vector3(saveData.plantsPosList[i][0], saveData.plantsPosList[i][1], saveData.plantsPosList[i][2]);
+            Quaternion plantRotation = new Quaternion(saveData.plantsList[i].rotation[0], saveData.plantsList[i].rotation[1], saveData.plantsList[i].rotation[2], 0);
+            GameObject plant = Instantiate(gameObjects[saveData.plantsList[i].id], plantPosition, plantRotation);
+            Plant plantClass = plant.GetComponent<Plant>();
+            plantClass.health = saveData.plantsList[i].health;
+            plantClass.water = saveData.plantsList[i].water;
+            plantClass.nutrients = saveData.plantsList[i].nutrients;
+            plantClass.growthVelocity = saveData.plantsList[i].growthVelocity;
+            plantClass.productionPerSecond = saveData.plantsList[i].productionPerSecond;
+            plantClass.profit = saveData.plantsList[i].profit;
+            plantClass.luminosity = saveData.plantsList[i].luminosity;
+            plantsGrid.grid.Add(plantPosition, plant);
+        }
+
+        shopManager.SetMoneyAmount(saveData.moneyAmount);
+
+        for (int i = 0; i < saveData.shopList.Count; i++)
+        {
+            shopManager.AddItemInShop(saveData.shopList[i]);
+        }
+
+        for (int i = 0; i < saveData.inventoryList.Count; i++)
+        {
+            inventoryManager.AddItem(saveData.inventoryList[i].id, saveData.inventoryList[i].quantity);
+        }
     }
 }

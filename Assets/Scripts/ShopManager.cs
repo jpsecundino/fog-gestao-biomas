@@ -74,9 +74,18 @@ public class ShopManager : MonoBehaviour
     {
         return items;
     }
+    public void SetListItemsShop(List<InventoryItem> list)
+    {
+        items = list;
+    }
 
     public int GetMoneyAmount()
     {
         return moneyAmount;
+    }
+
+    public void SetMoneyAmount(int amount)
+    {
+        moneyAmount = amount;
     }
 }
