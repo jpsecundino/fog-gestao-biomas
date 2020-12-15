@@ -15,6 +15,9 @@ public class SaveData
     public List<int> shopList;
     public List<ItemStruct> inventoryList;
 
+    public int index;
+    public float playingTime;
+
     [Serializable]
     public struct SoilStruct
     {
@@ -75,7 +78,7 @@ public class SaveData
     }
 
 
-    public SaveData(Nature nature, GridMap gridmap, ShopManager shopManager, InventoryManager inventoryManager)
+    public SaveData(Nature nature, GridMap gridmap, ShopManager shopManager, InventoryManager inventoryManager, int _index)
     {
         soilPosList = ConvertNaturePos(nature);
         soilList = ConvertNatureSoil(nature);
@@ -84,6 +87,8 @@ public class SaveData
         moneyAmount = shopManager.GetMoneyAmount();
         shopList = ConvertShop(shopManager);
         inventoryList = ConvertInventory(inventoryManager);
+        index = _index;
+        playingTime = GameManager.instance.playingTime;
     }
 
     private List<float[]> ConvertNaturePos(Nature nature)
@@ -131,9 +136,9 @@ public class SaveData
         foreach (KeyValuePair<Vector3, GameObject> plant in plantsGrid.grid)
         {
             plantClass = plant.Value.GetComponent<Plant>();
-            plantStruct = new PlantStruct(plantClass.GetId(), new float[3] { plantClass.gameObject.transform.rotation.x, plantClass.gameObject.transform.rotation.y,
-                plantClass.gameObject.transform.rotation.z },  plantClass.health, plantClass.water, plantClass.nutrients, plantClass.growthVelocity,
-                plantClass.productionPerSecond, plantClass.profit, plantClass.luminosity);
+            plantStruct = new PlantStruct(plantClass.GetId(), new float[3] { plantClass.gameObject.transform.rotation.x,
+                plantClass.gameObject.transform.rotation.y, plantClass.gameObject.transform.rotation.z },  plantClass.health, plantClass.water,
+                plantClass.nutrients, plantClass.growthVelocity, plantClass.productionPerSecond, plantClass.profit, plantClass.luminosity);
             list.Add(plantStruct);
         }
 

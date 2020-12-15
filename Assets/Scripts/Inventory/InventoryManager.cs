@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Item
 {
@@ -25,7 +24,6 @@ public class InventoryManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else if (instance != this)
         {
@@ -52,14 +50,17 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         plantPlacer = PlantPlacer.instance;
-        // Load nos itens do inventario
-        // SaveSystem.Load()
         selectedItem = null;
     }
 
     public List<Item> GetListItems()
     {
         return items;
+    }
+
+    public void EraseList()
+    {
+        items = new List<Item>();
     }
 
     public void AddItem(int id, int quantity)

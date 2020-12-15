@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
@@ -14,7 +12,6 @@ public class ShopManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else if (instance != this)
         {
@@ -33,23 +30,12 @@ public class ShopManager : MonoBehaviour
     private InventoryManager inventoryManager = null;
 
     private List<InventoryItem> items = new List<InventoryItem>();
-    private int moneyAmount = 1000;
+    public int moneyAmount = 0;
 
     private void Start()
     {
         inventoryManager = InventoryManager.instance;
         itemPrefabs = inventoryManager.GetItemsPrefabs();
-
-        string path = Application.persistentDataPath + "/GestaoBiomasSave.bin";
-
-        // Desmarcar isso quando formos tirar o botao de load da cena do jogo e colocar no menu
-        //if (!File.Exists(path))
-        //{
-            for (int i = 0; i <= 3; i++)
-            {
-                AddItemInShop(i);
-            }
-        //}
     }
 
     public void AddItemInShop(int id)
@@ -84,6 +70,11 @@ public class ShopManager : MonoBehaviour
     public void SetListItemsShop(List<InventoryItem> list)
     {
         items = list;
+    }
+
+    public void EraseList()
+    {
+        items = new List<InventoryItem>();
     }
 
     public int GetMoneyAmount()

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 808249402097752986}
   - component: {fileID: 5147521447745070755}
   - component: {fileID: 6223767860764343102}
+  - component: {fileID: 4345383000882976400}
   m_Layer: 5
   m_Name: Save Button
   m_TagString: Untagged
@@ -119,19 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5147521447745070755}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SaveGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &4345383000882976400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953421749612223628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e8cd84c4566836419dc257012e907d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4345383000890171296
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +145,7 @@ GameObject:
   - component: {fileID: 4345383000890171324}
   - component: {fileID: 4345383000890171327}
   - component: {fileID: 4345383000890171326}
+  - component: {fileID: 4345383000882976402}
   m_Layer: 5
   m_Name: Menu Button
   m_TagString: Untagged
@@ -252,6 +254,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4345383000882976402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4345383000890171296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009bf1b60a1fcc94e8a0ca5917c46f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4345383000892522770
 GameObject:
   m_ObjectHideFlags: 0

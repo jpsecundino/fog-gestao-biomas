@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else if (instance != this)
         {
@@ -36,6 +35,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseCanvas = null;
     [SerializeField] private GameObject configurationsCanvas = null;
 
+    public float playingTime = 0f;
+
     private PlantPlacer plantPlacer = null;
     private InfoManager infoManager = null;
     private Nature nature = null;
@@ -50,14 +51,30 @@ public class GameManager : MonoBehaviour
     {
         inventory.transform.SetParent(disableCanvas.transform, false);
         shop.transform.SetParent(disableCanvas.transform, false);
-        plantPlacer = FindObjectOfType<PlantPlacer>();
-        infoManager = FindObjectOfType<InfoManager>();
+        placeButton.interactable = false;
+        plantPlacer = PlantPlacer.instance;
+        infoManager = InfoManager.instance;
         nature = Nature.instance;
         plantsGrid = GridMap.instance;
         shopManager = ShopManager.instance;
         inventoryManager = InventoryManager.instance;
-        placeButton.interactable = false;
         gameObjects = inventoryManager.GetItemsPrefabs();
+
+        string path = Application.persistentDataPath + "/GestaoBiomasSave" + SceneManagement.index + ".bin";
+
+        if (File.Exists(path))
+        {
+            LoadGame(SceneManagement.index);
+        }
+        else
+        {
+            shopManager.moneyAmount = 1000;
+
+            for (int i = 0; i <= 3; i++)
+            {
+                shopManager.AddItemInShop(i);
+            }
+        }
     }
 
     private void Update()
@@ -66,6 +83,8 @@ public class GameManager : MonoBehaviour
         {
             PauseGame();
         }
+
+        playingTime += Time.deltaTime;
     }
 
     public void PlaceButtonClick()
@@ -141,14 +160,15 @@ public class GameManager : MonoBehaviour
         pauseCanvas.SetActive(true);
     }
 
-    public void SaveGame()
+    public void SaveGame(int index)
     {
-        SaveSystem.SaveGame(nature, plantsGrid, shopManager, inventoryManager);
+        SaveSystem.SaveGame(nature, plantsGrid, shopManager, inventoryManager, index);
     }
 
-    public void LoadGame()
+    public void LoadGame(int index)
     {
-        SaveData saveData = SaveSystem.LoadGame();
+        SaveData saveData = SaveSystem.LoadGame(index);
+        print(saveData);
         nature.soilGrid = new Dictionary<Vector3, Soil>();
         plantsGrid.grid = new Dictionary<Vector3, GameObject>();
 
@@ -177,14 +197,20 @@ public class GameManager : MonoBehaviour
 
         shopManager.SetMoneyAmount(saveData.moneyAmount);
 
+        shopManager.EraseList();
+
         for (int i = 0; i < saveData.shopList.Count; i++)
         {
             shopManager.AddItemInShop(saveData.shopList[i]);
         }
 
+        inventoryManager.EraseList();
+
         for (int i = 0; i < saveData.inventoryList.Count; i++)
         {
             inventoryManager.AddItem(saveData.inventoryList[i].id, saveData.inventoryList[i].quantity);
         }
+
+        playingTime = saveData.playingTime;
     }
 }
