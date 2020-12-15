@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class SaveSystem
 {
-    public static void SaveGame(Nature nature, GridMap gridmap, ShopManager shopManager, InventoryManager inventoryManager)
+    public static void SaveGame(Nature nature, GridMap gridmap, ShopManager shopManager, InventoryManager inventoryManager, int index)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/GestaoBiomasSave.bin";
+
+
+        string path = Application.persistentDataPath + "/GestaoBiomasSave" + index + ".bin";
+
+        if (File.Exists(path))
+        {
+
+        }
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        SaveData data = new SaveData(nature, gridmap, shopManager, inventoryManager);
+        SaveData data = new SaveData(nature, gridmap, shopManager, inventoryManager, index);
 
         formatter.Serialize(stream, data);
         stream.Close();
     }
 
-    public static SaveData LoadGame()
+    public static SaveData LoadGame(int index)
     {
-        string path = Application.persistentDataPath + "/GestaoBiomasSave.bin";
+        string path = Application.persistentDataPath + "/GestaoBiomasSave" + index + ".bin";
 
         if (File.Exists(path))
         {
@@ -32,7 +39,7 @@ public class SaveSystem
         }
         else
         {
-            Debug.LogError("Save file not found in" + path);
+            Debug.Log("Save file not found in" + path);
             return null;
         }
     }

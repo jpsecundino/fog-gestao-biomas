@@ -57,6 +57,7 @@ MonoBehaviour:
   shop: {fileID: 0}
   pauseCanvas: {fileID: 0}
   configurationsCanvas: {fileID: 0}
+  playingTime: 0
 --- !u!114 &2411792735273257396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,3 +120,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 935667ef84cb8f74a9ed38b4e57dc38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyAmount: 0
