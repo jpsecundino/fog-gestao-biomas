@@ -8,13 +8,8 @@ public class SaveSystem
     {
         BinaryFormatter formatter = new BinaryFormatter();
 
-
         string path = Application.persistentDataPath + "/GestaoBiomasSave" + index + ".bin";
 
-        if (File.Exists(path))
-        {
-
-        }
         FileStream stream = new FileStream(path, FileMode.Create);
 
         SaveData data = new SaveData(nature, gridmap, shopManager, inventoryManager, index);
