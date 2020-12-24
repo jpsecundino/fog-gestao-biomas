@@ -32,10 +32,12 @@ public class Plant : MonoBehaviour
     private PlantPlacer plantPlacer = null;
     private Canvas canvas;
     private float _timeSlice;
+    private GridMap plantsGridMap;
 
     private void Start()
     {
         plantPlacer = PlantPlacer.instance;
+        plantsGridMap = GridMap.instance;
         nature = Nature.instance;
         canvas = GetComponentInChildren<Canvas>();
         canvas.enabled = false;
@@ -85,6 +87,7 @@ public class Plant : MonoBehaviour
             //Descomentar essa linha quando o solo estiver terminado
             //nature.soilGrid[transform.position].AddNutrients(plantObject.nutrientsGivenToSoil);
             Debug.Log("A planta " + plantObject.name + " morreu");
+            plantsGridMap.grid.Remove(transform.position);
             Destroy(gameObject);
         }
     }

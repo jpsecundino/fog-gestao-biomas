@@ -50,9 +50,14 @@ MonoBehaviour:
   placeButton: {fileID: 0}
   infoButton: {fileID: 0}
   inventoryButton: {fileID: 0}
+  shopButton: {fileID: 0}
   inventory: {fileID: 0}
   disableCanvas: {fileID: 0}
-  canvas: {fileID: 0}
+  mainCanvas: {fileID: 0}
+  shop: {fileID: 0}
+  pauseCanvas: {fileID: 0}
+  configurationsCanvas: {fileID: 0}
+  playingTime: 0
 --- !u!114 &2411792735273257396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +73,8 @@ MonoBehaviour:
   itemPrefabs:
   - {fileID: 3746586250658867235, guid: 58e17d79c7f5e264d9c667055fd7399e, type: 3}
   - {fileID: 5638478577247266204, guid: dd4d33a5f369ddd4fb02e63665fb7d7a, type: 3}
+  - {fileID: 5937867712354164319, guid: c7a606d6325f5a048be134b27b98f38b, type: 3}
+  - {fileID: 299427367560728257, guid: ab27b62de7197d645b24f99158e7dceb, type: 3}
 --- !u!114 &7807669737707918806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,10 +103,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eab8e272d7c0544d95b5dca3c4cdf8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantSelected: {fileID: 11400000, guid: fff43c67fc20ef642a3b299e2fe925f8, type: 2}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  isHovering: 0
+  canPlaceOrRemove: 1
 --- !u!114 &6646715876276138089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,3 +120,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 935667ef84cb8f74a9ed38b4e57dc38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyAmount: 0

@@ -14,7 +14,6 @@ public class InfoManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else if (instance != this)
         {
@@ -30,8 +29,8 @@ public class InfoManager : MonoBehaviour
 
     [Header("Camera")]
     //[SerializeField] private CinemachineVirtualCamera cmVirtualCamFar = null;
-    [SerializeField] private CinemachineVirtualCamera cmVirtualCamClose = null;
-    [SerializeField] private GameObject cube = null;
+    public CinemachineVirtualCamera cmVirtualCamClose = null;
+    public GameObject cube = null;
     [SerializeField] private Image image = null;
 
     private RaycastHit hitInfo;
