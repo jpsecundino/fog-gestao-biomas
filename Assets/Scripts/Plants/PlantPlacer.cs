@@ -126,7 +126,7 @@ public class PlantPlacer : MonoBehaviour
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hitInfo, 1000f))
+        if (Physics.Raycast(ray, out hitInfo, 1000f, groundLayer))
         {
 
             if (hitInfo.transform.CompareTag(StringsReferences.groundTag) && !EventSystem.current.IsPointerOverGameObject()) // Is pointer over UI

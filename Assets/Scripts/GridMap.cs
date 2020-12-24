@@ -27,6 +27,8 @@ public class GridMap : MonoBehaviour
     public int xSize = 20;
     public int zSize = 20;
 
+    public float numPlants;
+
     public Dictionary<Vector3, GameObject> grid;
     public Transform groundTransform = null;
     //public static Action<Vector3> OnNewSoil;
@@ -41,10 +43,9 @@ public class GridMap : MonoBehaviour
         if (position.x > xSize || position.z > zSize) return default;
 
         int xCount = Mathf.RoundToInt(position.x / BaseGridSize);
-        int yCount = 0;
         int zCount = Mathf.RoundToInt(position.z / BaseGridSize);
 
-        Vector3 result = new Vector3(xCount * BaseGridSize, yCount * BaseGridSize, zCount * BaseGridSize);
+        Vector3 result = new Vector3(xCount * BaseGridSize, 0, zCount * BaseGridSize);
 
         return result;
     }
@@ -54,8 +55,8 @@ public class GridMap : MonoBehaviour
         Vector3 finalPosGrid = GetNearestPointOnGrid(position);
         
         Vector3 finalPosObj = finalPosGrid;
-        
-        finalPosObj.y += groundTransform.position.y;
+
+        finalPosObj.y = position.y;
 
         if (IsPositionFree(finalPosGrid))
         {
@@ -94,16 +95,19 @@ public class GridMap : MonoBehaviour
         }
         else return null;
     }
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
 
-        for (float x = 0; x < 40; x+= BaseGridSize)
+        for (float x = 0; x < xSize; x+= BaseGridSize)
         {
-            for (float z = 0; z < 40; z+= BaseGridSize)
+            for (float z = 0; z < zSize; z+= BaseGridSize)
             {
                 Vector3 point = GetNearestPointOnGrid(new Vector3(x, 0f, z));
                 point.y += 1f;
+                numPlants = xSize/BaseGridSize * zSize/BaseGridSize;
                 Gizmos.DrawSphere(point, 0.1f);
             }
         }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1227564296931469703}
   m_Layer: 0
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0564a38cd6f636648a71bd3fc7026a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseGridSize: 1
-  xSize: 20
-  zSize: 20
+  BaseGridSize: 3
+  xSize: 100
+  zSize: 100
+  numPlants: 2500
   groundTransform: {fileID: 0}

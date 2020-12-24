@@ -45,7 +45,7 @@ public class Plant : MonoBehaviour
 
     void FixedUpdate()
     {
-        Consume();    
+        // Consume();    
     }
 
     void Consume()
