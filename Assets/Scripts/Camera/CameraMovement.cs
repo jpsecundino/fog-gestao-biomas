@@ -1,11 +1,10 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System;
+using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 20f;
+    [SerializeField] float moveSpeed = 30f;
     [SerializeField] float edgeSize = 35f;
-    [SerializeField] Text debugText = null;
 
     private bool edgeScrolling = false;
     private bool cameraCanMove = false;
@@ -13,6 +12,8 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         KeyActions();
+
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0f, 100f), 15f, Mathf.Clamp(transform.position.z, 0f, 100f));
 
         if (cameraCanMove)
         {
@@ -29,17 +30,14 @@ public class CameraMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             edgeScrolling = !edgeScrolling;
-            debugText.text = "Debug(Pressione ESPAÇO ou o botão direito do mouse)\nMovimento de câmera = " + cameraCanMove + "\nMovimento de canto = " + edgeScrolling;
         }
         if (Input.GetMouseButtonDown(1))
         {
             cameraCanMove = !cameraCanMove;
-            debugText.text = "Debug(Pressione ESPAÇO ou o botão direito do mouse)\nMovimento de câmera = " + cameraCanMove + "\nMovimento de canto = " + edgeScrolling;
         }
         if (Input.GetMouseButtonUp(1))
         {
             cameraCanMove = !cameraCanMove;
-            debugText.text = "Debug(Pressione ESPAÇO ou o botão direito do mouse)\nMovimento de câmera = " + cameraCanMove + "\nMovimento de canto = " + edgeScrolling;
         }
     }
 
@@ -68,7 +66,6 @@ public class CameraMovement : MonoBehaviour
             transform.Translate(0f, 0f, -moveSpeed * Time.deltaTime);
         }
     }
-
     private void Movement()
     {
         transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
