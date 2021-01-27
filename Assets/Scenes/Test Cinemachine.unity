@@ -773,7 +773,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 39
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -799,7 +799,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894191148}
   m_LocalRotation: {x: 0.31952235, y: -1.4038814e-15, z: 1.3821648e-15, w: 0.9475787}
-  m_LocalPosition: {x: 2.58, y: 19, z: -1.46}
+  m_LocalPosition: {x: 2.58, y: 44.3, z: -32.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1723,6 +1723,22 @@ PrefabInstance:
       propertyPath: groundTransform
       value: 
       objectReference: {fileID: 1332864386}
+    - target: {fileID: 1227564296931469703, guid: 05545302d1098484e9966fa8f8d9c46d, type: 3}
+      propertyPath: xSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227564296931469703, guid: 05545302d1098484e9966fa8f8d9c46d, type: 3}
+      propertyPath: numPlants
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227564296931469703, guid: 05545302d1098484e9966fa8f8d9c46d, type: 3}
+      propertyPath: zSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227564296931469703, guid: 05545302d1098484e9966fa8f8d9c46d, type: 3}
+      propertyPath: BaseGridSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05545302d1098484e9966fa8f8d9c46d, type: 3}
 --- !u!1001 &2146612643226489834
@@ -3431,6 +3447,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6434248782423789545, guid: e038e65f8f31801468f7eebce1bbbd71, type: 3}
       propertyPath: nutrientGeneratinTimeLoop
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434248782423789545, guid: e038e65f8f31801468f7eebce1bbbd71, type: 3}
+      propertyPath: xInitialRegion
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434248782423789545, guid: e038e65f8f31801468f7eebce1bbbd71, type: 3}
+      propertyPath: zInitialRegion
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6434248782423789546, guid: e038e65f8f31801468f7eebce1bbbd71, type: 3}

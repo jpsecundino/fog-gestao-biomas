@@ -14,11 +14,11 @@ public class Plant : MonoBehaviour
     public float luminosity = 0f;
     
     //tudo pro scriptable
-    public string plantName;
-    public float potential;
+    private string plantName;
+    private float potential;
     public bool isPlaced = false;
     public PlantObject plantObject;
-    public float nutrientConsumptionRate = 10f;
+    private float nutrientConsumptionRate = 10f;
 
     [Range(0f,100f)]
     public float deathRate;
@@ -45,7 +45,7 @@ public class Plant : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Consume();    
+        Consume();    
     }
 
     void Consume()
@@ -54,9 +54,11 @@ public class Plant : MonoBehaviour
         {
             _timeSlice = Time.deltaTime;
 
-            if (nature.GetAvailableNutrients(transform.position) > 0)
+            float _availableNutrients = nature.GetAvailableNutrients(transform.position);
+
+            if (_availableNutrients > 0)
             {
-                if (nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate >= 0)
+                if (_availableNutrients - _timeSlice * nutrientConsumptionRate >= 0)
                 {
                     nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
                     HealthControl((_timeSlice * nutrientConsumptionRate) / deathRate);
