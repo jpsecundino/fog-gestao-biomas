@@ -30,7 +30,7 @@ public class Soil
     public void GenerateNutrients()
     {
         availableNutrients = Mathf.Clamp(availableNutrients + nutrientGenerationRate, 0, maxNutrients);
- //       Debug.Log(" Gerei nutrientes" + availableNutrients);
+        Debug.Log(" Gerei nutrientes" + availableNutrients);
     }
 
     public void AddNutrients(float nutrients)

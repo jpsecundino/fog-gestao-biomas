@@ -3429,6 +3429,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6434248782423789545, guid: e038e65f8f31801468f7eebce1bbbd71, type: 3}
+      propertyPath: nutrientGeneratinTimeLoop
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6434248782423789546, guid: e038e65f8f31801468f7eebce1bbbd71, type: 3}
       propertyPath: m_Name
       value: Nature
