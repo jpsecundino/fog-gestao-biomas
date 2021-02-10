@@ -18,7 +18,7 @@ public class Plant : MonoBehaviour
     private float potential;
     public bool isPlaced = false;
     public PlantObject plantObject;
-    private float nutrientConsumptionRate = 10f;
+    private float nutrientConsumptionRate = 2f;
 
     [Range(0f,100f)]
     public float deathRate;
@@ -33,6 +33,8 @@ public class Plant : MonoBehaviour
     private Canvas canvas;
     private float _timeSlice;
     private GridMap plantsGridMap;
+    private float actualConsumptionLoopTime = 0;
+    private float baseConsumptionLoopTime = 2;
 
     private void Start()
     {
@@ -41,11 +43,20 @@ public class Plant : MonoBehaviour
         nature = Nature.instance;
         canvas = GetComponentInChildren<Canvas>();
         canvas.enabled = false;
+        actualConsumptionLoopTime = 0;
     }
 
     void FixedUpdate()
     {
-        Consume();    
+
+        actualConsumptionLoopTime += Time.deltaTime;
+
+        //soil generates nutrients in every cycle
+        if (actualConsumptionLoopTime  >= baseConsumptionLoopTime)
+        {
+            actualConsumptionLoopTime = 0f;
+            Consume();    
+        }
     }
 
     void Consume()

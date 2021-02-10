@@ -68,13 +68,13 @@ public partial class Nature : MonoBehaviour
                 {
                     
                     soilGrid.Add(new Vector3(i, 0, j), new Soil(10f, 0, 100));
-                    Debug.Log($"{i} e {j}\n");
+                    //Debug.Log($"{i} e {j}\n");
                 }
                 else
                 {
                     //Debug.Log("Não Inicializei o solo");
                     soilGrid.Add(new Vector3(i, 0, j), new Soil(0, 0, 100));
-                    Debug.Log($"{i} e {j}\n" );
+                    //Debug.Log($"{i} e {j}\n" );
                 }
             }
         }
@@ -139,8 +139,6 @@ public partial class Nature : MonoBehaviour
         ShareNutrients(neighboursPos[2], visited);
         ShareNutrients(neighboursPos[3], visited);
 
-        Debug.Log($"{x} e {z}");
-
         //share nutrients
         foreach(Vector3 neighbourPos in neighboursPos){
             //if this soil has more nutrients than its current neighbour, share nutrients
@@ -176,6 +174,7 @@ public partial class Nature : MonoBehaviour
 
     public float GetAvailableNutrients(Vector3 pos)
     {
+        Debug.Log(gridMap.GetNearestPointOnGrid(pos));
         return soilGrid[gridMap.GetNearestPointOnGrid(pos)].availableNutrients;
     }
 
