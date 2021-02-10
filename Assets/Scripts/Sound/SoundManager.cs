@@ -23,37 +23,39 @@ public class SoundManager : MonoBehaviour
     private float musicVolume = 1f;
     private float SFXVolume = 1f;
 
-    private AudioClip sfx, musica;
+    private AudioClip buttonClick, music;
     private AudioSource audioSource;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        sfx = Resources.Load<AudioClip>("");
-        musica = Resources.Load<AudioClip>("");
+        buttonClick = Resources.Load<AudioClip>("click1");
+        music  = Resources.Load<AudioClip>("Shake and Bake");
         musicVolume = PlayerPrefsController.GetMusicVolume();
         SFXVolume = PlayerPrefsController.GetSFXVolume();
         audioSource.volume = musicVolume;
+        audioSource.clip = music;
+        audioSource.Play();
     }
 
     public void PlaySound(string sound)
     {
         switch (sound)
         {
-            case "":
-                audioSource.PlayOneShot(sfx, SFXVolume);
+            case "ButtonClick":
+                audioSource.PlayOneShot(buttonClick, SFXVolume);
                 break;
             default:
                 break;
         }
     }
 
-    public void ChangeMusic(string music)
+    public void ChangeMusic(string _music)
     {
-        switch (music)
+        switch (_music)
         {
-            case "":
-                audioSource.clip = musica;
+            case "music1":
+                audioSource.clip = music;
                 audioSource.Play();
                 break;
             default:

@@ -44,11 +44,13 @@ public class GameManager : MonoBehaviour
     private ShopManager shopManager = null;
     private InventoryManager inventoryManager = null;
     private GameObject[] gameObjects = null;
+    private SoundManager soundManager;
 
     public Action OnInventoryClose;
 
     private void Start()
     {
+        soundManager = SoundManager.instance;
         inventory.transform.SetParent(disableCanvas.transform, false);
         shop.transform.SetParent(disableCanvas.transform, false);
         placeButton.interactable = false;
@@ -97,6 +99,7 @@ public class GameManager : MonoBehaviour
 
     public void InfoButtonClick()
     {
+        soundManager.PlaySound("ButtonClick");
         infoButton.interactable = false;
         placeButton.interactable = true;
         plantPlacer.canPlaceOrRemove = false;
@@ -105,6 +108,7 @@ public class GameManager : MonoBehaviour
 
     public void CloseInventoryButtonClick()
     {
+        soundManager.PlaySound("ButtonClick");
         inventoryButton.interactable = true;
         inventory.transform.SetParent(disableCanvas.transform, false);
         OnInventoryClose();
@@ -115,12 +119,14 @@ public class GameManager : MonoBehaviour
         if (inventoryManager.onItemChangedCallback != null)
             inventoryManager.onItemChangedCallback.Invoke();
 
+        soundManager.PlaySound("ButtonClick");
         inventoryButton.interactable = false;
         inventory.transform.SetParent(mainCanvas.transform, false);
     }
 
     public void CloseShopButtonClick()
     {
+        soundManager.PlaySound("ButtonClick");
         shopButton.interactable = true;
         shop.transform.SetParent(disableCanvas.transform, false);
     }
@@ -133,40 +139,47 @@ public class GameManager : MonoBehaviour
         if (shopManager.onItemPriceCallback != null)
             shopManager.onItemPriceCallback.Invoke();
 
+        soundManager.PlaySound("ButtonClick");
         shopButton.interactable = false;
         shop.transform.SetParent(mainCanvas.transform, false);
     }
     public void PauseGame()
     {
+        soundManager.PlaySound("ButtonClick");
         Time.timeScale = 0f;
         pauseCanvas.SetActive(true);
     }
 
     public void ClosePauseCanvas()
     {
+        soundManager.PlaySound("ButtonClick");
         Time.timeScale = 1f;
         pauseCanvas.SetActive(false);
     }
 
     public void ConfigurationsButtonClick()
     {
+        soundManager.PlaySound("ButtonClick");
         pauseCanvas.SetActive(false);
         configurationsCanvas.SetActive(true);
     }
 
     public void CloseConfigurationsButtonClick()
     {
+        soundManager.PlaySound("ButtonClick");
         configurationsCanvas.SetActive(false);
         pauseCanvas.SetActive(true);
     }
 
     public void SaveGame(int index)
     {
+        soundManager.PlaySound("ButtonClick");
         SaveSystem.SaveGame(nature, plantsGrid, shopManager, inventoryManager, index);
     }
 
     public void LoadGame(int index)
     {
+        soundManager.PlaySound("ButtonClick");
         SaveData saveData = SaveSystem.LoadGame(index);
         print(saveData);
         nature.soilGrid = new Dictionary<Vector3, Soil>();
