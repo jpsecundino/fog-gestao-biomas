@@ -133,6 +133,7 @@ public class PlantPlacer : MonoBehaviour
             {
                 hoverObj.Active(true);
                 Vector3 pos = hitInfo.point;
+                /*
                 if (gridMap.IsPositionFree(pos))
                 {
                     hoverObj.FreePos();
@@ -148,7 +149,8 @@ public class PlantPlacer : MonoBehaviour
                 {
                     Debug.Log(inventoryManager.HasItems());
                     hoverObj.OccupiedPos();
-                }   
+                } 
+                */
             }
         }
         else
@@ -168,7 +170,7 @@ public class PlantPlacer : MonoBehaviour
            if (Physics.Raycast(ray, out hitInfo))
            {
                 GameObject g = null;
-
+                /*
                 if (gridMap.RemoveObject(hitInfo.point, out g))
                 {
                     //inventoryManager.AddItem(g.GetComponentInChildren<InventoryItem>().id, 1);
@@ -176,6 +178,7 @@ public class PlantPlacer : MonoBehaviour
                     print("Nutrientes " + nature.soilGrid[nature.GetNearestPointOnGrid(hitInfo.point)].availableNutrients);
                     Destroy(g);
                 }
+                */
            }
         }
     }
@@ -188,8 +191,9 @@ public class PlantPlacer : MonoBehaviour
 
             if (Physics.Raycast(ray, 1000f, groundLayer))
             {
-                if(inventoryManager.HasItems() && gridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plantGameObject))
+                if(inventoryManager.HasItems())
                 {
+                    gridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plantGameObject);
                     plantGameObject.GetComponent<Plant>().isPlaced = true;
                     inventoryManager.RemovePlant(plantGameObject.GetComponent<InventoryItem>().id);
                 }

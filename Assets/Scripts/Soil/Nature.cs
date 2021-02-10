@@ -174,7 +174,6 @@ public partial class Nature : MonoBehaviour
 
     public float GetAvailableNutrients(Vector3 pos)
     {
-        Debug.Log(gridMap.GetNearestPointOnGrid(pos));
         return soilGrid[gridMap.GetNearestPointOnGrid(pos)].availableNutrients;
     }
 

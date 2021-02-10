@@ -29,13 +29,13 @@ public class GridMap : MonoBehaviour
 
     public float numPlants;
 
-    public Dictionary<Vector3, GameObject> grid;
+    public Dictionary<GameObject, Vector3> grid;
     public Transform groundTransform = null;
     //public static Action<Vector3> OnNewSoil;
 
     void Start()
     {
-        grid = new Dictionary<Vector3, GameObject>();
+        grid = new Dictionary<GameObject, Vector3>();
     }
 
     public Vector3 GetNearestPointOnGrid(Vector3 position)
@@ -50,51 +50,12 @@ public class GridMap : MonoBehaviour
         return result;
     }
 
-    public bool PutObjectOngrid(Vector3 position, Quaternion rotation, GameObject objPrefab)
+    public void PutObjectOngrid(Vector3 position, Quaternion rotation, GameObject objPrefab)
     {
-        Vector3 finalPosGrid = GetNearestPointOnGrid(position);
-        
-        Vector3 finalPosObj = finalPosGrid;
+        Vector3 relatedSoil = GetNearestPointOnGrid(position);
 
-        finalPosObj.y = position.y;
-
-        if (IsPositionFree(finalPosGrid))
-        {
-            grid.Add(finalPosGrid, Instantiate(objPrefab, finalPosObj, rotation));
-            return true;
-        }
-
-        return false;
-
-    }
-
-    public bool RemoveObject(Vector3 clickPoint, out GameObject objectInGrid)
-    {
-        Vector3 nearestPoint = GetNearestPointOnGrid(clickPoint);
-        // nearestPoint.y += groundTransform.position.y;
-        Debug.Log("Click point: " + clickPoint);
-        Debug.Log("Nearest point: " + nearestPoint);
-        if (grid.TryGetValue(nearestPoint, out objectInGrid))
-        {
-            return grid.Remove(nearestPoint);
-        }
-
-        return objectInGrid;
-    }
-
-    public bool IsPositionFree(Vector3 position)
-    {
-        return !grid.ContainsKey(GetNearestPointOnGrid(position));
-    }
-
-    public GameObject GetObjectAtPosition(Vector3 position)
-    {
-        if (!IsPositionFree(position))
-        {
-            return grid[GetNearestPointOnGrid(position)];
-        }
-        else return null;
-    }
+        grid.Add(Instantiate(objPrefab, position, rotation), relatedSoil);
+    }   
 
 
     private void OnDrawGizmos()

@@ -64,7 +64,7 @@ public class Plant : MonoBehaviour
         if (isPlaced)
         {
             _timeSlice = Time.deltaTime;
-
+            Debug.Log("Consumi");
             float _availableNutrients = nature.GetAvailableNutrients(transform.position);
 
             if (_availableNutrients > 0)
@@ -98,9 +98,9 @@ public class Plant : MonoBehaviour
         {
             Debug.LogWarning("O solo nao recebeu nutrientes após a morte da planta, pois uma linha de código está comentada");
             //Descomentar essa linha quando o solo estiver terminado
-            //nature.soilGrid[transform.position].AddNutrients(plantObject.nutrientsGivenToSoil);
+            nature.soilGrid[nature.GetNearestPointOnGrid(transform.position)].AddNutrients(plantObject.nutrientsGivenToSoil);
             Debug.Log("A planta " + plantObject.name + " morreu");
-            plantsGridMap.grid.Remove(transform.position);
+            plantsGridMap.grid.Remove(gameObject);
             Destroy(gameObject);
         }
     }

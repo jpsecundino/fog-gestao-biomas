@@ -53,11 +53,8 @@ MonoBehaviour:
   productionPerSecond: 0
   profit: 0
   luminosity: 0
-  plantName: "\xC1rvore Sorvete"
-  potential: 0
   isPlaced: 0
   plantObject: {fileID: 11400000, guid: 5824a6b38f27fff40966aed29e93b90a, type: 2}
-  nutrientConsumptionRate: 10
   deathRate: 0
   maxhealth: 100
   minAcidity: 0
