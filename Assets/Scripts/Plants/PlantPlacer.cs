@@ -14,6 +14,7 @@ public class PlantPlacer : MonoBehaviour
     private GameObject gObject; // objeto que vai ser destruido
     private InventoryManager inventoryManager;
     private Nature nature;
+    private SoundManager soundManager;
     public bool isHovering = false;
     
     #region Singleton
@@ -82,6 +83,7 @@ public class PlantPlacer : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.instance;
+        soundManager = SoundManager.instance;
         gridMap = GridMap.instance;
         nature = Nature.instance;
         inventoryManager = InventoryManager.instance;
@@ -190,6 +192,7 @@ public class PlantPlacer : MonoBehaviour
             {
                 if(inventoryManager.HasItems() && gridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plantGameObject))
                 {
+                    soundManager.PlaySound("Place Plant");
                     plantGameObject.GetComponent<Plant>().isPlaced = true;
                     inventoryManager.RemovePlant(plantGameObject.GetComponent<InventoryItem>().id);
                 }
