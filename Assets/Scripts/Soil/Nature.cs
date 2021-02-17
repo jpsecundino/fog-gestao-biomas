@@ -48,8 +48,8 @@ public partial class Nature : MonoBehaviour
         if(actualNutrientGenerationTime >= nutrientGeneratinTimeLoop)
         {
             actualNutrientGenerationTime = 0f;
-            //GenerateNutrients();
-            //ShareNutrientsPrep();
+            GenerateNutrients();
+            ShareNutrientsPrep();
         }
     }
     private void InitializeGrid()
