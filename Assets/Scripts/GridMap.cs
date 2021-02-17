@@ -40,7 +40,7 @@ public class GridMap : MonoBehaviour
 
     public Vector3 GetNearestPointOnGrid(Vector3 position)
     {
-        if (position.x > xSize || position.z > zSize) return default;
+        if(!Nature.instance.ValidPosition(position)) return default;
 
         int xCount = Mathf.RoundToInt(position.x / BaseGridSize);
         int zCount = Mathf.RoundToInt(position.z / BaseGridSize);

@@ -168,11 +168,8 @@ MonoBehaviour:
   productionPerSecond: 0
   profit: 0
   luminosity: 0
-  plantName: Arvore Bolinhas
-  potential: 0
-  isPlaced: 0
+  isPlaced: 1
   plantObject: {fileID: 11400000, guid: 11a9df9635818ab42bafc7b5f27a8464, type: 2}
-  nutrientConsumptionRate: 10
   deathRate: 0
   maxhealth: 100
   minAcidity: 0

@@ -1723,6 +1723,22 @@ PrefabInstance:
       propertyPath: groundTransform
       value: 
       objectReference: {fileID: 1332864386}
+    - target: {fileID: 1227564296931469703, guid: 05545302d1098484e9966fa8f8d9c46d, type: 3}
+      propertyPath: xSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227564296931469703, guid: 05545302d1098484e9966fa8f8d9c46d, type: 3}
+      propertyPath: numPlants
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227564296931469703, guid: 05545302d1098484e9966fa8f8d9c46d, type: 3}
+      propertyPath: zSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227564296931469703, guid: 05545302d1098484e9966fa8f8d9c46d, type: 3}
+      propertyPath: BaseGridSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05545302d1098484e9966fa8f8d9c46d, type: 3}
 --- !u!1001 &2146612643226489834
@@ -3431,6 +3447,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6434248782423789545, guid: e038e65f8f31801468f7eebce1bbbd71, type: 3}
       propertyPath: nutrientGeneratinTimeLoop
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434248782423789545, guid: e038e65f8f31801468f7eebce1bbbd71, type: 3}
+      propertyPath: xInitialRegion
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434248782423789545, guid: e038e65f8f31801468f7eebce1bbbd71, type: 3}
+      propertyPath: zInitialRegion
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6434248782423789546, guid: e038e65f8f31801468f7eebce1bbbd71, type: 3}

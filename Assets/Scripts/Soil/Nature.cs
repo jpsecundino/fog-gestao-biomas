@@ -55,24 +55,26 @@ public partial class Nature : MonoBehaviour
     private void InitializeGrid()
     {
         
-        for (int i = 0; i < gridMap.xSize; i++)
+        for (float i = 0; i < gridMap.xSize * gridMap.BaseGridSize; i+= gridMap.BaseGridSize)
         {
-            for (int j = 0; j < gridMap.zSize; j++)
+            for (float j = 0; j < gridMap.zSize * gridMap.BaseGridSize ; j += gridMap.BaseGridSize)
             {   
-                if(i == 2 && j == 2)
+                if(i == 10 *gridMap.BaseGridSize  && j == 10 * gridMap.BaseGridSize)
                 {
                     soilGrid.Add(new Vector3(i, 0, j), new Soil(0f, 0f, 100));
                 }
                 //preeche uma porção inicial de solo
-                else if (i <= xInitialRegion && j <= zInitialRegion)
+                else if (i <= xInitialRegion * gridMap.BaseGridSize && j <= zInitialRegion * gridMap.BaseGridSize)
                 {
-                    //Debug.Log("Inicializei o solo");
+                    
                     soilGrid.Add(new Vector3(i, 0, j), new Soil(10f, 0, 100));
+                    //Debug.Log($"{i} e {j}\n");
                 }
                 else
                 {
                     //Debug.Log("Não Inicializei o solo");
                     soilGrid.Add(new Vector3(i, 0, j), new Soil(0, 0, 100));
+                    //Debug.Log($"{i} e {j}\n" );
                 }
             }
         }
@@ -82,14 +84,14 @@ public partial class Nature : MonoBehaviour
     public void ShareNutrientsPrep()
     {
         
-        Vector3 randomSoil = new Vector3(UnityEngine.Random.Range(0, gridMap.xSize), 0, UnityEngine.Random.Range(0, gridMap.zSize));
-        int[,] visited = new int[gridMap.xSize,gridMap.zSize];
-
-        ShareNutrients(randomSoil, visited);
+        Vector3 randomSoil = new Vector3(UnityEngine.Random.Range(0, (int) ((gridMap.xSize - 1) * gridMap.BaseGridSize - 1)), 0, UnityEngine.Random.Range(0, (int) ((gridMap.zSize - 1)* gridMap.BaseGridSize)));
+        
+        Dictionary<Vector2, bool> _visited = new Dictionary<Vector2, bool>();
+     
+        ShareNutrients(randomSoil, _visited);
     }
 
-    public void ShareNutrients(Vector3 currentSoilIdx, int[,] visited) {
-        Debug.Log("Entrei");
+    public void ShareNutrients(Vector3 currentSoilIdx, Dictionary<Vector2, bool> visited) {
 
         //if out of bounds
         if (!ValidPosition(currentSoilIdx))
@@ -98,7 +100,7 @@ public partial class Nature : MonoBehaviour
         int x = (int)currentSoilIdx.x, z = (int)currentSoilIdx.z;
 
         //if visited    
-        if(visited[x, z] == 1)
+        if(visited.ContainsKey(new Vector2(currentSoilIdx.x, currentSoilIdx.z)))
             return;
         
         /*
@@ -113,8 +115,10 @@ public partial class Nature : MonoBehaviour
         */
 
         //mark as visited
-        visited[x, z] = 1;
-
+        visited.Add(new Vector2(currentSoilIdx.x, currentSoilIdx.z), true);
+        
+        //Debug.Log("entrei");
+        
         List<Vector3> neighboursPos = new List<Vector3>();
 
         if (gridMap.BaseGridSize != 1) 
@@ -165,11 +169,12 @@ public partial class Nature : MonoBehaviour
     }
 
     public bool ValidPosition(Vector3 pos){
-        return !(pos.x < 0 || pos.x >= gridMap.xSize || pos.z < 0 || pos.z >= gridMap.zSize);
+        return !(pos.x < 0 || pos.x >= gridMap.xSize * gridMap.BaseGridSize || pos.z < 0 || pos.z >= gridMap.zSize * gridMap.BaseGridSize);
     }
 
     public float GetAvailableNutrients(Vector3 pos)
     {
+        Debug.Log(gridMap.GetNearestPointOnGrid(pos));
         return soilGrid[gridMap.GetNearestPointOnGrid(pos)].availableNutrients;
     }
 
