@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject shop = null;
     [SerializeField] private GameObject pauseCanvas = null;
     [SerializeField] private GameObject configurationsCanvas = null;
+    [SerializeField] private ScreenshotManager screenshotManager = null;
 
     public float playingTime = 0f;
 
@@ -175,6 +176,7 @@ public class GameManager : MonoBehaviour
     {
         soundManager.PlaySound("Button Click");
         SaveSystem.SaveGame(nature, plantsGrid, shopManager, inventoryManager, index);
+        screenshotManager.TakeScreenshot();
     }
 
     public void LoadGame(int index)
