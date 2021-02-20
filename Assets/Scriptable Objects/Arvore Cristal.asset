@@ -15,17 +15,18 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 172774604c1bee84185a69041576525b, type: 3}
   id: 1
   nome: "\xC1rvore Cristal"
+  health: 100
+  luminosity: 1
   water: 1
   nutrients: 1
   nutrientsGivenToSoil: 100
   stagesPerSize: 1
-  GrowthVelocity: 1
-  maxSize: 1
+  GrowthVelocity: 10
+  maxSize: 100
+  maxHeight: 400
   fruits: 1
   productonPerSecond: 1
   profit: 1
-  luminosity: 1
-  health: 100
   price: 120
   plantPrefab: {fileID: 5638478577247266204, guid: dd4d33a5f369ddd4fb02e63665fb7d7a, type: 3}
   objHoverFree: {fileID: 2100000, guid: a434d9c98cd6b264496871bc793280b9, type: 2}

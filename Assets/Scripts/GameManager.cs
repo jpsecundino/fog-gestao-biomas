@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour
         soundManager.PlaySound("Button Click");
         SaveData saveData = SaveSystem.LoadGame(index);
         nature.soilGrid = new Dictionary<Vector3, Soil>();
-        plantsGrid.grid = new Dictionary<Vector3, GameObject>();
+        plantsGrid.grid = new Dictionary<GameObject, Vector3>();
 
         for(int i = 0; i < saveData.soilList.Count; i++)
         {
@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour
             plantClass.productionPerSecond = saveData.plantsList[i].productionPerSecond;
             plantClass.profit = saveData.plantsList[i].profit;
             plantClass.luminosity = saveData.plantsList[i].luminosity;
-            plantsGrid.grid.Add(plantPosition, plant);
+            plantsGrid.grid.Add(plant, plantPosition);
         }
 
         shopManager.SetMoneyAmount(saveData.moneyAmount);
