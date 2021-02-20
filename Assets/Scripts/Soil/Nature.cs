@@ -129,7 +129,7 @@ public partial class Nature : MonoBehaviour
         ShareNutrients(neighboursPos[1], visited);
         ShareNutrients(neighboursPos[2], visited);
         ShareNutrients(neighboursPos[3], visited);
-
+        
         //share nutrients
         foreach(Vector3 neighbourPos in neighboursPos){
             //if this soil has more nutrients than its current neighbour, share nutrients

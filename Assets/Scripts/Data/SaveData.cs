@@ -17,6 +17,8 @@ public class SaveData
 
     public int index;
     public float playingTime;
+    public int day;
+    public float inGameTime;
 
     [Serializable]
     public struct SoilStruct
@@ -89,6 +91,8 @@ public class SaveData
         inventoryList = ConvertInventory(inventoryManager);
         index = _index;
         playingTime = GameManager.instance.playingTime;
+        day = sun.days;
+        inGameTime = sun.time;
     }
 
     private List<float[]> ConvertNaturePos(Nature nature)

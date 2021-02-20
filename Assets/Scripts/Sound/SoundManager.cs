@@ -23,37 +23,42 @@ public class SoundManager : MonoBehaviour
     private float musicVolume = 1f;
     private float SFXVolume = 1f;
 
-    private AudioClip sfx, musica;
+    private AudioClip buttonClick, placePlant, mainMusic;
     private AudioSource audioSource;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        sfx = Resources.Load<AudioClip>("");
-        musica = Resources.Load<AudioClip>("");
+        buttonClick = Resources.Load<AudioClip>("click1");
+        placePlant = Resources.Load<AudioClip>("switch1");
+        mainMusic  = Resources.Load<AudioClip>("Shake and Bake");
         musicVolume = PlayerPrefsController.GetMusicVolume();
         SFXVolume = PlayerPrefsController.GetSFXVolume();
         audioSource.volume = musicVolume;
+        ChangeMusic("Main Music");
     }
 
     public void PlaySound(string sound)
     {
         switch (sound)
         {
-            case "":
-                audioSource.PlayOneShot(sfx, SFXVolume);
+            case "Button Click":
+                audioSource.PlayOneShot(buttonClick, SFXVolume);
+                break;
+            case "Place Plant":
+                audioSource.PlayOneShot(placePlant, SFXVolume);
                 break;
             default:
                 break;
         }
     }
 
-    public void ChangeMusic(string music)
+    public void ChangeMusic(string song)
     {
-        switch (music)
+        switch (song)
         {
-            case "":
-                audioSource.clip = musica;
+            case "Main Music":
+                audioSource.clip = mainMusic;
                 audioSource.Play();
                 break;
             default:
@@ -64,12 +69,12 @@ public class SoundManager : MonoBehaviour
     public void ChangeSFXVolume(float value)
     {
         SFXVolume = value;
-        PlayerPrefsController.SetSFXVolume(value);
+        //PlayerPrefsController.SetSFXVolume(value);
     }
 
     public void ChangeMusicVolume(float value)
     {
         audioSource.volume = value;
-        PlayerPrefsController.SetMusicVolume(value);
+        //PlayerPrefsController.SetMusicVolume(value);
     }
 }
