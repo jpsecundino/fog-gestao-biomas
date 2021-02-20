@@ -73,6 +73,7 @@ public class Plant : MonoBehaviour
                 {
                     nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
                     HealthControl((_timeSlice * nutrientConsumptionRate) / deathRate);
+                    ProduceOrganicMatter();
                 }
                 else
                 {
@@ -96,7 +97,7 @@ public class Plant : MonoBehaviour
 
         if(health == 0)
         {
-            Debug.LogWarning("O solo nao recebeu nutrientes após a morte da planta, pois uma linha de código está comentada");
+            //Debug.LogWarning("O solo nao recebeu nutrientes após a morte da planta, pois uma linha de código está comentada");
             //Descomentar essa linha quando o solo estiver terminado
             nature.soilGrid[nature.GetNearestPointOnGrid(transform.position)].AddNutrients(plantObject.nutrientsGivenToSoil);
             Debug.Log("A planta " + plantObject.name + " morreu");
@@ -112,5 +113,10 @@ public class Plant : MonoBehaviour
     public PlantObject GetPlantObject()
     {
         return plantObject;
+    }
+
+    public void ProduceOrganicMatter()
+    {
+        ShopManager.instance.moneyAmount += 10;
     }
 }

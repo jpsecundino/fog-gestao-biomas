@@ -63,13 +63,13 @@ public partial class Nature : MonoBehaviour
                 if (i <= xInitialRegion * gridMap.BaseGridSize && j <= zInitialRegion * gridMap.BaseGridSize)
                 {
                     soilGrid.Add(new Vector3(i, 0, j), new Soil(10f, 0, 100));
-                    Debug.Log($"{i} e {j}\n");
+                    //Debug.Log($"{i} e {j}\n");
                 }
                 else
                 {
                     //Debug.Log("Não Inicializei o solo");
                     soilGrid.Add(new Vector3(i, 0, j), new Soil(0, 0, 100));
-                    Debug.Log($"{i} e {j}\n" );
+                    //Debug.Log($"{i} e {j}\n" );
                 }
             }
         }
@@ -176,6 +176,7 @@ public partial class Nature : MonoBehaviour
 
     public void ConsumeNutrients(Vector3 pos, float consumeValue)
     {
+        Debug.Log("Consumi");
         soilGrid[gridMap.GetNearestPointOnGrid(pos)].GiveNutrients(consumeValue);
     }
 }
