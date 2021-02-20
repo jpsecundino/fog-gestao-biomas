@@ -22,6 +22,7 @@ public class SunAndMoon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(timecontroller);
         SunMoonTransform.rotation = Quaternion.Euler(new Vector3(sunOrMoon * ((timecontroller.time - 21600) / 86400 * 360), 0, 0));
         if (timecontroller.time > 43200)
             intensity = 1 - (43200 - timecontroller.time) / 43200;

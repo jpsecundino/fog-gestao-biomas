@@ -25,10 +25,6 @@ public partial class Nature : MonoBehaviour
     [SerializeField] private float xInitialRegion = 0;
     [SerializeField] private float zInitialRegion = 0;
 
-    public float BaseGridSize = 1f;
-    public int xSize = 20;
-    public int zSize = 20;
-
     public static Action GenerateNutrients;
     public float nutrientGeneratinTimeLoop;
     private float actualNutrientGenerationTime;
@@ -36,6 +32,7 @@ public partial class Nature : MonoBehaviour
     public float time = 0f;
     public Dictionary<Vector3, Soil> soilGrid;
     private GridMap gridMap = null;
+    
 
     private void Start()
     {
@@ -51,56 +48,73 @@ public partial class Nature : MonoBehaviour
         //soil generates nutrients in every cycle
         if(actualNutrientGenerationTime >= nutrientGeneratinTimeLoop)
         {
-            GenerateNutrients();
             actualNutrientGenerationTime = 0f;
+            GenerateNutrients();
+            ShareNutrientsPrep();
         }
     }
     private void InitializeGrid()
     {
         
-        for (int i = 0; i < gridMap.xSize; i++)
+        for (float i = 0; i < gridMap.xSize * gridMap.BaseGridSize; i+= gridMap.BaseGridSize)
         {
-            for (int j = 0; j < gridMap.zSize; j++)
-            {
+            for (float j = 0; j < gridMap.zSize * gridMap.BaseGridSize ; j += gridMap.BaseGridSize)
+            {   
                 //preeche uma porção inicial de solo
-                if (i <= xInitialRegion && j <= zInitialRegion)
+                if (i <= xInitialRegion * gridMap.BaseGridSize && j <= zInitialRegion * gridMap.BaseGridSize)
                 {
-                    //Debug.Log("Inicializei o solo");
-                    soilGrid.Add(new Vector3(i, 0, j), new Soil(10f, 10f, 100));
+                    soilGrid.Add(new Vector3(i, 0, j), new Soil(10f, 0, 100));
+                    //Debug.Log($"{i} e {j}\n");
                 }
                 else
                 {
                     //Debug.Log("Não Inicializei o solo");
                     soilGrid.Add(new Vector3(i, 0, j), new Soil(0, 0, 100));
+                    //Debug.Log($"{i} e {j}\n" );
                 }
             }
         }
-        ShareNutrientsPrep();
+
     }
 
     public void ShareNutrientsPrep()
     {
-        Vector3 randomSoil = new Vector3(UnityEngine.Random.Range(0, gridMap.xSize), 0, UnityEngine.Random.Range(0, gridMap.zSize));
-        int[,] visited = new int[gridMap.xSize,gridMap.zSize];
-
-        ShareNutrients(randomSoil, visited);
+        
+        Vector3 randomSoil = new Vector3(UnityEngine.Random.Range(0, (int) ((gridMap.xSize - 1) * gridMap.BaseGridSize - 1)), 0, UnityEngine.Random.Range(0, (int) ((gridMap.zSize - 1)* gridMap.BaseGridSize)));
+        
+        Dictionary<Vector2, bool> _visited = new Dictionary<Vector2, bool>();
+     
+        ShareNutrients(randomSoil, _visited);
     }
 
-    public void ShareNutrients(Vector3 currentSoilIdx, int[,] visited){
+    public void ShareNutrients(Vector3 currentSoilIdx, Dictionary<Vector2, bool> visited) {
 
         //if out of bounds
-        if(!ValidPosition(currentSoilIdx)) 
+        if (!IsValidPosition(currentSoilIdx))
             return;
 
-        int x = (int) currentSoilIdx.x, z = (int) currentSoilIdx.z;
+        int x = (int)currentSoilIdx.x, z = (int)currentSoilIdx.z;
 
         //if visited    
-        if(visited[x, z] == 1) 
+        if(visited.ContainsKey(new Vector2(currentSoilIdx.x, currentSoilIdx.z)))
             return;
+        
+        /*
+        if(currentSoilIdx.x == 2 && currentSoilIdx.z == 2)
+        {
+            Debug.LogWarning(soilGrid[currentSoilIdx].availableNutrients);
+        }
+        else
+        {
+            Debug.Log(soilGrid[currentSoilIdx].availableNutrients);
+        }
+        */
 
         //mark as visited
-        visited[x, z] = 1;
-
+        visited.Add(new Vector2(currentSoilIdx.x, currentSoilIdx.z), true);
+        
+        //Debug.Log("entrei");
+        
         List<Vector3> neighboursPos = new List<Vector3>();
 
         neighboursPos.Add(new Vector3(currentSoilIdx.x, 0,currentSoilIdx.z + gridMap.BaseGridSize));
@@ -119,35 +133,41 @@ public partial class Nature : MonoBehaviour
         //share nutrients
         foreach(Vector3 neighbourPos in neighboursPos){
             //if this soil has more nutrients than its current neighbour, share nutrients
-            if(ValidPosition(neighbourPos)){
+            if(IsValidPosition(neighbourPos)){
                 float myNutrients = soilGrid[currentSoilIdx].availableNutrients;
                 float theirNutrients = soilGrid[neighbourPos].availableNutrients;
                 if(myNutrients > theirNutrients){
                     float nutDiff = myNutrients - theirNutrients;
-                    soilGrid[neighbourPos].AddNutrients(nutDiff/4);
+                    soilGrid[neighbourPos].AddNutrients( nutDiff / 4);
+                    soilGrid[currentSoilIdx].RemoveNutrients( nutDiff / 4);
                 }
             }
         }
-
 
     }
 
     public Vector3 GetNearestPointOnGrid(Vector3 position)
     {
-        if (position.x > xSize || position.z > zSize) return default;
+        if (position.x > gridMap.xSize || position.z > gridMap.zSize) return default;
 
-        int xCount = Mathf.RoundToInt(position.x / BaseGridSize);
+        int xCount = Mathf.RoundToInt(position.x / gridMap.BaseGridSize);
         int yCount = 0;
-        int zCount = Mathf.RoundToInt(position.z / BaseGridSize);
+        int zCount = Mathf.RoundToInt(position.z / gridMap.BaseGridSize);
 
-        Vector3 result = new Vector3(xCount * BaseGridSize, yCount * BaseGridSize, zCount * BaseGridSize);
+        Vector3 result = new Vector3(xCount * gridMap.BaseGridSize, yCount * gridMap.BaseGridSize, zCount * gridMap.BaseGridSize);
 
         return result;
     }
 
-    public bool ValidPosition(Vector3 pos){
-        return !(pos.x < 0 || pos.x >= gridMap.xSize || pos.z < 0 || pos.z >= gridMap.zSize);
-            
+    public bool IsValidPosition(Vector3 pos){
+        if (pos.x % gridMap.BaseGridSize != 0 || pos.z % gridMap.BaseGridSize != 0) return false;
+
+        return IsInsideGrid(pos);
+    }
+
+    public bool IsInsideGrid(Vector3 pos)
+    {
+        return !(pos.x < 0 || pos.x >= gridMap.xSize * gridMap.BaseGridSize || pos.z < 0 || pos.z >= gridMap.zSize * gridMap.BaseGridSize);
     }
 
     public float GetAvailableNutrients(Vector3 pos)
@@ -157,6 +177,7 @@ public partial class Nature : MonoBehaviour
 
     public void ConsumeNutrients(Vector3 pos, float consumeValue)
     {
+        Debug.Log("Consumi");
         soilGrid[gridMap.GetNearestPointOnGrid(pos)].GiveNutrients(consumeValue);
     }
 }

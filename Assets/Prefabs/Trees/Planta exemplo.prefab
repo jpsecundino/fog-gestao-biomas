@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2304351687190614483}
   - component: {fileID: 6280554993373479916}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Planta exemplo
   m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3009124578623608774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.890207, y: 1.4883608, z: 3.9925904}
+  m_LocalPosition: {x: 24.890207, y: 0, z: 3.9925904}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2130593286854409953}
@@ -146,17 +146,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c828aafa872ac64419d04e1644b4d00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  water: 0
+  nutrients: 0
+  growthVelocity: 0
+  productionPerSecond: 0
+  profit: 0
+  luminosity: 0
   plantName: 
   potential: 0
-  health: 100
-  maxhealth: 100
+  isPlaced: 0
+  plantObject: {fileID: 11400000, guid: 11a9df9635818ab42bafc7b5f27a8464, type: 2}
   nutrientConsumptionRate: 10
   deathRate: 0
+  maxhealth: 100
   minAcidity: 0
   maxAcidity: 0
   minMoisture: 0
   maxMoisture: 0
-  plantObject: {fileID: 11400000, guid: 11a9df9635818ab42bafc7b5f27a8464, type: 2}
 --- !u!114 &6280554993373479916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +179,7 @@ MonoBehaviour:
   inventoryType: 0
   id: 0
   sprite: {fileID: 21300000, guid: 5d9ba4e7d0964044ea54abe409d81dfd, type: 3}
+  price: 0
 --- !u!1001 &801093274827879180
 PrefabInstance:
   m_ObjectHideFlags: 0

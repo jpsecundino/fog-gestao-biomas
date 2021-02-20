@@ -45,7 +45,7 @@ public class ShopUI : MonoBehaviour
 
     private void UpdateButton()
     {
-        Debug.Log("Updating buttons from shop");
+        //Debug.Log("Updating buttons from shop");
 
         lista = shopManager.GetListItemsShop();
 
