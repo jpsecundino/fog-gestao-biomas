@@ -1,6 +1,6 @@
 ﻿using UnityEngine.EventSystems;
 using UnityEngine;
-
+using System;
 
 public class PlantPlacer : MonoBehaviour
 {
@@ -191,14 +191,20 @@ public class PlantPlacer : MonoBehaviour
 
             if (Physics.Raycast(ray, 1000f, groundLayer))
             {
-                if(inventoryManager.HasItems())
+                if(inventoryManager.HasItems() && InsideGrid(hitInfo.point))
                 {
+                    Debug.Log("Coloquei");
                     gridMap.PutObjectOngrid(hitInfo.point, hoverObj.plantHoverPrefab.transform.rotation, plantGameObject);
                     plantGameObject.GetComponent<Plant>().isPlaced = true;
                     inventoryManager.RemovePlant(plantGameObject.GetComponent<InventoryItem>().id);
                 }
             }
         }
+    }
+
+    private bool InsideGrid(Vector3 position)
+    {
+        return nature.IsInsideGrid(position);
     }
 
     public void SetPlant(GameObject buttonPlant)

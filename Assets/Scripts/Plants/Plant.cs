@@ -64,7 +64,7 @@ public class Plant : MonoBehaviour
         if (isPlaced)
         {
             _timeSlice = Time.deltaTime;
-            Debug.Log("Consumi");
+            
             float _availableNutrients = nature.GetAvailableNutrients(transform.position);
 
             if (_availableNutrients > 0)
