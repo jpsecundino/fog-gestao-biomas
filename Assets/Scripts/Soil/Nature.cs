@@ -33,6 +33,7 @@ public partial class Nature : MonoBehaviour
     public float nutrientGeneratinTimeLoop;
     private float actualNutrientGenerationTime;
 
+    public float time = 0f;
     public Dictionary<Vector3, Soil> soilGrid;
     private GridMap gridMap = null;
 

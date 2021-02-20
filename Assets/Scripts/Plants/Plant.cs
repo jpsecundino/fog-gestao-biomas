@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
+    public TimeController time;
+
     public float health = 100f;
     public float water = 0f;
     public float nutrients = 0f;
@@ -14,11 +16,11 @@ public class Plant : MonoBehaviour
     public float luminosity = 0f;
     
     //tudo pro scriptable
-    public string plantName;
-    public float potential;
+    private string plantName;
+    private float potential;
     public bool isPlaced = false;
     public PlantObject plantObject;
-    public float nutrientConsumptionRate = 10f;
+    private float nutrientConsumptionRate = 2f;
 
     [Range(0f,100f)]
     public float deathRate;
@@ -33,19 +35,42 @@ public class Plant : MonoBehaviour
     private Canvas canvas;
     private float _timeSlice;
     private GridMap plantsGridMap;
+    private float actualConsumptionLoopTime = 0;
+    private float baseConsumptionLoopTime = 2;
+
+    public float size = 0;
+    public float GrowthVelocity = 0;
+    public float maxSize = 0;
+    public float maxHeight = 0;
 
     private void Start()
     {
+        time = GameObject.Find("TimeController").GetComponent<TimeController>();
         plantPlacer = PlantPlacer.instance;
         plantsGridMap = GridMap.instance;
         nature = Nature.instance;
         canvas = GetComponentInChildren<Canvas>();
         canvas.enabled = false;
+        actualConsumptionLoopTime = 0;
+
+        size = plantObject.size;
+        GrowthVelocity = plantObject.GrowthVelocity;
+        maxSize = plantObject.maxSize;
+        maxHeight = plantObject.maxHeight;
     }
 
     void FixedUpdate()
     {
-        Consume();    
+
+        actualConsumptionLoopTime += Time.deltaTime;
+
+        //soil generates nutrients in every cycle
+        if (actualConsumptionLoopTime  >= baseConsumptionLoopTime)
+        {
+            actualConsumptionLoopTime = 0f;
+            Consume();
+            Growth();
+        }
     }
 
     void Consume()
@@ -54,9 +79,11 @@ public class Plant : MonoBehaviour
         {
             _timeSlice = Time.deltaTime;
 
-            if (nature.GetAvailableNutrients(transform.position) > 0)
+            float _availableNutrients = nature.GetAvailableNutrients(transform.position);
+
+            if (_availableNutrients > 0)
             {
-                if (nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate >= 0)
+                if (_availableNutrients - _timeSlice * nutrientConsumptionRate >= 0)
                 {
                     nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
                     HealthControl((_timeSlice * nutrientConsumptionRate) / deathRate);
@@ -99,5 +126,16 @@ public class Plant : MonoBehaviour
     public PlantObject GetPlantObject()
     {
         return plantObject;
+    }
+
+    public void Growth()
+    {
+        if(health > 0)
+        {
+            Debug.Log((maxHeight / maxSize) * (growthVelocity * time.days));
+            size = Mathf.Round((maxHeight / maxSize) * (growthVelocity * time.days));
+            if (size >= 60) gameObject.transform.localScale += new Vector3(2, 2, 2);
+
+        }
     }
 }
