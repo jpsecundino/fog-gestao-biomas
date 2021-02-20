@@ -226,7 +226,7 @@ public class GameManager : MonoBehaviour
         }
 
         playingTime = saveData.playingTime;
-        sun.days = saveData.day;
-        sun.time = saveData.inGameTime;
+        //sun.days = saveData.day;
+        //sun.time = saveData.inGameTime;
     }
 }

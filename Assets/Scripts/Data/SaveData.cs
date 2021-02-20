@@ -91,8 +91,8 @@ public class SaveData
         inventoryList = ConvertInventory(inventoryManager);
         index = _index;
         playingTime = GameManager.instance.playingTime;
-        day = sun.days;
-        inGameTime = sun.time;
+        //day = sun.days;
+        //inGameTime = sun.time;
     }
 
     private List<float[]> ConvertNaturePos(Nature nature)
