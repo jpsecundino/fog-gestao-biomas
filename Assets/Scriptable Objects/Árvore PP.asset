@@ -15,17 +15,18 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e52ea25af699fd445b7046374f81a5b9, type: 3}
   id: 2
   nome: Planta Rasteira
+  health: 100
+  luminosity: 0
   water: 0
   nutrients: 0
   nutrientsGivenToSoil: 10
   stagesPerSize: 1
-  GrowthVelocity: 0
-  maxSize: 1
+  GrowthVelocity: 40
+  maxSize: 100
+  maxHeight: 100
   fruits: 1
   productonPerSecond: 0
   profit: 0
-  luminosity: 0
-  health: 100
   price: 10
   plantPrefab: {fileID: 5937867712354164319, guid: c7a606d6325f5a048be134b27b98f38b, type: 3}
   objHoverFree: {fileID: 2100000, guid: a434d9c98cd6b264496871bc793280b9, type: 2}

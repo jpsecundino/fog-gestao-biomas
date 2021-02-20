@@ -16,7 +16,7 @@ public class InfoText : MonoBehaviour
         text = GetComponentsInChildren<TMP_Text>();
         text[0].text = plantObject.id.ToString();
         text[1].text = plantObject.name.ToString();
-        text[4].text = plantObject.stagesPerSize.ToString();
+        text[4].text = plantObject.size.ToString();
         text[6].text = plantObject.maxSize.ToString();
         text[7].text = plantObject.fruits.ToString();
     }
