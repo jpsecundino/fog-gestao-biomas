@@ -14,12 +14,12 @@ public class PlantObject : ScriptableObject
     public float nutrientsGivenToSoil = 0f;
 
     public float size = 1f;
-    public float GrowthVelocity = 0f;
+    public float growthVelocity = 1f;
     public float maxSize = 1f;
     public float maxHeight = 1f;
 
     public int fruits = 1;
-    public float productonPerSecond = 0f;   
+    public float productionPerSecond = 0f;   
     public float profit = 0f;
         
     public float price = 0f;

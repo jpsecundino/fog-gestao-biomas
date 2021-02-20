@@ -349,17 +349,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9a9d476880a8948a18f4d2bdb9b9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0
+  nature: {fileID: 0}
   SunMoonTransform: {fileID: 130888147}
   Sun: {fileID: 130888146}
-  timetext: {fileID: 1070224700}
-  daystext: {fileID: 1860497292}
-  days: 0
   intensity: 0
   sunOrMoon: -1
   fogday: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   fognight: {r: 0, g: 0, b: 0, a: 1}
-  speed: 100
+  timecontroller: {fileID: 0}
 --- !u!108 &130888146
 Light:
   m_ObjectHideFlags: 0
@@ -693,17 +690,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9a9d476880a8948a18f4d2bdb9b9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0
+  nature: {fileID: 0}
   SunMoonTransform: {fileID: 685506780}
   Sun: {fileID: 685506779}
-  timetext: {fileID: 1070224700}
-  daystext: {fileID: 1860497292}
-  days: 0
   intensity: 0
   sunOrMoon: 1
   fogday: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   fognight: {r: 0, g: 0, b: 0, a: 1}
-  speed: 100
+  timecontroller: {fileID: 0}
 --- !u!1 &773858737 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4583031165122946748, guid: 520eb2055f6f2984dbdaf46c27e1c189, type: 3}
@@ -1595,6 +1589,54 @@ RectTransform:
   m_AnchoredPosition: {x: 334, y: 470}
   m_SizeDelta: {x: 250, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1919079706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1919079708}
+  - component: {fileID: 1919079707}
+  m_Layer: 0
+  m_Name: TimeController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1919079707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919079706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71cfd1ca8afacf840b01934f0d3e9424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  timetext: {fileID: 1070224700}
+  daystext: {fileID: 1860497292}
+  days: 0
+  speed: 100000
+--- !u!4 &1919079708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919079706}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 317.81686, y: 222.31375, z: -5.3462496}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1982652927
 PrefabInstance:
   m_ObjectHideFlags: 0

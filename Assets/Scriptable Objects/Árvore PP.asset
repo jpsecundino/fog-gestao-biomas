@@ -20,8 +20,8 @@ MonoBehaviour:
   water: 0
   nutrients: 0
   nutrientsGivenToSoil: 10
-  stagesPerSize: 1
-  GrowthVelocity: 40
+  size: 1
+  growthVelocity: 20
   maxSize: 100
   maxHeight: 100
   fruits: 1

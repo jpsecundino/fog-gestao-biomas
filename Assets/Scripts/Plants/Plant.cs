@@ -10,8 +10,6 @@ public class Plant : MonoBehaviour
     public float health = 100f;
     public float water = 0f;
     public float nutrients = 0f;
-    public float growthVelocity = 0f;
-    public float productionPerSecond = 0f;
     public float profit = 0f;
     public float luminosity = 0f;
     
@@ -39,9 +37,13 @@ public class Plant : MonoBehaviour
     private float baseConsumptionLoopTime = 2;
 
     public float size = 0;
-    public float GrowthVelocity = 0;
+    public float oldSizeAux = 0f;
+    public float growthVelocity = 0;
     public float maxSize = 0;
     public float maxHeight = 0;
+    public float plantingDay = 0f;
+    public float productionPerSecond = 0f;
+   
 
     private void Start()
     {
@@ -52,22 +54,23 @@ public class Plant : MonoBehaviour
         canvas = GetComponentInChildren<Canvas>();
         canvas.enabled = false;
         size = plantObject.size;
-        GrowthVelocity = plantObject.GrowthVelocity;
+        growthVelocity = plantObject.growthVelocity;
         maxSize = plantObject.maxSize;
         maxHeight = plantObject.maxHeight;
+        plantingDay = time.days;
+        productionPerSecond = plantObject.productionPerSecond;
     }
 
     void FixedUpdate()
     {
 
         actualConsumptionLoopTime += Time.deltaTime;
-
+        Growth();
         //soil generates nutrients in every cycle
         if (actualConsumptionLoopTime  >= baseConsumptionLoopTime)
         {
             actualConsumptionLoopTime = 0f;
             Consume();
-            Growth();
         }
     }
 
@@ -129,17 +132,21 @@ public class Plant : MonoBehaviour
 
     public void ProduceOrganicMatter()
     {
-        ShopManager.instance.moneyAmount += 10;
+        ShopManager.instance.moneyAmount += productionPerSecond;
     }
-
+    
     public void Growth()
     {
         if(health > 0)
         {
-            Debug.Log((maxHeight / maxSize) * (growthVelocity * time.days));
-            size = Mathf.Round((maxHeight / maxSize) * (growthVelocity * time.days));
-            if (size >= 60) gameObject.transform.localScale += new Vector3(2, 2, 2);
+            if (size < maxSize) size = Mathf.Round((maxSize/(maxHeight/growthVelocity))*(time.days - plantingDay));
+            if (oldSizeAux == 0) oldSizeAux = size;
 
+            if (size > oldSizeAux)
+            {
+                gameObject.transform.localScale += new Vector3((float)(0.05), (float)(0.05), (float)(0.05));
+                oldSizeAux = size;
+            }
         }
     }
 }

@@ -169,7 +169,7 @@ public class PlantPlacer : MonoBehaviour
            
            if (Physics.Raycast(ray, out hitInfo))
            {
-                GameObject g = null;
+                //GameObject g = null;
                 /*
                 if (gridMap.RemoveObject(hitInfo.point, out g))
                 {
