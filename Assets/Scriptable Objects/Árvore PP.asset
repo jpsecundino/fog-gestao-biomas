@@ -20,14 +20,14 @@ MonoBehaviour:
   water: 0
   nutrients: 0
   nutrientsGivenToSoil: 10
-  stagesPerSize: 1
-  GrowthVelocity: 40
+  size: 1
+  growthVelocity: 20
   maxSize: 100
   maxHeight: 100
   fruits: 1
-  productonPerSecond: 0
+  productionPerSecond: 0.02
   profit: 0
-  price: 10
+  price: 20
   plantPrefab: {fileID: 5937867712354164319, guid: c7a606d6325f5a048be134b27b98f38b, type: 3}
   objHoverFree: {fileID: 2100000, guid: a434d9c98cd6b264496871bc793280b9, type: 2}
   objHoverOcc: {fileID: 2100000, guid: 0e49e8dd74298444daebebe460f8e79d, type: 2}

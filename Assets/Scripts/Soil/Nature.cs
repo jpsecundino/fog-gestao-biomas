@@ -22,9 +22,6 @@ public partial class Nature : MonoBehaviour
 
     #endregion
 
-    [SerializeField] private float xInitialRegion = 0;
-    [SerializeField] private float zInitialRegion = 0;
-
     public static Action GenerateNutrients;
     public float nutrientGeneratinTimeLoop;
     private float actualNutrientGenerationTime;
@@ -60,18 +57,7 @@ public partial class Nature : MonoBehaviour
         {
             for (float j = 0; j < gridMap.zSize * gridMap.BaseGridSize ; j += gridMap.BaseGridSize)
             {   
-                //preeche uma porção inicial de solo
-                if (i <= xInitialRegion * gridMap.BaseGridSize && j <= zInitialRegion * gridMap.BaseGridSize)
-                {
-                    soilGrid.Add(new Vector3(i, 0, j), new Soil(10f, 0, 100));
-                    //Debug.Log($"{i} e {j}\n");
-                }
-                else
-                {
-                    //Debug.Log("Não Inicializei o solo");
-                    soilGrid.Add(new Vector3(i, 0, j), new Soil(0, 0, 100));
-                    //Debug.Log($"{i} e {j}\n" );
-                }
+                soilGrid.Add(new Vector3(i, 0, j), new Soil(5f, 0, 100));
             }
         }
 
@@ -99,16 +85,6 @@ public partial class Nature : MonoBehaviour
         if(visited.ContainsKey(new Vector2(currentSoilIdx.x, currentSoilIdx.z)))
             return;
         
-        /*
-        if(currentSoilIdx.x == 2 && currentSoilIdx.z == 2)
-        {
-            Debug.LogWarning(soilGrid[currentSoilIdx].availableNutrients);
-        }
-        else
-        {
-            Debug.Log(soilGrid[currentSoilIdx].availableNutrients);
-        }
-        */
 
         //mark as visited
         visited.Add(new Vector2(currentSoilIdx.x, currentSoilIdx.z), true);
@@ -177,7 +153,6 @@ public partial class Nature : MonoBehaviour
 
     public void ConsumeNutrients(Vector3 pos, float consumeValue)
     {
-        Debug.Log("Consumi");
         soilGrid[gridMap.GetNearestPointOnGrid(pos)].GiveNutrients(consumeValue);
     }
 }

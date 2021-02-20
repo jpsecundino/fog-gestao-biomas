@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: cf92d05456b59084baccf6e2032cfb3f
   - enabled: 1
-    path: Assets/Scenes/Test Cinemachine.unity
+    path: Assets/Scenes/DesertMap.unity
     guid: c2edf6514e4bc714a980ed75cf9bf1e2
   m_configObjects: {}
