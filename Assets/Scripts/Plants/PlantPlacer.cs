@@ -43,6 +43,7 @@ public class PlantPlacer : MonoBehaviour
         public HoverObj(GameObject plant)
         {
             plantHoverPrefab = Instantiate(plant, new Vector3(50, 50, 50), plant.transform.rotation);
+            plantHoverPrefab.GetComponent<Plant>().enabled = false;
             plantPrefabRenderer = plantHoverPrefab.GetComponentInChildren<MeshRenderer>();
             plantSelected = plantHoverPrefab.GetComponent<Plant>().plantObject;
         }

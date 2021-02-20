@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c828aafa872ac64419d04e1644b4d00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: {fileID: 0}
   health: 100
   water: 0
   nutrients: 0
@@ -169,17 +170,18 @@ MonoBehaviour:
   productionPerSecond: 0
   profit: 0
   luminosity: 0
-  plantName: Arvore Cristal
-  potential: 1
   isPlaced: 0
   plantObject: {fileID: 11400000, guid: d3d748837cc4da04ab68f71efe4c3e1c, type: 2}
-  nutrientConsumptionRate: 10
   deathRate: 0
   maxhealth: 100
   minAcidity: 1
   maxAcidity: 1
   minMoisture: 1
   maxMoisture: 1
+  size: 0
+  GrowthVelocity: 0
+  maxSize: 0
+  maxHeight: 0
 --- !u!114 &3748837033418813189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,7 +471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3249408366931221459, guid: 284a6f9a1d82c464789a795cf8520b6f, type: 3}
       propertyPath: m_Size
-      value: 0.33620468
+      value: 0.3362047
       objectReference: {fileID: 0}
     - target: {fileID: 3952078913506043291, guid: 284a6f9a1d82c464789a795cf8520b6f, type: 3}
       propertyPath: m_AnchorMin.y

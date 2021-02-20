@@ -43,7 +43,7 @@ public class Plant : MonoBehaviour
     public float maxSize = 0;
     public float maxHeight = 0;
 
-    private void Start()
+    private void Awake()
     {
         time = GameObject.Find("TimeController").GetComponent<TimeController>();
         plantPlacer = PlantPlacer.instance;
@@ -136,7 +136,7 @@ public class Plant : MonoBehaviour
     {
         if(health > 0)
         {
-            Debug.Log((maxHeight / maxSize) * (growthVelocity * time.days));
+            //Debug.Log((maxHeight / maxSize) * (growthVelocity * time.days));
             size = Mathf.Round((maxHeight / maxSize) * (growthVelocity * time.days));
             if (size >= 60) gameObject.transform.localScale += new Vector3(2, 2, 2);
 
