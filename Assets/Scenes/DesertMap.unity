@@ -1622,7 +1622,7 @@ MonoBehaviour:
   timetext: {fileID: 1070224700}
   daystext: {fileID: 1860497292}
   days: 0
-  speed: 100000
+  speed: 25000
 --- !u!4 &1919079708
 Transform:
   m_ObjectHideFlags: 0

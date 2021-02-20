@@ -25,9 +25,9 @@ MonoBehaviour:
   maxSize: 100
   maxHeight: 200
   fruits: 0
-  productonPerSecond: 0
-  profit: 0
-  price: 20
+  productionPerSecond: 0
+  profit: 0.05
+  price: 50
   plantPrefab: {fileID: 3746586250658867235, guid: 58e17d79c7f5e264d9c667055fd7399e, type: 3}
   objHoverFree: {fileID: 2100000, guid: a434d9c98cd6b264496871bc793280b9, type: 2}
   objHoverOcc: {fileID: 2100000, guid: 0e49e8dd74298444daebebe460f8e79d, type: 2}

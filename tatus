@@ -1,0 +1,525 @@
+[33mcommit 37c6cf399741c2ff401256524e4971b7943acbed[m[33m ([m[1;36mHEAD -> [m[1;32mPira[m[33m, [m[1;31morigin/Pira[m[33m)[m
+Author: matheuslos <matheuslos@users.github.com>
+Date:   Sat Feb 20 19:08:46 2021 -0300
+
+    Crescimento das arvores e producao de dinheiro
+
+[33mcommit d4471fe2e99988f4694be0473f91ef2d2dfafcc7[m
+Merge: 4841ab3 e931c57
+Author: João Pedro A. S. Secundino <jp.secundino@usp.br>
+Date:   Sat Feb 20 16:22:35 2021 -0300
+
+    Everything is working
+
+[33mcommit 4841ab32814084fbdda98c2dd9a38a6872b805f2[m
+Author: matheuslos <matheuslos@users.github.com>
+Date:   Sat Feb 20 15:57:47 2021 -0300
+
+    Merge sucessfully
+
+[33mcommit e931c57fabcf3aa6b9ea9c654194cda2d77351b8[m[33m ([m[1;31morigin/1-soil-N-plants[m[33m)[m
+Author: João Pedro A. S. Secundino <jp.secundino@usp.br>
+Date:   Sat Feb 20 15:05:29 2021 -0300
+
+    Plants now generate organic matter
+
+[33mcommit 2dbfa02fd9c653707c44ad4b3a87852d8716413f[m
+Author: João Pedro A. S. Secundino <jp.secundino@usp.br>
+Date:   Sat Feb 20 14:41:46 2021 -0300
+
+    Corrected Bugs - Grid can now have any base size and soil can receive as many plants as player wants
+
+[33mcommit 3b8a5e5a9f4b0811b2b55e4394a8b12180336d95[m
+Author: João Pedro A. S. Secundino <jp.secundino@usp.br>
+Date:   Wed Feb 10 13:56:43 2021 -0300
+
+    placing plants anywhere working
+
+[33mcommit 96f3eea0a840f1c2c533705be24f15e457854363[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 0a67a3d fb784ff
+Author: João Pedro A. S. Secundino <jp.secundino@usp.br>
+Date:   Wed Feb 10 13:18:19 2021 -0300
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 0a67a3dff3287d99a7669c53489ce033815d7f80[m
+Author: João Pedro A. S. Secundino <jp.secundino@usp.br>
+Date:   Wed Feb 10 13:18:10 2021 -0300
+
+    refactoring
+
+[33mcommit fb784ff100edb1e8dbf3d0e4ed48bc5abec4bf2c[m
+Merge: ffcf698 0853d92
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Sun Feb 7 09:13:56 2021 -0300
+
+    Merge pull request #29 from jpsecundino/igor
+    
+    Merge to master
+
+[33mcommit ce7d9c5e69f8e94526de3cacf42f3eaf1c29c8f1[m
+Author: João Pedro A. S. Secundino <jp.secundino@usp.br>
+Date:   Wed Jan 27 18:11:19 2021 -0300
+
+    Corrected nature bugs; different grid size soil supported
+    
+    Co-Authored-By: Pira <matheuslos@usp.br>
+
+[33mcommit 10167e727130bcb299d61755ae8e4152d358971b[m
+Merge: ffcf698 0853d92
+Author: João Pedro A. S. Secundino <jp.secundino@usp.br>
+Date:   Wed Jan 27 17:18:52 2021 -0300
+
+    Merge branch 'igor'
+
+[33mcommit ffcf698a3b2cc737ef8ccb154addeca0969def54[m
+Author: João Pedro A. S. Secundino <jp.secundino@usp.br>
+Date:   Wed Jan 27 17:17:50 2021 -0300
+
+    Soil mechanics working but are expensive
+    
+    Co-Authored-By: Pira <matheuslos@usp.br>
+
+[33mcommit 0853d92d06096ac9e5b64b00fbda04d551f0b920[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Tue Jan 5 16:18:44 2021 -0300
+
+    Camera Zoom
+
+[33mcommit 3a2ab479a12387eb181e36c4a1e167bb4554ba70[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Sat Dec 26 18:00:58 2020 -0300
+
+    Limiting the camera's position and changing its speed
+
+[33mcommit d731bff13aba5dbe30a1baa8f25fd94bb245db4a[m[33m ([m[1;31morigin/MergeIgor[m[33m)[m
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Thu Dec 24 14:22:54 2020 -0300
+
+    integration working + plant placer
+
+[33mcommit 1528adac77e63485ff928b2eba806ab93104e11b[m
+Merge: 5560604 e58f888
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Thu Dec 24 13:16:40 2020 -0300
+
+    Merge branch 'Pira' into MergeIgor
+
+[33mcommit e58f8887d8fa735cfae007ca62dac3d40b6207cf[m
+Author: matheuslos <matheuslos@users.github.com>
+Date:   Thu Dec 24 13:10:16 2020 -0300
+
+    puxando dia e noite
+
+[33mcommit 5560604056cffd89d42ff77fcaf9c9643849395f[m[33m ([m[1;32mMergeIgor[m[33m)[m
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Mon Dec 21 15:50:26 2020 -0300
+
+    map prototype
+
+[33mcommit 3443b6f07418dd1fda52ad5ee00619a3974da2d6[m
+Merge: a6af404 c3f11ec
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Wed Dec 16 15:43:15 2020 -0300
+
+    Merge pull request #28 from jpsecundino/igor
+    
+    Removing script component in UI that was deleted
+
+[33mcommit c3f11ec24f65a3e2d59372ef63b1538ef7072bef[m[33m ([m[1;32migor[m[33m)[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Wed Dec 16 15:42:37 2020 -0300
+
+    Removing script component in UI that was deleted
+
+[33mcommit a6af404141231881faee0c9bf6d9d566016dd282[m
+Merge: ac0f871 862994b
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Tue Dec 15 18:46:26 2020 -0300
+
+    Merge pull request #27 from jpsecundino/igor
+    
+    Cleaning the folders, and erasing not used scripts
+
+[33mcommit 862994b22f6fe79e12af6d78b0cf17033ecf5b59[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Tue Dec 15 18:46:03 2020 -0300
+
+    Cleaning the folders, and erasing not used scripts
+
+[33mcommit ac0f8710c3df9a9d5b1fad81ed25390ebb6c51c0[m
+Merge: cfe9427 2fb6396
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Tue Dec 15 18:36:08 2020 -0300
+
+    Merge pull request #26 from jpsecundino/igor
+    
+    Save Slots, menu, and fixes in some scripts
+
+[33mcommit 2fb63962a357d4efac539a7903b4bc5f73064842[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Tue Dec 15 18:35:38 2020 -0300
+
+    Save Slots, menu, and fixes in some scripts
+    
+    It took so long to finish D:
+
+[33mcommit cfe94271004c85f03bfcd648eefa2bd538ade655[m
+Merge: a4ad93e d658a0d
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Sat Dec 12 14:02:22 2020 -0300
+
+    Merge pull request #25 from jpsecundino/igor
+    
+    Sound Manager added
+
+[33mcommit d658a0d9cd0aacc2308cfad9373154bba13d1856[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Sat Dec 12 13:57:53 2020 -0300
+
+    Sound Manager added
+
+[33mcommit a4ad93e56c84199337e1a531fe8e9f207475e5bb[m
+Merge: f88ab26 4f62a4b
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Sat Dec 12 12:32:06 2020 -0300
+
+    Merge pull request #24 from jpsecundino/igor
+    
+    Load game tested and working!!
+
+[33mcommit 4f62a4bfc9375b660495cde32a489e79df3579e0[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Sat Dec 12 12:31:42 2020 -0300
+
+    Load game tested and working!!
+
+[33mcommit f88ab2653bad692ed204fc9453d50a4e4b0ac858[m
+Merge: 8ebedc3 7bd93bd
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Sat Dec 12 00:47:10 2020 -0300
+
+    Merge pull request #23 from jpsecundino/igor
+    
+    Load Game
+
+[33mcommit 7bd93bd42ab41dd700535ae17935a41392e71ff9[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Sat Dec 12 00:46:35 2020 -0300
+
+    Load Game
+    
+    Probably works, but I dont know for sure
+
+[33mcommit 8ebedc37824abec27c5a04cccbac4c97319cee06[m
+Merge: 5c4309c 29741f2
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Fri Dec 11 22:17:09 2020 -0300
+
+    Merge pull request #22 from jpsecundino/igor
+    
+    Pause canvas and configuration canvas
+
+[33mcommit 29741f21dd1e8ae1798bbe37f683f0f669a9605b[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Fri Dec 11 22:16:28 2020 -0300
+
+    Pause canvas and configuration canvas
+    
+    and some fixes in save system
+
+[33mcommit 5c4309c777871d05c1704840caefded205e15b72[m
+Merge: aadf36d 5a62358
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Wed Dec 9 13:03:38 2020 -0300
+
+    Merge pull request #21 from jpsecundino/igor
+    
+    Fixing text updates when informating plants
+
+[33mcommit 5a623581d6af10d1a4ef132225cf76419773f9c8[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Wed Dec 9 13:03:08 2020 -0300
+
+    Fixing text updates when informating plants
+
+[33mcommit aadf36d3881d5a4d99280a1a415e022faaa7d45b[m
+Merge: fc1e9ff 9e753f1
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Wed Dec 9 11:49:54 2020 -0300
+
+    Merge pull request #20 from jpsecundino/igor
+    
+    Save System
+
+[33mcommit 9e753f1e14b6c56901f2d73bba7b30365e866fa9[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Wed Dec 9 11:49:25 2020 -0300
+
+    Save System
+
+[33mcommit fc1e9ffba9ae6e4f6124c1cdd33b1999c8e48cf5[m
+Merge: d06e5f2 c5fd55e
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Mon Dec 7 15:40:29 2020 -0300
+
+    Merge pull request #19 from jpsecundino/igor
+    
+    Forgot again to commit this file
+
+[33mcommit c5fd55e3b5d1d35f21a863d92953d6508606f7f3[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Mon Dec 7 15:40:06 2020 -0300
+
+    Forgot again to commit this file
+
+[33mcommit d06e5f28f76748a81ff1a89e60d4c184565d9f71[m
+Merge: 6b3d457 fb668bf
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Mon Dec 7 15:38:47 2020 -0300
+
+    Merge pull request #18 from jpsecundino/igor
+    
+    New plants added
+
+[33mcommit fb668bf5ced226a29eb48fd4bb60e8279cf1f046[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Mon Dec 7 15:38:22 2020 -0300
+
+    New plants added
+
+[33mcommit 6b3d457a6464ff9ee56ed63650e00ea6e5976c9b[m
+Merge: c52a05b c2b41ce
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Tue Dec 1 17:44:23 2020 -0300
+
+    Merge pull request #16 from jpsecundino/igor
+    
+    It seems I not committed everything
+
+[33mcommit c2b41cef4f5000a2e9614ffd0af9f28db19e4930[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Tue Dec 1 17:44:01 2020 -0300
+
+    It seems I not committed everything
+
+[33mcommit c52a05bf22333830ed6727825118e861326124e5[m
+Merge: b443b9f dc1650b
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Tue Dec 1 17:40:33 2020 -0300
+
+    Merge pull request #14 from jpsecundino/igor
+    
+    When a plant dies, it produces nutrients for the soil
+
+[33mcommit dc1650b8b2cd1e15f6e4408907abcfaab07daa65[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Tue Dec 1 17:39:28 2020 -0300
+
+    When a plant dies, it produces nutrients for the soil
+    
+    And a bug fix in inventory
+
+[33mcommit b443b9f05f061db3b2023868ccabe866ba65440e[m
+Merge: d57df5d 390d0e7
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Mon Nov 30 13:19:36 2020 -0300
+
+    Merge pull request #13 from jpsecundino/igor
+    
+    Fixing Mesh Renderer Null Reference and Minor Changes in Assets
+
+[33mcommit 390d0e7f3f29e0103fd08ed192ae6d038ec327d1[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Mon Nov 30 13:18:48 2020 -0300
+
+    Fixing Mesh Renderer Null Reference and Minor Changes in Assets
+
+[33mcommit d57df5d8ec76d52f01fa2a657d65e6e80f2cfb25[m
+Merge: 337c9bd 7d80e78
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Sun Nov 29 23:01:40 2020 -0300
+
+    Merge pull request #11 from jpsecundino/igor
+    
+    Committing changes to master
+
+[33mcommit 7d80e78c5182705f2cbdf9768c7dc4a73901fc7c[m
+Merge: b089f48 5d89779
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Sun Nov 29 22:59:33 2020 -0300
+
+    Merge remote-tracking branch 'origin/MergeIgor' into igor
+
+[33mcommit b089f4897cf6a2593de15516ea15ebdd7ff40b51[m
+Merge: a8f7b41 f992918
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Sun Nov 29 18:35:04 2020 -0300
+
+    Merge remote-tracking branch 'origin/MergeIgor' into igor
+
+[33mcommit 5d897798ffda9a41729b0d2a030a0b90c145cc17[m
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Sun Nov 29 18:30:48 2020 -0300
+
+    firt soil prototypes
+
+[33mcommit 49ad10eef504aadfded01a1aa3221b0018eebd9c[m
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Sun Nov 29 14:22:36 2020 -0300
+
+    soil can now generate nutrients inside the grid
+
+[33mcommit a9b3479f626a71a5678dfde9f6553a3a0a48e110[m
+Merge: f992918 337c9bd
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Sun Nov 29 13:01:28 2020 -0300
+
+    Merge branch 'master' into MergeIgor
+
+[33mcommit f992918daab0f6665b6562b9679366547691eb01[m
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Sun Nov 29 13:00:34 2020 -0300
+
+    changed plant material
+
+[33mcommit 337c9bd879e92fd3dd393f4c0f34f4959ea5e975[m
+Merge: 0a01c07 a8f7b41
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Wed Nov 25 12:29:21 2020 -0300
+
+    Merge pull request #9 from jpsecundino/igor
+    
+    Some minor improvements
+
+[33mcommit a8f7b418229412e5c294dcae97b7a71d9ee779a7[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Wed Nov 25 12:26:26 2020 -0300
+
+    Some minor improvements
+
+[33mcommit 0a01c073cc5e7fd88baff9855021bc649d5b79e7[m
+Merge: bfffc03 c7794ba
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Tue Nov 24 14:04:53 2020 -0300
+
+    Merge pull request #8 from jpsecundino/igor
+    
+    Item Shop
+
+[33mcommit c7794ba53a7d9c5c83313fcbeb9da574daddcaa7[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Tue Nov 24 14:04:23 2020 -0300
+
+    Item Shop
+
+[33mcommit bfffc033935e6f728f129a1444363786da35591d[m
+Merge: 232323f 7816c2a
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Mon Nov 23 17:47:18 2020 -0300
+
+    Merge pull request #7 from jpsecundino/igor
+    
+    Fixing bugs
+
+[33mcommit 7816c2a7b4895802958cf2410c257ad1b1b71847[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Mon Nov 23 17:46:10 2020 -0300
+
+    Fixing some bugs
+    
+    Remove plant, inventory UI, camera and hovering when we dont have plants fixed
+
+[33mcommit 160c8eec493560fa3fd1483c7e7677f99c4b0be0[m
+Merge: 30aeef1 6f5dab2
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Mon Nov 23 17:02:06 2020 -0300
+
+    Merge remote-tracking branch 'origin/MergeIgor' into igor
+
+[33mcommit 30aeef1bc15e646285b839c118ca4b061039d8cc[m
+Merge: 8bb08a6 9d79014
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Sun Nov 22 15:10:38 2020 -0300
+
+    Merge remote-tracking branch 'origin/MergeIgor' into igor
+
+[33mcommit 6f5dab2323d920b5f9227d1bed6f2dda2d85c122[m
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Sun Nov 22 00:12:46 2020 -0300
+
+    removing objects working
+
+[33mcommit a79cd281f11345c0591e3651d69df85bcf1d4f3c[m
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Sat Nov 21 23:00:04 2020 -0300
+
+    hovering working
+
+[33mcommit 9d79014ecd8ff7594316610bd154d93a1b4126c7[m
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Sat Nov 21 19:34:11 2020 -0300
+
+    hovering almost working + fixing merge 2
+
+[33mcommit 25b9888240a201bb12953f5b76047abd9441f074[m
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Sat Nov 21 17:21:26 2020 -0300
+
+    corrected merge bugs
+
+[33mcommit 7db1a621ae5f0e5a94e0df68becf835fbe98ab75[m
+Merge: 568917d 232323f
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Sat Nov 21 16:57:15 2020 -0300
+
+    Merge branch 'master' into mae
+
+[33mcommit 8bb08a674d6710b8bc81e075b2811b6fcc167d8a[m
+Merge: 94fd302 232323f
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Sat Nov 21 14:00:07 2020 -0300
+
+    Merge branch 'master' into igor
+
+[33mcommit 94fd30207ac42f49ae2017c358aa65727aa0b5c0[m
+Merge: 90fe3e7 def76f5
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Sat Nov 21 13:54:52 2020 -0300
+
+    Merge branch 'master' into igor
+
+[33mcommit 232323f22ecc92a490c89ca25babc28c08d2b9e2[m
+Merge: def76f5 90fe3e7
+Author: Igor <51010839+Sfrev@users.noreply.github.com>
+Date:   Sat Nov 21 13:54:18 2020 -0300
+
+    Merge pull request #6 from jpsecundino/igor
+    
+    Inventory System
+
+[33mcommit 90fe3e7d867a580033d8270afb789dfbcdf036dd[m
+Author: Sfrev <51010839+Sfrev@users.noreply.github.com>
+Date:   Sat Nov 21 13:53:22 2020 -0300
+
+    Inventory System
+    
+    Have some minor bugs to solve later
+
+[33mcommit 568917d69fe5eb65dedf1d332db9e5ef761531b4[m
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Sat Nov 21 03:02:40 2020 -0300
+
+    added plant assets from drive
+
+[33mcommit 91e1502ffa5d1aa11a9b8592a0e38174a4683026[m
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Sat Nov 21 02:38:15 2020 -0300
+
+    remove working
+
+[33mcommit a1950c4d2a79abad928d3a85f1c5840704b0aff1[m
+Author: jpsecundino <39441841+jpsecundino@users.noreply.github.com>
+Date:   Sat Nov 21 02:36:06 2020 -0300
+
+    rotate is working
