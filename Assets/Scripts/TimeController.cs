@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class TimeController : MonoBehaviour
 {
-    public static float time;
+    public float time;
     public TimeSpan currenttime;
     public Text timetext;
     public Text daystext;
 
-    public static int days;
+    public int days;
     public int speed;
 
 

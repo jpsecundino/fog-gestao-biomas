@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     private InventoryManager inventoryManager = null;
     private GameObject[] gameObjects = null;
     private SoundManager soundManager;
+    private TimeController timeController = null;
 
     public Action OnInventoryClose;
 
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
         plantsGrid = GridMap.instance;
         shopManager = ShopManager.instance;
         inventoryManager = InventoryManager.instance;
+        timeController = FindObjectOfType<TimeController>();
         gameObjects = inventoryManager.GetItemsPrefabs();
 
         string path = Application.persistentDataPath + "/GestaoBiomasSave" + SceneManagement.index + ".bin";
@@ -175,7 +177,7 @@ public class GameManager : MonoBehaviour
     public void SaveGame(int index)
     {
         soundManager.PlaySound("Button Click");
-        SaveSystem.SaveGame(nature, plantsGrid, shopManager, inventoryManager, index);
+        SaveSystem.SaveGame(nature, plantsGrid, shopManager, inventoryManager, timeController, index);
         screenshotManager.TakeScreenshot();
     }
 
@@ -226,7 +228,7 @@ public class GameManager : MonoBehaviour
         }
 
         playingTime = saveData.playingTime;
-        sun.days = saveData.day;
-        sun.time = saveData.inGameTime;
+        timeController.days = saveData.day;
+        timeController.time = saveData.inGameTime;
     }
 }
