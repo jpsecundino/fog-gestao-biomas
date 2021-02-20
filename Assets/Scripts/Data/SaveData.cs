@@ -80,7 +80,7 @@ public class SaveData
     }
 
 
-    public SaveData(Nature nature, GridMap gridmap, ShopManager shopManager, InventoryManager inventoryManager, int _index)
+    public SaveData(Nature nature, GridMap gridmap, ShopManager shopManager, InventoryManager inventoryManager, TimeController timeController, int _index)
     {
         soilPosList = ConvertNaturePos(nature);
         soilList = ConvertNatureSoil(nature);
@@ -91,8 +91,8 @@ public class SaveData
         inventoryList = ConvertInventory(inventoryManager);
         index = _index;
         playingTime = GameManager.instance.playingTime;
-        //day = sun.days;
-        //inGameTime = sun.time;
+        day = timeController.days;
+        inGameTime = timeController.time;
     }
 
     private List<float[]> ConvertNaturePos(Nature nature)

@@ -21,9 +21,9 @@ MonoBehaviour:
   nutrients: 5
   nutrientsGivenToSoil: 100
   size: 1
-  growthVelocity: 20
+  GrowthVelocity: 20
   maxSize: 100
-  maxHeight: 300
+  maxHeight: 1
   fruits: 1
   productionPerSecond: 5
   profit: 0

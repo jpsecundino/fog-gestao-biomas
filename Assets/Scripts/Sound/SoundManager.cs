@@ -29,9 +29,9 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        buttonClick = Resources.Load<AudioClip>("click1");
+        buttonClick = Resources.Load<AudioClip>("space shield sounds - 7");
         placePlant = Resources.Load<AudioClip>("switch1");
-        mainMusic  = Resources.Load<AudioClip>("Shake and Bake");
+        mainMusic  = Resources.Load<AudioClip>("Blind Shift");
         musicVolume = PlayerPrefsController.GetMusicVolume();
         SFXVolume = PlayerPrefsController.GetSFXVolume();
         audioSource.volume = musicVolume;
