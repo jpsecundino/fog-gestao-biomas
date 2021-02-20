@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class sun : MonoBehaviour
 {
-    public float time;
+    public static float time;
     public TimeSpan currenttime;
     public Transform SunMoonTransform;
     public Light Sun;
     public Text timetext;
     public Text daystext;
-    public int days;
+    public static int days;
 
     public float intensity;
     public float sunOrMoon;
@@ -57,6 +57,5 @@ public class sun : MonoBehaviour
         RenderSettings.fogColor = Color.Lerp(fognight, fogday, intensity * intensity);
 
         Sun.intensity = intensity;
-
     }
 }

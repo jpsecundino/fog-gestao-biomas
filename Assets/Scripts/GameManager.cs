@@ -183,7 +183,6 @@ public class GameManager : MonoBehaviour
     {
         soundManager.PlaySound("Button Click");
         SaveData saveData = SaveSystem.LoadGame(index);
-        print(saveData);
         nature.soilGrid = new Dictionary<Vector3, Soil>();
         plantsGrid.grid = new Dictionary<Vector3, GameObject>();
 
@@ -227,5 +226,7 @@ public class GameManager : MonoBehaviour
         }
 
         playingTime = saveData.playingTime;
+        sun.days = saveData.day;
+        sun.time = saveData.inGameTime;
     }
 }
