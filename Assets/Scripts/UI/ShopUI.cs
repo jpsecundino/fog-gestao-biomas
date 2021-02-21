@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,18 +16,10 @@ public class ShopUI : MonoBehaviour
         shopManager = ShopManager.instance;
         shopManager.onItemShopChangedCallback += UpdateUI;
         shopManager.onItemPriceCallback += UpdateButton;
-        /*
-        if (onItemShopChangedCallback != null)
-            onItemShopChangedCallback.Invoke();
-        if (onItemPriceCallback != null)
-            onItemPriceCallback.Invoke();
-        */
     }
 
     private void UpdateUI()
     {
-        Debug.Log("Updating Shop");
-
         lista = shopManager.GetListItemsShop();
         for (int i = 0; i < slots.Length; i++)
         {
@@ -45,8 +36,6 @@ public class ShopUI : MonoBehaviour
 
     private void UpdateButton()
     {
-        //Debug.Log("Updating buttons from shop");
-
         lista = shopManager.GetListItemsShop();
 
         for (int i = 0; i < lista.Count; i++)

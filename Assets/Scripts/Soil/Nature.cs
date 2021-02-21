@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +29,6 @@ public partial class Nature : MonoBehaviour
     public Dictionary<Vector3, Soil> soilGrid;
     private GridMap gridMap = null;
     
-
     private void Start()
     {
         gridMap = GridMap.instance;
@@ -52,7 +50,6 @@ public partial class Nature : MonoBehaviour
     }
     private void InitializeGrid()
     {
-        
         for (float i = 0; i < gridMap.xSize * gridMap.BaseGridSize; i+= gridMap.BaseGridSize)
         {
             for (float j = 0; j < gridMap.zSize * gridMap.BaseGridSize ; j += gridMap.BaseGridSize)
@@ -65,7 +62,6 @@ public partial class Nature : MonoBehaviour
 
     public void ShareNutrientsPrep()
     {
-        
         Vector3 randomSoil = new Vector3(UnityEngine.Random.Range(0, (int) ((gridMap.xSize - 1) * gridMap.BaseGridSize - 1)), 0, UnityEngine.Random.Range(0, (int) ((gridMap.zSize - 1)* gridMap.BaseGridSize)));
         
         Dictionary<Vector2, bool> _visited = new Dictionary<Vector2, bool>();
@@ -83,13 +79,10 @@ public partial class Nature : MonoBehaviour
 
         //if visited    
         if(visited.ContainsKey(new Vector2(currentSoilIdx.x, currentSoilIdx.z)))
-            return;
-        
+            return;       
 
         //mark as visited
         visited.Add(new Vector2(currentSoilIdx.x, currentSoilIdx.z), true);
-        
-        //Debug.Log("entrei");
         
         List<Vector3> neighboursPos = new List<Vector3>();
 

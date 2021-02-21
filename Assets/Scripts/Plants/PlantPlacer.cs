@@ -1,6 +1,5 @@
 ﻿using UnityEngine.EventSystems;
 using UnityEngine;
-using System;
 
 public class PlantPlacer : MonoBehaviour
 {
@@ -11,7 +10,6 @@ public class PlantPlacer : MonoBehaviour
     private GridMap gridMap = null;
     private RaycastHit hitInfo;
     private Ray ray;
-    private GameObject gObject; // objeto que vai ser destruido
     private InventoryManager inventoryManager;
     private Nature nature;
     private SoundManager soundManager;
@@ -102,8 +100,6 @@ public class PlantPlacer : MonoBehaviour
             if (plantGameObject)
                 OnLeftMouseClick();
 
-            OnRightMouseClick();
-
             if (isHovering && inventoryManager.HasItems() && hoverObj.plantPrefabRenderer)
             {
                 Hover();
@@ -137,29 +133,6 @@ public class PlantPlacer : MonoBehaviour
             hoverObj.Active(false);
         }
 
-    }
-
-    //corrigir: pegar referencia da planta no grid e não pelo raycast
-    private void OnRightMouseClick()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-           ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-           
-           if (Physics.Raycast(ray, out hitInfo))
-           {
-                //GameObject g = null;
-                /*
-                if (gridMap.RemoveObject(hitInfo.point, out g))
-                {
-                    //inventoryManager.AddItem(g.GetComponentInChildren<InventoryItem>().id, 1);
-                    nature.soilGrid[nature.GetNearestPointOnGrid(hitInfo.point)].AddNutrients(g.GetComponent<Plant>().plantObject.nutrientsGivenToSoil);
-                    print("Nutrientes " + nature.soilGrid[nature.GetNearestPointOnGrid(hitInfo.point)].availableNutrients);
-                    Destroy(g);
-                }
-                */
-           }
-        }
     }
 
     private void OnLeftMouseClick()

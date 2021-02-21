@@ -11,7 +11,7 @@ public class SaveData
     public List<float[]> plantsPosList;
     public List<PlantStruct> plantsList;
 
-    public int moneyAmount;
+    public float moneyAmount;
     public List<int> shopList;
     public List<ItemStruct> inventoryList;
 

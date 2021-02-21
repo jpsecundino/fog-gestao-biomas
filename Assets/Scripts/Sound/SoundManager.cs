@@ -69,12 +69,12 @@ public class SoundManager : MonoBehaviour
     public void ChangeSFXVolume(float value)
     {
         SFXVolume = value;
-        //PlayerPrefsController.SetSFXVolume(value);
+        PlayerPrefsController.SetSFXVolume(value);
     }
 
     public void ChangeMusicVolume(float value)
     {
         audioSource.volume = value;
-        //PlayerPrefsController.SetMusicVolume(value);
+        PlayerPrefsController.SetMusicVolume(value);
     }
 }

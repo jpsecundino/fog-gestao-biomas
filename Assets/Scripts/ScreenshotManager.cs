@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Drawing;
 
 [RequireComponent(typeof(Camera))]
 public class ScreenshotManager : MonoBehaviour

@@ -65,14 +65,6 @@ public class InfoManager : MonoBehaviour
                     cmVirtualCamClose.Follow = hitInfo.transform;
                     cmVirtualCamClose.Priority = 11;
                 }
-                /*
-                if (hitInfo.transform.CompareTag(StringsReferences.groundTag))
-                {
-                    soilInfo.SetActive(true);
-                    cmVirtualCam.Follow = hitInfo.transform;
-                    cmVirtualCam.LookAt = hitInfo.transform;
-                    activeCameraState = CameraStates.ZoomIn;
-                }*/
             }
         }
     }
