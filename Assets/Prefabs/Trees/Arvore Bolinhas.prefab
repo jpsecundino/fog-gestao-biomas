@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c828aafa872ac64419d04e1644b4d00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: {fileID: 0}
   health: 100
   water: 0
   nutrients: 0
@@ -176,6 +177,10 @@ MonoBehaviour:
   maxAcidity: 0
   minMoisture: 0
   maxMoisture: 0
+  size: 0
+  GrowthVelocity: 0
+  maxSize: 0
+  maxHeight: 0
 --- !u!114 &1925182202894265637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +196,7 @@ MonoBehaviour:
   inventoryType: 0
   id: 0
   sprite: {fileID: 21300000, guid: 5d9ba4e7d0964044ea54abe409d81dfd, type: 3}
-  price: 20
+  price: 50
 --- !u!1001 &3318789722289271496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -290,6 +295,10 @@ PrefabInstance:
     - target: {fileID: 1625638217809661417, guid: 284a6f9a1d82c464789a795cf8520b6f, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1625638217809661417, guid: 284a6f9a1d82c464789a795cf8520b6f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1625638217809661421, guid: 284a6f9a1d82c464789a795cf8520b6f, type: 3}
       propertyPath: m_LocalPosition.x

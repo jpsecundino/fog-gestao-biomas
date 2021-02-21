@@ -17,6 +17,8 @@ public class SaveData
 
     public int index;
     public float playingTime;
+    public int day;
+    public float inGameTime;
 
     [Serializable]
     public struct SoilStruct
@@ -78,7 +80,7 @@ public class SaveData
     }
 
 
-    public SaveData(Nature nature, GridMap gridmap, ShopManager shopManager, InventoryManager inventoryManager, int _index)
+    public SaveData(Nature nature, GridMap gridmap, ShopManager shopManager, InventoryManager inventoryManager, TimeController timeController, int _index)
     {
         soilPosList = ConvertNaturePos(nature);
         soilList = ConvertNatureSoil(nature);
@@ -89,6 +91,8 @@ public class SaveData
         inventoryList = ConvertInventory(inventoryManager);
         index = _index;
         playingTime = GameManager.instance.playingTime;
+        day = timeController.days;
+        inGameTime = timeController.time;
     }
 
     private List<float[]> ConvertNaturePos(Nature nature)
@@ -119,9 +123,9 @@ public class SaveData
     {
         List<float[]> list = new List<float[]>();
 
-        foreach (KeyValuePair<Vector3, GameObject> plant in plantsGrid.grid)
+        foreach (KeyValuePair<GameObject, Vector3> plant in plantsGrid.grid)
         {
-            list.Add(new float[3] { plant.Key.x, plant.Key.y, plant.Key.z });
+            list.Add(new float[3] { plant.Value.x, plant.Value.y, plant.Value.z });
         }
 
         return list;
@@ -133,9 +137,9 @@ public class SaveData
         Plant plantClass;
         PlantStruct plantStruct;
 
-        foreach (KeyValuePair<Vector3, GameObject> plant in plantsGrid.grid)
+        foreach (KeyValuePair<GameObject, Vector3> plant in plantsGrid.grid)
         {
-            plantClass = plant.Value.GetComponent<Plant>();
+            plantClass = plant.Key.GetComponent<Plant>();
             plantStruct = new PlantStruct(plantClass.GetId(), new float[3] { plantClass.gameObject.transform.rotation.x,
                 plantClass.gameObject.transform.rotation.y, plantClass.gameObject.transform.rotation.z },  plantClass.health, plantClass.water,
                 plantClass.nutrients, plantClass.growthVelocity, plantClass.productionPerSecond, plantClass.profit, plantClass.luminosity);

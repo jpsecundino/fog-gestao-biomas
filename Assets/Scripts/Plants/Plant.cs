@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
+    public TimeController time;
+
     public float health = 100f;
     public float water = 0f;
-    public float nutrients = 0f;
-    public float growthVelocity = 0f;
-    public float productionPerSecond = 0f;
     public float profit = 0f;
     public float luminosity = 0f;
     
@@ -36,26 +35,43 @@ public class Plant : MonoBehaviour
     private float actualConsumptionLoopTime = 0;
     private float baseConsumptionLoopTime = 2;
 
-    private void Start()
+    public float size = 0;
+    public float oldSizeAux = 0f;
+    public float growthVelocity = 0;
+    public float maxSize = 0;
+    public float maxHeight = 0;
+    public float plantingDay = 0f;
+    public float productionPerSecond = 0f;
+    public float nutrients;
+   
+
+    private void Awake()
     {
+        time = GameObject.Find("TimeController").GetComponent<TimeController>();
         plantPlacer = PlantPlacer.instance;
         plantsGridMap = GridMap.instance;
         nature = Nature.instance;
         canvas = GetComponentInChildren<Canvas>();
         canvas.enabled = false;
-        actualConsumptionLoopTime = 0;
+        size = plantObject.size;
+        growthVelocity = plantObject.growthVelocity;
+        maxSize = plantObject.maxSize;
+        maxHeight = plantObject.maxHeight;
+        plantingDay = time.days;
+        productionPerSecond = plantObject.productionPerSecond;
+        nutrientConsumptionRate = plantObject.nutrients;
     }
 
     void FixedUpdate()
     {
 
         actualConsumptionLoopTime += Time.deltaTime;
-
+        Growth();
         //soil generates nutrients in every cycle
         if (actualConsumptionLoopTime  >= baseConsumptionLoopTime)
         {
             actualConsumptionLoopTime = 0f;
-            Consume();    
+            Consume();
         }
     }
 
@@ -64,7 +80,7 @@ public class Plant : MonoBehaviour
         if (isPlaced)
         {
             _timeSlice = Time.deltaTime;
-
+            
             float _availableNutrients = nature.GetAvailableNutrients(transform.position);
 
             if (_availableNutrients > 0)
@@ -73,11 +89,12 @@ public class Plant : MonoBehaviour
                 {
                     nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
                     HealthControl((_timeSlice * nutrientConsumptionRate) / deathRate);
+                    Debug.Log(nature.GetAvailableNutrients(transform.position) + " and consumed " + _timeSlice * nutrientConsumptionRate + "and the sum is" + (nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate));
+                    ProduceOrganicMatter();
                 }
                 else
                 {
                     nature.ConsumeNutrients(transform.position, Time.deltaTime * nutrientConsumptionRate);
-                    Debug.Log(nature.GetAvailableNutrients(transform.position) + " and consumed " + _timeSlice * nutrientConsumptionRate + "and the sum is" + (nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate));
                     HealthControl((nature.GetAvailableNutrients(transform.position) - _timeSlice * nutrientConsumptionRate) / deathRate);
                     //Nature.GetAvailableNutrients(transform.position) = 0;
                 }
@@ -96,11 +113,11 @@ public class Plant : MonoBehaviour
 
         if(health == 0)
         {
-            Debug.LogWarning("O solo nao recebeu nutrientes após a morte da planta, pois uma linha de código está comentada");
+            //Debug.LogWarning("O solo nao recebeu nutrientes após a morte da planta, pois uma linha de código está comentada");
             //Descomentar essa linha quando o solo estiver terminado
-            //nature.soilGrid[transform.position].AddNutrients(plantObject.nutrientsGivenToSoil);
+            nature.soilGrid[nature.GetNearestPointOnGrid(transform.position)].AddNutrients(plantObject.nutrientsGivenToSoil);
             Debug.Log("A planta " + plantObject.name + " morreu");
-            plantsGridMap.grid.Remove(transform.position);
+            plantsGridMap.grid.Remove(gameObject);
             Destroy(gameObject);
         }
     }
@@ -112,5 +129,25 @@ public class Plant : MonoBehaviour
     public PlantObject GetPlantObject()
     {
         return plantObject;
+    }
+
+    public void ProduceOrganicMatter()
+    {
+        ShopManager.instance.moneyAmount += productionPerSecond;
+    }
+    
+    public void Growth()
+    {
+        if(health > 0)
+        {
+            if (size < maxSize) size = Mathf.Round((maxSize/(maxHeight/growthVelocity))*(time.days - plantingDay));
+            if (oldSizeAux == 0) oldSizeAux = size;
+
+            if (size > oldSizeAux)
+            {
+                gameObject.transform.localScale += new Vector3((float)(0.05), (float)(0.05), (float)(0.05));
+                oldSizeAux = size;
+            }
+        }
     }
 }
