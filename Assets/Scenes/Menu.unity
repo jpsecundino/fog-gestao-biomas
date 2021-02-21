@@ -4419,7 +4419,7 @@ GameObject:
   - component: {fileID: 1972253837}
   - component: {fileID: 1972253841}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4514,7 +4514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a8ed9a25cf5504b8c552566656fefd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundScrollSpeed: 0.1
+  backgroundScrollSpeed: 0.05
 --- !u!1 &1973823050
 GameObject:
   m_ObjectHideFlags: 0

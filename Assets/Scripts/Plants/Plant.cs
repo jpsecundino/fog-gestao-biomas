@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
@@ -12,9 +9,6 @@ public class Plant : MonoBehaviour
     public float profit = 0f;
     public float luminosity = 0f;
     
-    //tudo pro scriptable
-    private string plantName;
-    private float potential;
     public bool isPlaced = false;
     public PlantObject plantObject;
     private float nutrientConsumptionRate = 2f;
@@ -28,7 +22,6 @@ public class Plant : MonoBehaviour
     [SerializeField] private float maxMoisture;
 
     private Nature nature = null;
-    private PlantPlacer plantPlacer = null;
     private Canvas canvas;
     private float _timeSlice;
     private GridMap plantsGridMap;
@@ -48,7 +41,6 @@ public class Plant : MonoBehaviour
     private void Awake()
     {
         time = GameObject.Find("TimeController").GetComponent<TimeController>();
-        plantPlacer = PlantPlacer.instance;
         plantsGridMap = GridMap.instance;
         nature = Nature.instance;
         canvas = GetComponentInChildren<Canvas>();
@@ -64,7 +56,6 @@ public class Plant : MonoBehaviour
 
     void FixedUpdate()
     {
-
         actualConsumptionLoopTime += Time.deltaTime;
         Growth();
         //soil generates nutrients in every cycle
@@ -113,8 +104,6 @@ public class Plant : MonoBehaviour
 
         if(health == 0)
         {
-            //Debug.LogWarning("O solo nao recebeu nutrientes após a morte da planta, pois uma linha de código está comentada");
-            //Descomentar essa linha quando o solo estiver terminado
             nature.soilGrid[nature.GetNearestPointOnGrid(transform.position)].AddNutrients(plantObject.nutrientsGivenToSoil);
             Debug.Log("A planta " + plantObject.name + " morreu");
             plantsGridMap.grid.Remove(gameObject);
