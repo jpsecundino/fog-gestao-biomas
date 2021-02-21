@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TimeController : MonoBehaviour
 {
-    public float time;
+    public float time = 0f;
     public TimeSpan currenttime;
     public Text timetext;
     public Text daystext;

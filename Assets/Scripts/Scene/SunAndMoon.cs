@@ -19,6 +19,11 @@ public class SunAndMoon : MonoBehaviour
 
     public TimeController timecontroller;
 
+    private void Start()
+    {
+        timecontroller = GameObject.Find("TimeController").GetComponent<TimeController>();
+    }
+
     // Update is called once per frame
     void Update()
     {

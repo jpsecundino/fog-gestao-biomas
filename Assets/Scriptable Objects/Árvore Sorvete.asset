@@ -18,14 +18,14 @@ MonoBehaviour:
   health: 100
   luminosity: 0
   water: 0
-  nutrients: 0
+  nutrients: 5
   nutrientsGivenToSoil: 100
   size: 1
   GrowthVelocity: 20
   maxSize: 100
   maxHeight: 1
   fruits: 1
-  productonPerSecond: 0
+  productionPerSecond: 5
   profit: 0
   price: 150
   plantPrefab: {fileID: 299427367560728257, guid: ab27b62de7197d645b24f99158e7dceb, type: 3}
