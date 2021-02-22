@@ -30,7 +30,7 @@ public class ShopManager : MonoBehaviour
     private InventoryManager inventoryManager = null;
 
     private List<InventoryItem> items = new List<InventoryItem>();
-    public float moneyAmount = 0;
+    public int moneyAmount = 0;
 
     private void Start()
     {
@@ -77,12 +77,12 @@ public class ShopManager : MonoBehaviour
         items = new List<InventoryItem>();
     }
 
-    public float GetMoneyAmount()
+    public int GetMoneyAmount()
     {
         return moneyAmount;
     }
 
-    public void SetMoneyAmount(float amount)
+    public void SetMoneyAmount(int amount)
     {
         moneyAmount = amount;
     }

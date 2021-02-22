@@ -139,9 +139,10 @@ public class PlantPlacer : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, 1000f, groundLayer))
+            if (Physics.Raycast(ray, out hitInfo, 1000f, groundLayer))
             {
                 if(inventoryManager.HasItems() && InsideGrid(hitInfo.point))
                 {
