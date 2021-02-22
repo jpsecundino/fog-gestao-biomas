@@ -10,6 +10,6 @@ public class MenuButton : MonoBehaviour
     {
         sceneManagement = SceneManagement.instance;
         button = GetComponent<Button>();
-        button.onClick.AddListener(delegate { sceneManagement.LoadMenu(); });
+        button.onClick.AddListener(delegate { sceneManagement.LoadMenu(); Time.timeScale = 1f; });
     }
 }

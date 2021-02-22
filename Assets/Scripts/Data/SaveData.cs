@@ -11,7 +11,7 @@ public class SaveData
     public List<float[]> plantsPosList;
     public List<PlantStruct> plantsList;
 
-    public float moneyAmount;
+    public int moneyAmount;
     public List<int> shopList;
     public List<ItemStruct> inventoryList;
 
@@ -123,7 +123,7 @@ public class SaveData
     {
         List<float[]> list = new List<float[]>();
 
-        foreach (KeyValuePair<GameObject, Vector3> plant in plantsGrid.grid)
+        foreach (KeyValuePair<GameObject, Vector3> plant in plantsGrid.realPositionPlants)
         {
             list.Add(new float[3] { plant.Value.x, plant.Value.y, plant.Value.z });
         }

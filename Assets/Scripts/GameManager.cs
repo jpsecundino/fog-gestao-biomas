@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            shopManager.moneyAmount = 1000;
+            shopManager.moneyAmount = 20;
 
             for (int i = 0; i <= 3; i++)
             {
@@ -198,8 +198,7 @@ public class GameManager : MonoBehaviour
         {
             Vector3 plantPosition = new Vector3(saveData.plantsPosList[i][0], saveData.plantsPosList[i][1], saveData.plantsPosList[i][2]);
             Quaternion plantRotation = new Quaternion(saveData.plantsList[i].rotation[0], saveData.plantsList[i].rotation[1], saveData.plantsList[i].rotation[2], 0);
-            GameObject plant = Instantiate(gameObjects[saveData.plantsList[i].id], plantPosition + 
-                new Vector3(0f, plantsGrid.groundTransform.position.y, 0f), plantRotation);
+            GameObject plant = Instantiate(gameObjects[saveData.plantsList[i].id], plantPosition, plantRotation);
             Plant plantClass = plant.GetComponent<Plant>();
             plantClass.health = saveData.plantsList[i].health;
             plantClass.water = saveData.plantsList[i].water;
@@ -208,7 +207,8 @@ public class GameManager : MonoBehaviour
             plantClass.productionPerSecond = saveData.plantsList[i].productionPerSecond;
             plantClass.profit = saveData.plantsList[i].profit;
             plantClass.luminosity = saveData.plantsList[i].luminosity;
-            plantsGrid.grid.Add(plant, plantPosition);
+            plantsGrid.grid.Add(plant, plantsGrid.GetNearestPointOnGrid(plantPosition));
+            plantsGrid.realPositionPlants.Add(plant, plantPosition);
         }
 
         shopManager.SetMoneyAmount(saveData.moneyAmount);

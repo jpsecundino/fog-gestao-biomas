@@ -25,12 +25,14 @@ public class GridMap : MonoBehaviour
     public int zSize = 20;
 
     public Dictionary<GameObject, Vector3> grid;
+    public Dictionary<GameObject, Vector3> realPositionPlants;
     public Transform groundTransform = null;
     
 
     void Start()
     {
         grid = new Dictionary<GameObject, Vector3>();
+        realPositionPlants = new Dictionary<GameObject, Vector3>();
     }
 
     public Vector3 GetNearestPointOnGrid(Vector3 position)
@@ -40,7 +42,7 @@ public class GridMap : MonoBehaviour
         int xCount = Mathf.RoundToInt(position.x / BaseGridSize);
         int zCount = Mathf.RoundToInt(position.z / BaseGridSize);
 
-        Vector3 result = new Vector3(xCount * BaseGridSize, 0, zCount * BaseGridSize);
+        Vector3 result = new Vector3(xCount * BaseGridSize, 0f, zCount * BaseGridSize);
 
         return result;
     }
@@ -69,8 +71,10 @@ public class GridMap : MonoBehaviour
     {
         Vector3 relatedSoil = GetNearestPointOnGrid(position);
         Debug.Log(relatedSoil);
-        grid.Add(Instantiate(objPrefab, position, rotation), relatedSoil);
-    }   
+        GameObject newPlant = Instantiate(objPrefab, position, rotation);
+        realPositionPlants.Add(newPlant, position);
+        grid.Add(newPlant, relatedSoil);
+    }
 
 
     private void OnDrawGizmos()

@@ -25,8 +25,9 @@ public class Plant : MonoBehaviour
     private Canvas canvas;
     private float _timeSlice;
     private GridMap plantsGridMap;
-    private float actualConsumptionLoopTime = 0;
-    private float baseConsumptionLoopTime = 2;
+    private float actualConsumptionLoopTime = 0f;
+    private float baseConsumptionLoopTime = 2f;
+    private float seed = 0f;
 
     public float size = 0;
     public float oldSizeAux = 0f;
@@ -59,7 +60,7 @@ public class Plant : MonoBehaviour
         actualConsumptionLoopTime += Time.deltaTime;
         Growth();
         //soil generates nutrients in every cycle
-        if (actualConsumptionLoopTime  >= baseConsumptionLoopTime)
+        if (actualConsumptionLoopTime  >= baseConsumptionLoopTime && health >= 0f)
         {
             actualConsumptionLoopTime = 0f;
             Consume();
@@ -122,7 +123,14 @@ public class Plant : MonoBehaviour
 
     public void ProduceOrganicMatter()
     {
-        ShopManager.instance.moneyAmount += productionPerSecond;
+        seed += productionPerSecond;
+
+        if(seed > 1f)
+        {
+            float difference = seed - 1f;
+            ShopManager.instance.moneyAmount += (int) seed;
+            seed = difference;
+        }
     }
     
     public void Growth()
@@ -134,7 +142,7 @@ public class Plant : MonoBehaviour
 
             if (size > oldSizeAux)
             {
-                gameObject.transform.localScale += new Vector3((float)(0.05), (float)(0.05), (float)(0.05));
+                gameObject.transform.localScale += new Vector3(0.05f, 0.05f, 0.05f);
                 oldSizeAux = size;
             }
         }
