@@ -17,7 +17,7 @@ public class SaveSlots : MonoBehaviour
         button = GetComponent<Button>();
         image = GetComponent<Image>();
         timePlayedText = GetComponentInChildren<TMP_Text>();
-        string savePath = Application.persistentDataPath + "/GestaoBiomasSave" + buttonIndex + ".bin";
+        string savePath = Application.persistentDataPath + buttonIndex + ".bin";
 
         if (File.Exists(savePath))
         {
@@ -32,11 +32,11 @@ public class SaveSlots : MonoBehaviour
             timePlayedText.text = "Novo jogo";
         }
 
-        string screnshootPath = string.Format("{0}/Screenshots/SaveScreenshot {1}.png", Application.dataPath, buttonIndex);
+        string screenshotPath = Application.persistentDataPath + buttonIndex + ".png";
 
-        if (File.Exists(screnshootPath))
+        if (File.Exists(screenshotPath))
         {
-            byte[] picture = File.ReadAllBytes(screnshootPath);
+            byte[] picture = File.ReadAllBytes(screenshotPath);
             Texture2D texture = new Texture2D(1920, 1080, TextureFormat.RGB24, false);
             texture.LoadImage(picture);
             image.sprite = Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), new Vector2(0f, 0f));

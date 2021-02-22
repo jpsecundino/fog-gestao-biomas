@@ -8,7 +8,7 @@ public class SaveSystem
     {
         BinaryFormatter formatter = new BinaryFormatter();
 
-        string path = Application.persistentDataPath + "/GestaoBiomasSave" + index + ".bin";
+        string path = Application.persistentDataPath + index + ".bin";
 
         FileStream stream = new FileStream(path, FileMode.Create);
 
@@ -20,7 +20,7 @@ public class SaveSystem
 
     public static SaveData LoadGame(int index)
     {
-        string path = Application.persistentDataPath + "/GestaoBiomasSave" + index + ".bin";
+        string path = Application.persistentDataPath + index + ".bin";
 
         if (File.Exists(path))
         {

@@ -37,7 +37,7 @@ public class ScreenshotManager : MonoBehaviour
 
             int screenshotIndex = SceneManagement.index;
 
-            string path = string.Format("{0}/Screenshots/SaveScreenshot {1}.png", Application.dataPath, screenshotIndex);
+            string path = Application.persistentDataPath + screenshotIndex + ".png";
             System.IO.File.WriteAllBytes(path, byteArray);
 
             screenshotCamera.gameObject.SetActive(false);
