@@ -1057,6 +1057,7 @@ GameObject:
   - component: {fileID: 383977748}
   - component: {fileID: 383977747}
   - component: {fileID: 383977746}
+  - component: {fileID: 383977749}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -1126,19 +1127,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 383977747}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4338444127197222138}
-        m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
-        m_MethodName: Exit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &383977747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1177,6 +1166,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383977744}
   m_CullTransparentMesh: 0
+--- !u!114 &383977749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383977744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3064207592b4d1f4ab49ff2a4e95a869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &421061400
 GameObject:
   m_ObjectHideFlags: 0
@@ -5017,14 +5018,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1946e0f8d8ab4e54d8b4828b32836c61, type: 3}
---- !u!114 &4338444127197222138 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7774931477365583528, guid: 1946e0f8d8ab4e54d8b4828b32836c61, type: 3}
-  m_PrefabInstance: {fileID: 4338444127197222137}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b58117c98d84d047a60d9e5c2e5e9c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

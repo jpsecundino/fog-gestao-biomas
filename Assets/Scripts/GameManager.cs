@@ -60,12 +60,13 @@ public class GameManager : MonoBehaviour
         infoManager = InfoManager.instance;
         nature = Nature.instance;
         plantsGrid = GridMap.instance;
-        shopManager = ShopManager.instance;
+        shopManager = FindObjectOfType<ShopManager>();
         inventoryManager = InventoryManager.instance;
         timeController = FindObjectOfType<TimeController>();
         gameObjects = inventoryManager.GetItemsPrefabs();
 
-        string path = Application.persistentDataPath + "/GestaoBiomasSave" + SceneManagement.index + ".bin";
+        string path = Application.persistentDataPath + SceneManagement.index + ".bin";
+        Debug.Log(Application.persistentDataPath);
 
         if (File.Exists(path))
         {
@@ -73,11 +74,12 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            shopManager.moneyAmount = 20;
-
+            ShopManager.instance.moneyAmount = 20;
+            Debug.Log(shopManager);
+            
             for (int i = 0; i <= 3; i++)
             {
-                shopManager.AddItemInShop(i);
+                ShopManager.instance.AddItemInShop(i);
             }
         }
     }
